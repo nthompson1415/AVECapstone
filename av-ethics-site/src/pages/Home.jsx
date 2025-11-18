@@ -58,10 +58,10 @@ const HomePage = () => {
               <Brain className="w-8 h-8" />
             </div>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Autonomous Vehicle Ethics Lab</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Autonomous Vehicle Ethics Capstone</h1>
           <p className="text-lg text-slate-600 max-w-3xl mx-auto">
             Interact with utilitarian decision models, personalize ethical weights, and review presentation-ready findings from the IST 477
-            capstone on German Ethics Commission guidance vs. context-sensitive AV logic.
+            capstone: "Context-Sensitive Ethics in Autonomous Vehicles: Rigid Rules vs. Adaptive Algorithms".
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
