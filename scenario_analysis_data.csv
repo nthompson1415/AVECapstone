@@ -1,0 +1,31 @@
+Scenario,Connectedness,Harm1,Harm2,Recommendation,Difference
+Classic Trolley Problem,None (Demographic-Blind),190.00,38.00,option2,152.00
+Classic Trolley Problem,Low (Age Only),190.00,38.00,option2,152.00
+Classic Trolley Problem,Medium (+ Occupation/Health/Criminal),190.00,38.00,option2,152.00
+Classic Trolley Problem,High (+ Legal/Pregnancy/Species),190.00,38.00,option2,152.00
+Classic Trolley Problem,Maximum (+ Network Effects),190.00,38.00,option2,152.00
+Young vs Elderly,None (Demographic-Blind),15.00,70.00,option1,55.00
+Young vs Elderly,Low (Age Only),15.00,70.00,option1,55.00
+Young vs Elderly,Medium (+ Occupation/Health/Criminal),15.00,70.00,option1,55.00
+Young vs Elderly,High (+ Legal/Pregnancy/Species),15.00,70.00,option1,55.00
+Young vs Elderly,Maximum (+ Network Effects),15.00,70.00,option1,55.00
+Doctor vs Criminal,None (Demographic-Blind),43.00,43.00,neutral,0.00
+Doctor vs Criminal,Low (Age Only),43.00,43.00,neutral,0.00
+Doctor vs Criminal,Medium (+ Occupation/Health/Criminal),40.42,64.50,option1,24.08
+Doctor vs Criminal,High (+ Legal/Pregnancy/Species),40.42,64.50,option1,24.08
+Doctor vs Criminal,Maximum (+ Network Effects),40.42,64.50,option1,24.08
+Legal vs Jaywalker,None (Demographic-Blind),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,Low (Age Only),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,Medium (+ Occupation/Health/Criminal),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,High (+ Legal/Pregnancy/Species),38.00,23.94,option2,14.06
+Legal vs Jaywalker,Maximum (+ Network Effects),38.00,23.94,option2,14.06
+Pregnant Woman,None (Demographic-Blind),76.00,50.00,option2,26.00
+Pregnant Woman,Low (Age Only),76.00,50.00,option2,26.00
+Pregnant Woman,Medium (+ Occupation/Health/Criminal),76.00,50.00,option2,26.00
+Pregnant Woman,High (+ Legal/Pregnancy/Species),76.00,90.00,option1,14.00
+Pregnant Woman,Maximum (+ Network Effects),76.00,90.00,option1,14.00
+Pet vs Person,None (Demographic-Blind),3.90,38.00,option1,34.10
+Pet vs Person,Low (Age Only),3.90,38.00,option1,34.10
+Pet vs Person,Medium (+ Occupation/Health/Criminal),3.90,38.00,option1,34.10
+Pet vs Person,High (+ Legal/Pregnancy/Species),3.90,38.00,option1,34.10
+Pet vs Person,Maximum (+ Network Effects),3.90,38.00,option1,34.10
