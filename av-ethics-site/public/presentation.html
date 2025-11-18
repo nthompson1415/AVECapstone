@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentation 3: Preliminary Data Analysis</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
+      background: #1a202c;
+      overflow: hidden;
+    }
+    
+    .slide {
+      display: none;
+      min-height: 100vh;
+      padding: 60px 80px;
+      background: white;
+    }
+    
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .slide h1 {
+      font-size: 56px;
+      color: #1a202c;
+      margin-bottom: 30px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    
+    .slide h2 {
+      font-size: 42px;
+      color: #667eea;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    
+    .slide h3 {
+      font-size: 32px;
+      color: #4a5568;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .slide h4 {
+      font-size: 26px;
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .slide p, .slide li {
+      font-size: 22px;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    
+    .slide ul {
+      margin-left: 45px;
+      margin-top: 15px;
+    }
+    
+    .slide li {
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 28px;
+      color: #718096;
+      font-weight: 400;
+      margin-top: 15px;
+    }
+    
+    .meta {
+      font-size: 24px;
+      color: #a0aec0;
+      margin-top: 40px;
+      line-height: 1.6;
+    }
+    
+    .ist-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .ist-card {
+      background: linear-gradient(135deg, #667eea15, #764ba215);
+      border: 3px solid #667eea;
+      border-radius: 12px;
+      padding: 25px;
+    }
+    
+    .ist-card h4 {
+      color: #667eea;
+      margin-bottom: 15px;
+    }
+    
+    .rq-box {
+      background: linear-gradient(135deg, #667eea10, #764ba210);
+      border-left: 6px solid #667eea;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    
+    .rq-box p {
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+    
+    .variables-box {
+      background: #f7fafc;
+      border: 3px solid #cbd5e0;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+    
+    .table {
+      width: 100%;
+      margin-top: 25px;
+      font-size: 17px;
+      border-collapse: collapse;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .table th {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 700;
+    }
+    
+    .table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e2e8f0;
+      background: white;
+    }
+    
+    .table tr:nth-child(even) td {
+      background: #f7fafc;
+    }
+    
+    .table .changed {
+      background: #fff5f5 !important;
+      font-weight: 700;
+      color: #c53030;
+    }
+    
+    .finding-highlight {
+      background: #fffaf0;
+      border: 3px solid #ed8936;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+    
+    .finding-highlight h4 {
+      color: #c05621;
+      margin-bottom: 12px;
+    }
+    
+    .stat-big {
+      font-size: 72px;
+      font-weight: 800;
+      color: #667eea;
+      text-align: center;
+      margin: 25px 0;
+    }
+    
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .ref-list {
+      font-size: 16px !important;
+      line-height: 1.5 !important;
+      margin-left: 0 !important;
+      list-style: none !important;
+    }
+    
+    .ref-list li {
+      margin-bottom: 18px !important;
+      padding-left: 25px;
+      text-indent: -25px;
+      font-size: 16px !important;
+    }
+    
+    .toc-item {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    
+    .toc-item h4 {
+      font-size: 22px;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+    
+    .toc-item ul {
+      margin-left: 30px;
+      list-style: disc;
+    }
+    
+    .toc-item li {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    
+    .controls {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+    
+    .controls button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s;
+    }
+    
+    .controls button:hover {
+      background: #5a67d8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .slide-number {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      font-size: 24px;
+      color: #a0aec0;
+      font-weight: 700;
+      z-index: 1000;
+    }
+    
+    .emphasis {
+      background: linear-gradient(135deg, #667eea20, #764ba220);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      color: #5a67d8;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Slide 1: Title Page -->
+  <div class="slide active">
+    <h1>Context-Sensitive Ethics in Autonomous Vehicles</h1>
+    <div class="subtitle">Examining the Trade-offs Between Rigid Demographic-Blind Rules and Adaptive Utilitarian Algorithms</div>
+    <div class="meta">
+      <p><strong>IST 477: Capstone in Innovation, Society & Technology</strong></p>
+      <p>Presentation 3: Preliminary Data Analysis</p>
+      <p style="margin-top: 30px;">Student: [Your Name]</p>
+      <p>Instructor: Lee W. McKnight</p>
+      <p>Date: October 29, 2025</p>
+    </div>
+  </div>
+
+  <!-- Slide 2: Problem & I/S/T Dimensions -->
+  <div class="slide">
+    <h2>The Problem: Programming Morality</h2>
+    
+    <p style="font-size: 24px; margin-bottom: 30px;">
+      As autonomous vehicles advance, they must be programmed to handle unavoidable accident scenarios. 
+      Should these decisions be governed by simple rules or context-sensitive algorithms?
+    </p>
+    
+    <div class="ist-box">
+      <div class="ist-card">
+        <h4>🔬 Innovation</h4>
+        <p>AI/ML systems making life-or-death decisions in real-time</p>
+        <p style="margin-top: 15px; font-size: 18px;">Algorithmic ethics, utilitarian calculus, decision frameworks</p>
+      </div>
+      
+      <div class="ist-card">
+        <h4>👥 Society</h4>
+        <p>Public trust, moral frameworks, discrimination concerns</p>
+        <p style="margin-top: 15px; font-size: 18px;">Equal protection, human dignity, policy implications</p>
+      </div>
+      
+      <div class="ist-card">
+        <h4>⚙️ Technology</h4>
+        <p>Sensor data, contextual information, model accuracy</p>
+        <p style="margin-top: 15px; font-size: 18px;">Informational connectedness, implementation challenges</p>
+      </div>
+    </div>
+    
+    <div style="margin-top: 40px; padding: 25px; background: #fff5f5; border-radius: 10px; border-left: 5px solid #fc8181;">
+      <p style="font-size: 20px;">
+        <strong>German Ethics Commission (2017):</strong> "Genuine dilemmatic decisions cannot be clearly standardized, nor programmed such that they are ethically unquestionable."
+      </p>
+    </div>
+  </div>
+
+  <!-- Slide 3: Research Questions & Variables -->
+  <div class="slide">
+    <h2>Research Questions & Variables</h2>
+    
+    <div class="rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;">🎯 Primary RQ</h4>
+      <p>Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
+    </div>
+    
+    <div class="rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;">🔍 Secondary RQ</h4>
+      <p>At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
+    </div>
+    
+    <div class="variables-box">
+      <h4>Variables:</h4>
+      <div class="two-col" style="margin-top: 15px;">
+        <div>
+          <p style="font-size: 20px;"><strong>Independent Variables:</strong></p>
+          <ul style="font-size: 18px; margin-top: 10px;">
+            <li>Informational connectedness level</li>
+            <li>Ethical framework applied</li>
+            <li>Demographic factors included</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size: 20px;"><strong>Dependent Variables:</strong></p>
+          <ul style="font-size: 18px; margin-top: 10px;">
+            <li>Ethical recommendation</li>
+            <li>Decision stability</li>
+            <li>Harm calculation output</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: Research Methods -->
+  <div class="slide">
+    <h2>Research Methods & Approach</h2>
+    
+    <h3>Methodology:</h3>
+    <ul>
+      <li><strong>Tool Development:</strong> Interactive Ethical Decision Analyzer with utilitarian, deontological, and virtue ethics frameworks</li>
+      <li><strong>Evidence-Based Weights:</strong> Multipliers derived from:
+        <ul style="margin-left: 40px; margin-top: 10px;">
+          <li>Government VSL estimates ($6-14M per statistical life)</li>
+          <li>QALY medical ethics frameworks (quality-adjusted life years)</li>
+          <li>Criminal justice recidivism data (federal statistics)</li>
+        </ul>
+      </li>
+      <li><strong>Systematic Testing:</strong> 6 classic trolley problem scenarios across 5 connectedness levels</li>
+      <li><strong>Comparative Analysis:</strong> Framework agreement/disagreement patterns</li>
+    </ul>
+    
+    <h3 style="margin-top: 35px;">Connectedness Levels Tested:</h3>
+    <ul>
+      <li><strong>None:</strong> Demographic-blind (age/numbers only)</li>
+      <li><strong>Medium:</strong> + Occupation (1.5x doctors), Health (0.3x terminal), Criminal (0.94x violent)</li>
+      <li><strong>High:</strong> + Legal fault (0.9x jaywalking), Pregnancy (1.8x), Species (0.05x pets)</li>
+      <li><strong>Maximum:</strong> + Network effects (1.6x sole parent, 1.5x primary caregiver)</li>
+    </ul>
+  </div>
+
+  <!-- Slide 5: Data Tables I -->
+  <div class="slide">
+    <h2>Preliminary Findings I: Decision Stability</h2>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>None</th>
+          <th>Medium</th>
+          <th>High</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Classic Trolley</strong><br><span style="font-size: 14px; color: #718096;">(5 people vs 1)</span></td>
+          <td>Save 5</td>
+          <td>Save 5</td>
+          <td>Save 5</td>
+          <td>Save 5</td>
+        </tr>
+        <tr>
+          <td><strong>Young vs Elderly</strong><br><span style="font-size: 14px; color: #718096;">(5 elderly vs 1 child)</span></td>
+          <td>Save Child</td>
+          <td>Save Child</td>
+          <td>Save Child</td>
+          <td>Save Child</td>
+        </tr>
+        <tr>
+          <td><strong>Doctor vs Criminal</strong><br><span style="font-size: 14px; color: #718096;">(1 vs 1, age 35)</span></td>
+          <td>Neutral</td>
+          <td class="changed">Save Doctor</td>
+          <td class="changed">Save Doctor</td>
+          <td class="changed">Save Doctor</td>
+        </tr>
+        <tr>
+          <td><strong>Legal vs Jaywalker</strong><br><span style="font-size: 14px; color: #718096;">(1 vs 1, age 40)</span></td>
+          <td>Neutral</td>
+          <td>Neutral</td>
+          <td class="changed">Save Legal</td>
+          <td class="changed">Save Legal</td>
+        </tr>
+        <tr>
+          <td><strong>Pregnant Woman</strong><br><span style="font-size: 14px; color: #718096;">(1 pregnant vs 2 people)</span></td>
+          <td>Save 2</td>
+          <td>Save 2</td>
+          <td class="changed">Save Pregnant</td>
+          <td class="changed">Save Pregnant</td>
+        </tr>
+        <tr>
+          <td><strong>Pet vs Person</strong><br><span style="font-size: 14px; color: #718096;">(1 dog vs 1 human)</span></td>
+          <td>Save Person</td>
+          <td>Save Person</td>
+          <td>Save Person</td>
+          <td>Save Person</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;">
+      3 of 6 scenarios (50%) changed recommendations based on connectedness level
+    </p>
+  </div>
+
+  <!-- Slide 6: Data Tables II -->
+  <div class="slide">
+    <h2>Preliminary Findings II: Harm Calculations</h2>
+    
+    <h3>Example: Pregnancy Weighting Effect</h3>
+    
+    <table class="table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Connectedness</th>
+          <th>Option 1: Hit 2 People</th>
+          <th>Option 2: Hit Pregnant Woman</th>
+          <th>Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Low</strong></td>
+          <td>76.0 harm</td>
+          <td>50.0 harm</td>
+          <td class="changed">Save 2 People (kill pregnant)</td>
+        </tr>
+        <tr>
+          <td><strong>High</strong></td>
+          <td>76.0 harm</td>
+          <td>90.0 harm (50 × 1.8)</td>
+          <td class="changed">Save Pregnant Woman (kill 2)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="finding-highlight" style="margin-top: 35px;">
+      <h4>Key Insight:</h4>
+      <p>Pregnancy multiplier (1.8x) reverses the utilitarian recommendation. At low connectedness, standard "save more people" logic dominates. At high connectedness, pregnancy weighting (treating her as 1.8 lives) makes killing her "more harmful" than killing 2 regular people, flipping the decision.</p>
+    </div>
+    
+    <h3 style="margin-top: 30px;">Additional Findings:</h3>
+    <ul>
+      <li><strong>Jaywalker:</strong> 37% reduction in priority (0.9 × 0.7 = 0.63x total)</li>
+      <li><strong>Doctor vs Criminal:</strong> Doctor valued 1.6x higher (64.5 vs 40.42 harm)</li>
+      <li><strong>Numbers dominate</strong> in large disparities (5 vs 1 stable across all levels)</li>
+    </ul>
+  </div>
+
+  <!-- Slide 7: Key Findings -->
+  <div class="slide">
+    <h2>Four Critical Findings</h2>
+    
+    <div style="margin-top: 25px;">
+      <h4>1. Decision Sensitivity to Connectedness</h4>
+      <p style="font-size: 19px;">50% of scenarios produced different recommendations at different connectedness levels, <span class="emphasis">highlighting that informational connectedness is not ethically neutral</span>—it fundamentally determines which lives AVs prioritize.</p>
+    </div>
+    
+    <div style="margin-top: 25px;">
+      <h4>2. Pregnancy Weighting Tension</h4>
+      <p style="font-size: 19px;">Pregnancy weighting reveals a fundamental tension in utilitarian logic: granular weighting produces mathematically consistent but socially controversial outcomes, illustrating the challenge of translating moral intuitions into algorithmic rules.</p>
+    </div>
+    
+    <div style="margin-top: 25px;">
+      <h4>3. Legal Responsibility vs Equal Protection</h4>
+      <p style="font-size: 19px;">Creates tension between <span class="emphasis">two valid principles</span>: equal protection (all lives equal worth) versus responsibility (rule-followers have stronger claims). 37% jaywalker reduction forces choice of which principle dominates.</p>
+    </div>
+    
+    <div style="margin-top: 25px;">
+      <h4>4. Occupation-Based Hierarchies</h4>
+      <p style="font-size: 19px;">Should AVs consider individuals' social contributions and past actions? Utilitarian logic says yes (maximize total welfare), but egalitarian principles say no (equal intrinsic worth).</p>
+    </div>
+  </div>
+
+  <!-- Slide 8: Conclusions & Implications -->
+  <div class="slide">
+    <h2>Implications for AV Policy</h2>
+    
+    <h3>Central Research Tension:</h3>
+    <p style="font-size: 22px; margin-top: 15px; line-height: 1.8;">
+      Utilitarian frameworks require <span class="emphasis">quantifying factors</span> (occupation = 1.5x, criminal = 0.94x, pregnancy = 1.8x), 
+      but quantification creates hierarchies that may conflict with principles of equal human dignity.
+    </p>
+    
+    <h3 style="margin-top: 40px;">Key Questions Raised:</h3>
+    <ul>
+      <li>At what connectedness threshold do benefits outweigh discrimination risks?</li>
+      <li>Can model accuracy ever be high enough to justify demographic-sensitive decisions?</li>
+      <li>Should pregnancy, legal fault, or occupation inform AV algorithms?</li>
+      <li>Is decision instability (50% flip rate) acceptable in life-or-death systems?</li>
+    </ul>
+    
+    <div style="margin-top: 35px; padding: 25px; background: linear-gradient(135deg, #667eea15, #764ba215); border-radius: 12px; border-left: 6px solid #667eea;">
+      <p style="font-size: 20px; font-weight: 600;">
+        <strong>Preliminary Direction:</strong> Research will examine whether <em>any</em> level of accuracy and connectedness can ethically justify these trade-offs, or whether the German Ethics Commission's demographic-blind approach is inherently more defensible.
+      </p>
+    </div>
+  </div>
+
+  <!-- Slide 9: Appendix I - Table of Contents -->
+  <div class="slide">
+    <h2>Appendix I: Capstone Paper Outline</h2>
+    
+    <div class="toc-item">
+      <h4>Chapter 1: Introduction</h4>
+      <ul>
+        <li>Background: AV ethics and the trolley problem</li>
+        <li>German Ethics Commission guidelines (2017)</li>
+        <li>Research questions and significance</li>
+        <li>Paper structure overview</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 2: Literature Review</h4>
+      <ul>
+        <li>Ethical frameworks: Utilitarian, deontological, virtue ethics</li>
+        <li>AV ethics research (MIT Moral Machine, industry guidelines)</li>
+        <li>Value of Statistical Life (VSL) and QALY frameworks</li>
+        <li>Algorithmic fairness and discrimination literature</li>
+        <li>Legal and policy frameworks for AV decision-making</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 3: Methodology</h4>
+      <ul>
+        <li>Tool design: Ethical Decision Analyzer architecture</li>
+        <li>Evidence-based weight selection process</li>
+        <li>Connectedness spectrum operationalization</li>
+        <li>Scenario selection and testing protocol</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 10: Appendix I Continued -->
+  <div class="slide">
+    <h2>Appendix I: Table of Contents (cont.)</h2>
+    
+    <div class="toc-item">
+      <h4>Chapter 4: Data Analysis</h4>
+      <ul>
+        <li>Systematic scenario testing results</li>
+        <li>Decision stability analysis across connectedness levels</li>
+        <li>Framework comparison (utilitarian vs deontological vs virtue)</li>
+        <li>Sensitivity analysis on multiplier values</li>
+        <li>Identification of decision flip patterns</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 5: Discussion</h4>
+      <ul>
+        <li>Interpretation of pregnancy paradox findings</li>
+        <li>Legal responsibility and algorithmic accountability</li>
+        <li>Occupation-based hierarchies: justifiable or discriminatory?</li>
+        <li>Model accuracy requirements and practical limitations</li>
+        <li>Comparison to public moral intuitions (MIT Moral Machine)</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 6: Conclusions & Policy Recommendations</h4>
+      <ul>
+        <li>Answering the primary and secondary research questions</li>
+        <li>Policy framework for AV ethical decision-making</li>
+        <li>Recommendations for regulators and manufacturers</li>
+        <li>Limitations of this research</li>
+        <li>Future research directions</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 11: Appendix II - References Page 1 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 1 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Awad, E., Dsouza, S., Kim, R., Schulz, J., Henrich, J., Shariff, A., Bonnefon, J. F., & Rahwan, I. (2018). The Moral Machine experiment. <em>Nature, 563</em>(7729), 59-64. https://doi.org/10.1038/s41586-018-0637-6</li>
+      
+      <li>Bonnefon, J. F., Shariff, A., & Rahwan, I. (2016). The social dilemma of autonomous vehicles. <em>Science, 352</em>(6293), 1573-1576. https://doi.org/10.1126/science.aaf2654</li>
+      
+      <li>Ethics Commission Automated and Connected Driving. (2017). <em>Report</em>. Federal Ministry of Transport and Digital Infrastructure, Germany. https://www.bmvi.de/SharedDocs/EN/publications/report-ethics-commission.pdf</li>
+      
+      <li>Foot, P. (1967). The problem of abortion and the doctrine of double effect. <em>Oxford Review, 5</em>, 5-15.</li>
+      
+      <li>Goodall, N. J. (2016). Away from trolley problems and toward risk management. <em>Applied Artificial Intelligence, 30</em>(8), 810-821. https://doi.org/10.1080/08839514.2016.1229922</li>
+      
+      <li>Lin, P. (2016). Why ethics matters for autonomous cars. In M. Maurer et al. (Eds.), <em>Autonomous Driving</em> (pp. 69-85). Springer. https://doi.org/10.1007/978-3-662-48847-8_4</li>
+      
+      <li>Millar, J. (2016). An ethics evaluation tool for automating ethical decision-making in robots and self-driving cars. <em>Applied Artificial Intelligence, 30</em>(8), 787-809.</li>
+      
+      <li>Nyholm, S., & Smids, J. (2016). The ethics of accident-algorithms for self-driving cars: an applied trolley problem? <em>Ethical Theory and Moral Practice, 19</em>(5), 1275-1289.</li>
+    </ul>
+  </div>
+
+  <!-- Slide 12: Appendix II - References Page 2 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 2 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Rawls, J. (1971). <em>A Theory of Justice</em>. Harvard University Press.</li>
+      
+      <li>Thomson, J. J. (1985). The trolley problem. <em>Yale Law Journal, 94</em>(6), 1395-1415.</li>
+      
+      <li>U.S. Department of Health and Human Services. (2025). <em>HHS Standard Values for Regulatory Analysis, 2025</em>. Office of the Assistant Secretary for Planning and Evaluation. https://aspe.hhs.gov/reports/standard-ria-values-2025</li>
+      
+      <li>U.S. Department of Transportation. (2024). <em>Departmental Guidance on Valuation of a Statistical Life in Economic Analysis</em>. https://www.transportation.gov/office-policy/transportation-policy/revised-departmental-guidance-on-valuation-of-a-statistical-life</li>
+      
+      <li>U.S. Sentencing Commission. (2022). <em>Recidivism of Federal Violent Offenders Released in 2010</em>. https://www.ussc.gov/research/research-reports/recidivism-federal-violent-offenders-released-2010</li>
+      
+      <li>Viscusi, W. K. (2018). Best estimate selection bias in the value of a statistical life. <em>Journal of Benefit-Cost Analysis, 9</em>(2), 205-246.</li>
+      
+      <li>Weinstein, M. C., Torrance, G., & McGuire, A. (2009). QALYs: The basics. <em>Value in Health, 12</em>(Suppl 1), S5-S9.</li>
+    </ul>
+  </div>
+
+  <!-- Slide 13: Appendix II - References Page 3 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 3 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Wolkenstein, A. (2018). What has the trolley dilemma ever done for us (and what will it do in the future)? On some recent debates about the ethics of self-driving cars. <em>Ethics and Information Technology, 20</em>(3), 163-173.</li>
+      
+      <li>Social Security Administration. (2025). <em>Actuarial Life Table: Period Life Table, 2022</em>. Office of the Chief Actuary. https://www.ssa.gov/oact/STATS/table4c6.html</li>
+      
+      <li>Himmelreich, J. (2018). Never mind the trolley: The ethics of autonomous vehicles in mundane situations. <em>Ethical Theory and Moral Practice, 21</em>(3), 669-684.</li>
+      
+      <li>Santoni de Sio, F. (2017). Killing by autonomous vehicles and the legal doctrine of necessity. <em>Ethical Theory and Moral Practice, 20</em>(2), 411-429.</li>
+      
+      <li>Keeling, G. (2020). Why trolley problems matter for the ethics of automated vehicles. <em>Science and Engineering Ethics, 26</em>(1), 293-307.</li>
+      
+      <li>Leben, D. (2017). A Rawlsian algorithm for autonomous vehicles. <em>Ethics and Information Technology, 19</em>(2), 107-115.</li>
+      
+      <li>Gogoll, J., & Müller, J. F. (2017). Autonomous cars: In favor of a mandatory ethics setting. <em>Science and Engineering Ethics, 23</em>(3), 681-700.</li>
+      
+      <li>Holstein, T., Dodig-Crnkovic, G., & Pelliccione, P. (2018). Ethical and social aspects of self-driving cars. <em>arXiv preprint</em> arXiv:1802.04103.</li>
+    </ul>
+    
+    <p style="margin-top: 30px; font-size: 18px; color: #718096; font-style: italic;">
+      Additional sources on algorithmic fairness, machine ethics, and utilitarian philosophy to be added in final paper.
+    </p>
+  </div>
+
+  <!-- Slide 14: Next Steps -->
+  <div class="slide">
+    <h2>Timeline & Next Steps</h2>
+    
+    <h3>Remaining Work (Nov-Dec):</h3>
+    <ul style="margin-top: 20px;">
+      <li><strong>Literature Review Completion:</strong> Expand to 20-25 academic sources</li>
+      <li><strong>Additional Data Analysis:</strong>
+        <ul style="margin-left: 40px;">
+          <li>Comparison with MIT Moral Machine results</li>
+          <li>Sensitivity analysis on multiplier values</li>
+          <li>Model accuracy threshold testing</li>
+        </ul>
+      </li>
+      <li><strong>Framework Comparison:</strong> Detailed deontological and virtue ethics analysis</li>
+      <li><strong>Policy Framework Development:</strong> Recommendations for regulators</li>
+    </ul>
+    
+    <h3 style="margin-top: 35px;">Key Milestones:</h3>
+    <ul>
+      <li><strong>Nov 17-19:</strong> Share rough draft in class (ungraded feedback)</li>
+      <li><strong>Dec 1-3:</strong> Final capstone paper presentation</li>
+      <li><strong>Dec 5:</strong> iSchool Poster Day (11am-1pm)</li>
+      <li><strong>Dec 12:</strong> Final paper submission (20-40 pages)</li>
+    </ul>
+    
+    <p style="margin-top: 40px; font-size: 24px; text-align: center; font-weight: 700; color: #667eea;">
+      Research goal: Provide evidence-based guidance on the ethics of context-sensitive AV algorithms
+    </p>
+  </div>
+
+  <!-- Navigation -->
+  <div class="slide-number">
+    <span id="current-slide">1</span> / <span id="total-slides">9</span>
+  </div>
+  
+  <div class="controls">
+    <button onclick="prevSlide()">← Previous</button>
+    <button onclick="nextSlide()">Next →</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    document.getElementById('total-slides').textContent = totalSlides;
+    
+    function showSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (n + totalSlides) % totalSlides;
+      slides[currentSlide].classList.add('active');
+      document.getElementById('current-slide').textContent = currentSlide + 1;
+    }
+    
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+    
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>
