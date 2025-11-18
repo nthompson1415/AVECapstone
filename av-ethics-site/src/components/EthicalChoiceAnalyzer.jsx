@@ -622,26 +622,25 @@ const EthicalChoiceAnalyzer = () => {
 
   const OptionInput = ({ option, optionKey }) => (
     <div className="bg-white rounded-lg shadow-md p-6 border-2 border-gray-200">
-      <input type="text" value={option.name}
-        onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, name: e.target.value } })}
-        className="text-xl font-bold mb-4 w-full border-b-2 border-blue-300 focus:border-blue-500 outline-none pb-2"
-        disabled={simpleMode} />
+        <input type="text" value={option.name}
+          onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, name: e.target.value } })}
+          className="text-xl font-bold mb-4 w-full border-b-2 border-blue-300 focus:border-blue-500 outline-none pb-2" />
 
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Vehicle Occupants</label>
-          <input type="number" min="0" value={option.occupants}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupants: parseInt(e.target.value) || 0 } })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" disabled={simpleMode} />
+            <input type="number" min="0" value={option.occupants}
+              onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupants: parseInt(e.target.value) || 0 } })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
         </div>
 
         {option.occupants > 0 && (
           <>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Average Age of Occupants</label>
-              <input type="number" min="0" max="120" value={option.occupantAge}
-                onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantAge: parseInt(e.target.value) || 0 } })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" disabled={simpleMode} />
+                <input type="number" min="0" max="120" value={option.occupantAge}
+                  onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantAge: parseInt(e.target.value) || 0 } })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
             </div>
 
             {includeControversial && (
@@ -757,18 +756,18 @@ const EthicalChoiceAnalyzer = () => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrians</label>
-          <input type="number" min="0" value={option.pedestrians}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrians: parseInt(e.target.value) || 0 } })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode} />
+            <input type="number" min="0" value={option.pedestrians}
+              onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrians: parseInt(e.target.value) || 0 } })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md" />
         </div>
 
         {option.pedestrians > 0 && (
           <>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Age</label>
-              <input type="number" min="0" max="120" value={option.pedestrianAge}
-                onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianAge: parseInt(e.target.value) || 0 } })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode} />
+                <input type="number" min="0" max="120" value={option.pedestrianAge}
+                  onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianAge: parseInt(e.target.value) || 0 } })}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md" />
             </div>
 
             {includeControversial && (
@@ -883,10 +882,10 @@ const EthicalChoiceAnalyzer = () => {
         )}
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Injury Severity</label>
-          <select value={option.severity}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, severity: e.target.value } })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode}>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Injury Severity</label>
+            <select value={option.severity}
+              onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, severity: e.target.value } })}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md">
             <option value="none">None</option>
             <option value="minor">Minor</option>
             <option value="moderate">Moderate</option>
@@ -897,10 +896,10 @@ const EthicalChoiceAnalyzer = () => {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Certainty: {option.certainty}%</label>
-          <input type="range" min="0" max="100" value={option.certainty}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, certainty: parseInt(e.target.value) } })}
-            className="w-full" disabled={simpleMode} />
+            <label className="block text-sm font-medium text-gray-700 mb-1">Certainty: {option.certainty}%</label>
+            <input type="range" min="0" max="100" value={option.certainty}
+              onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, certainty: parseInt(e.target.value) } })}
+              className="w-full" />
         </div>
       </div>
     </div>
@@ -951,8 +950,8 @@ const EthicalChoiceAnalyzer = () => {
             <input type="checkbox" checked={simpleMode} onChange={(e) => setSimpleMode(e.target.checked)}
               className="w-5 h-5 text-green-600 rounded" />
             <div>
-              <span className="font-semibold text-gray-900"><Zap className="w-4 h-4 inline" /> Simple Mode</span>
-              <p className="text-xs text-gray-600">1v1, 100% fatal, 100% certainty</p>
+              <span className="font-semibold text-gray-900"><Zap className="w-4 h-4 inline" /> Simple 1v1 Reset</span>
+              <p className="text-xs text-gray-600">Quickly reset to a basic 1v1 fatal scenario (still fully editable).</p>
             </div>
           </label>
         </div>
