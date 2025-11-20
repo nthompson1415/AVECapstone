@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, ChevronDown, ChevronUp, BarChart3, Library } from 'lucide-react';
+import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, ChevronDown, ChevronUp, BarChart3, Library, Plus, Minus } from 'lucide-react';
 
 const EthicalChoiceAnalyzer = () => {
   const [includeControversial, setIncludeControversial] = useState(false);
@@ -620,6 +620,72 @@ const EthicalChoiceAnalyzer = () => {
     }
   };
 
+  const NumberInput = ({ label, value, onChange, min = 0, max = 999, disabled = false, step = 1, placeholder = "" }) => {
+    const handleIncrement = () => {
+      if (!disabled && value < max) {
+        onChange(value + step);
+      }
+    };
+
+    const handleDecrement = () => {
+      if (!disabled && value > min) {
+        onChange(Math.max(min, value - step));
+      }
+    };
+
+    const handleChange = (e) => {
+      const newValue = e.target.value === '' ? min : parseInt(e.target.value) || min;
+      const clampedValue = Math.max(min, Math.min(max, newValue));
+      onChange(clampedValue);
+    };
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        handleIncrement();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        handleDecrement();
+      }
+    };
+
+    return (
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">{label}</label>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={handleDecrement}
+            disabled={disabled || value <= min}
+            className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-md border-2 border-gray-300 bg-white hover:bg-gray-50 hover:border-blue-400 active:bg-blue-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+          >
+            <Minus className="w-4 h-4 text-gray-700" />
+          </button>
+          <input
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            value={value === 0 && placeholder ? '' : value}
+            placeholder={placeholder}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            disabled={disabled}
+            className="flex-1 px-3 py-2 text-center border-2 border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+          />
+          <button
+            type="button"
+            onClick={handleIncrement}
+            disabled={disabled || value >= max}
+            className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-md border-2 border-gray-300 bg-white hover:bg-gray-50 hover:border-blue-400 active:bg-blue-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+          >
+            <Plus className="w-4 h-4 text-gray-700" />
+          </button>
+        </div>
+      </div>
+    );
+  };
+
   const OptionInput = ({ option, optionKey }) => (
     <div className="bg-white rounded-lg shadow-md p-6 border-2 border-gray-200">
       <input type="text" value={option.name}
@@ -628,21 +694,25 @@ const EthicalChoiceAnalyzer = () => {
         disabled={simpleMode} />
 
       <div className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Vehicle Occupants</label>
-          <input type="number" min="0" value={option.occupants}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupants: parseInt(e.target.value) || 0 } })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" disabled={simpleMode} />
-        </div>
+        <NumberInput
+          label="Vehicle Occupants"
+          value={option.occupants}
+          onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, occupants: val } })}
+          min={0}
+          max={20}
+          disabled={simpleMode}
+        />
 
         {option.occupants > 0 && (
           <>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Average Age of Occupants</label>
-              <input type="number" min="0" max="120" value={option.occupantAge}
-                onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantAge: parseInt(e.target.value) || 0 } })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" disabled={simpleMode} />
-            </div>
+            <NumberInput
+              label="Average Age of Occupants"
+              value={option.occupantAge}
+              onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, occupantAge: val } })}
+              min={0}
+              max={120}
+              disabled={simpleMode}
+            />
 
             {includeControversial && (
               <>
@@ -755,21 +825,25 @@ const EthicalChoiceAnalyzer = () => {
           </>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrians</label>
-          <input type="number" min="0" value={option.pedestrians}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrians: parseInt(e.target.value) || 0 } })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode} />
-        </div>
+        <NumberInput
+          label="Pedestrians"
+          value={option.pedestrians}
+          onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrians: val } })}
+          min={0}
+          max={20}
+          disabled={simpleMode}
+        />
 
         {option.pedestrians > 0 && (
           <>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Age</label>
-              <input type="number" min="0" max="120" value={option.pedestrianAge}
-                onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianAge: parseInt(e.target.value) || 0 } })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode} />
-            </div>
+            <NumberInput
+              label="Pedestrian Age"
+              value={option.pedestrianAge}
+              onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianAge: val } })}
+              min={0}
+              max={120}
+              disabled={simpleMode}
+            />
 
             {includeControversial && (
               <>
