@@ -95,10 +95,10 @@ const EthicalChoiceAnalyzer = () => {
     },
     youngVsOld: {
       name: "Young vs Old",
-      description: "5 elderly vs 1 child",
+      description: "3 elderly vs 1 child",
       scenario: {
         option1: {
-          name: 'Hit Elderly', occupants: 0, pedestrians: 5, pedestrianAge: 75, occupantAge: 0,
+          name: 'Hit Elderly', occupants: 0, pedestrians: 3, pedestrianAge: 75, occupantAge: 0,
           occupantJob: 'average', occupantHealth: 'healthy', occupantCriminal: 'none',
           occupantLegalFault: 'legal', occupantRisk: 'normal', occupantPregnant: false,
           occupantSpecies: 'human', occupantNetwork: 'none',
@@ -124,7 +124,7 @@ const EthicalChoiceAnalyzer = () => {
       description: "Save doctor or violent offender",
       scenario: {
         option1: {
-          name: 'Save Criminal', occupants: 0, pedestrians: 1, pedestrianAge: 35, occupantAge: 0,
+          name: 'Hit Criminal', occupants: 0, pedestrians: 1, pedestrianAge: 35, occupantAge: 0,
           occupantJob: 'average', occupantHealth: 'healthy', occupantCriminal: 'none',
           occupantLegalFault: 'legal', occupantRisk: 'normal', occupantPregnant: false,
           occupantSpecies: 'human', occupantNetwork: 'none',
@@ -134,7 +134,7 @@ const EthicalChoiceAnalyzer = () => {
           certainty: 100, severity: 'fatal'
         },
         option2: {
-          name: 'Save Doctor', occupants: 0, pedestrians: 1, pedestrianAge: 35, occupantAge: 0,
+          name: 'Hit Doctor', occupants: 0, pedestrians: 1, pedestrianAge: 35, occupantAge: 0,
           occupantJob: 'average', occupantHealth: 'healthy', occupantCriminal: 'none',
           occupantLegalFault: 'legal', occupantRisk: 'normal', occupantPregnant: false,
           occupantSpecies: 'human', occupantNetwork: 'none',
