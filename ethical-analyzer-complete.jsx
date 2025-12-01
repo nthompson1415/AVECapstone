@@ -8,9 +8,11 @@ const EthicalChoiceAnalyzer = () => {
   const [simpleMode, setSimpleMode] = useState(false);
   const [result, setResult] = useState(null);
   const [showResources, setShowResources] = useState(false);
+  const [showResearchFindings, setShowResearchFindings] = useState(false);
   const [activeFramework, setActiveFramework] = useState('utilitarian');
   const [showCalculationBreakdown, setShowCalculationBreakdown] = useState(false);
   const [calculationSteps, setCalculationSteps] = useState(null);
+  const [contentData, setContentData] = useState(null);
 
   const [scenario, setScenario] = useState({
     option1: {
@@ -231,6 +233,20 @@ const EthicalChoiceAnalyzer = () => {
     setResult(null);
     setSimpleMode(false);
   };
+
+  // Load content data on mount
+  useEffect(() => {
+    const loadContentData = async () => {
+      try {
+        const response = await fetch('/content-data.json');
+        const data = await response.json();
+        setContentData(data);
+      } catch (error) {
+        console.error('Error loading content-data.json:', error);
+      }
+    };
+    loadContentData();
+  }, []);
 
   useEffect(() => {
     if (simpleMode) {
@@ -1116,6 +1132,9 @@ const EthicalChoiceAnalyzer = () => {
           <button onClick={() => setShowResources(!showResources)} className="px-6 py-3 bg-blue-100 text-blue-700 rounded-lg font-semibold hover:bg-blue-200 flex items-center gap-2">
             <BookOpen className="w-5 h-5" /> Resources
           </button>
+          <button onClick={() => setShowResearchFindings(!showResearchFindings)} className="px-6 py-3 bg-indigo-100 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-200 flex items-center gap-2">
+            <Library className="w-5 h-5" /> Research Findings
+          </button>
           <button onClick={exportScenario} className="px-6 py-3 bg-green-100 text-green-700 rounded-lg font-semibold hover:bg-green-200 flex items-center gap-2">
             <Download className="w-5 h-5" /> Export
           </button>
@@ -1133,6 +1152,102 @@ const EthicalChoiceAnalyzer = () => {
               <p><strong>Evidence-Based Weights:</strong> Uses VSL ($6-14M), QALY frameworks, recidivism data.</p>
               <p><strong>Further Reading:</strong> MIT Moral Machine, "Justice" by Sandel, DOT VSL guidelines</p>
             </div>
+          </div>
+        )}
+
+        {showResearchFindings && contentData && (
+          <div className="bg-white rounded-lg shadow-xl p-8 mb-6 border-2 border-indigo-200">
+            <h2 className="text-2xl font-bold mb-6"><Library className="w-6 h-6 inline text-indigo-600" /> Research Findings</h2>
+            
+            {/* Research Questions */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-indigo-700">Research Questions</h3>
+              <div className="space-y-4">
+                <div className="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-500">
+                  <h4 className="font-semibold mb-2">{contentData.researchQuestions.primary.icon} {contentData.researchQuestions.primary.title}</h4>
+                  <p className="text-gray-700">{contentData.researchQuestions.primary.question}</p>
+                </div>
+                <div className="bg-indigo-50 rounded-lg p-4 border-l-4 border-indigo-500">
+                  <h4 className="font-semibold mb-2">{contentData.researchQuestions.secondary.icon} {contentData.researchQuestions.secondary.title}</h4>
+                  <p className="text-gray-700">{contentData.researchQuestions.secondary.question}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Key Findings */}
+            <div className="mb-8">
+              <h3 className="text-xl font-bold mb-4 text-indigo-700">Key Findings</h3>
+              <div className="space-y-4">
+                {contentData.findings.map((finding, idx) => (
+                  <div key={idx} className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-5 border-2 border-indigo-200">
+                    <h4 className="text-lg font-bold mb-3 flex items-center gap-2">
+                      {finding.icon} {finding.title}
+                      {finding.statistic && (
+                        <span className="ml-auto bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-bold">
+                          {finding.statistic.value} {finding.statistic.label || ''}
+                        </span>
+                      )}
+                    </h4>
+                    {finding.lowConnectedness && finding.highConnectedness && (
+                      <div className="mb-3 space-y-2 text-sm">
+                        <p><strong>Low connectedness:</strong> {finding.lowConnectedness.decision} ({finding.lowConnectedness.harm})</p>
+                        <p><strong>High connectedness:</strong> {finding.highConnectedness.decision} ({finding.highConnectedness.harm})</p>
+                      </div>
+                    )}
+                    <p className="text-gray-700">{finding.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Scenario Data Table */}
+            {contentData.scenarioData && (
+              <div className="mb-8">
+                <h3 className="text-xl font-bold mb-4 text-indigo-700">Decision Stability Analysis</h3>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full border-collapse border-2 border-indigo-300">
+                    <thead>
+                      <tr className="bg-indigo-100">
+                        {contentData.scenarioData.tableHeaders.map((header, idx) => (
+                          <th key={idx} className="border border-indigo-300 px-4 py-2 text-left font-semibold">{header}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {contentData.scenarioData.scenarios.map((scenario, idx) => (
+                        <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                          <td className="border border-indigo-300 px-4 py-2 font-semibold">{scenario.name}</td>
+                          <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('none') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.none}</td>
+                          <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('medium') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.medium}</td>
+                          <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('high') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.high}</td>
+                          <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('maximum') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.maximum}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="mt-3 text-sm text-gray-600 italic text-center">
+                  <span className="bg-red-100 px-3 py-1 rounded border-2 border-red-300 font-semibold">
+                    Red cells indicate decision changed at this connectedness level
+                  </span>
+                </p>
+              </div>
+            )}
+
+            {/* Conclusions */}
+            {contentData.conclusions && (
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-4">Conclusions</h3>
+                <ul className="space-y-3">
+                  {contentData.conclusions.preliminaryInsights.map((insight, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="mt-1">•</span>
+                      <span dangerouslySetInnerHTML={{ __html: insight.text }} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
