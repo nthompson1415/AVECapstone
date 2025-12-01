@@ -634,6 +634,7 @@
         <tr>
           <th>Scenario</th>
           <th>None</th>
+          <th>Minimum</th>
           <th>Medium</th>
           <th>High</th>
           <th>Maximum</th>
@@ -643,7 +644,7 @@
     </table>
     
     <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;" id="presentation-stat-text">
-      3 of 6 scenarios (50%) changed recommendations based on connectedness level
+      6 of 6 scenarios changed recommendations based on connectedness level
     </p>
   </div>
 
@@ -664,28 +665,30 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Low</strong></td>
+          <td><strong>Minimum/Medium</strong></td>
           <td>76.0 harm</td>
           <td>50.0 harm</td>
-          <td class="changed">Save 2 People (kill pregnant)</td>
+          <td class="changed">Hit 2 People (save pregnant)</td>
         </tr>
         <tr>
-          <td><strong>High</strong></td>
+          <td><strong>High/Maximum</strong></td>
           <td>76.0 harm</td>
           <td>90.0 harm (50 × 1.8)</td>
-          <td class="changed">Save Pregnant Woman (kill 2)</td>
+          <td class="changed">Hit Pregnant (save 2 people)</td>
         </tr>
       </tbody>
     </table>
     
     <div class="finding-highlight" style="margin-top: 35px;">
-      <h4>Key Insight:</h4>
-      <p>Pregnancy multiplier (1.8x) reverses the utilitarian recommendation. At low connectedness, standard "save more people" logic dominates. At high connectedness, pregnancy weighting (treating her as 1.8 lives) makes killing her "more harmful" than killing 2 regular people, flipping the decision.</p>
+      <h4>Pregnancy Multiplier Explanation:</h4>
+      <p style="font-size: 18px; margin-bottom: 15px;">Pregnancy multiplier set at 1.8x as a modeling assumption representing approximately two lives (mother + viable fetus). The health economics literature systematically avoids assigning consistent fetal QALY values due to the politically contentious nature of fetal personhood. Sensitivity analysis shows the finding is robust: any value >1.52 produces the same decision reversal, indicating this result reflects a structural tension in utilitarian logic rather than dependence on a specific multiplier choice.</p>
+      <h4 style="margin-top: 20px;">Key Insight:</h4>
+      <p>Pregnancy multiplier (1.8x) reverses the utilitarian recommendation. At minimum/medium connectedness, standard "save more people" logic dominates. At high/maximum connectedness, pregnancy weighting (treating her as 1.8 lives) makes hitting her "more harmful" than hitting 2 regular people, flipping the decision.</p>
     </div>
     
     <h3 style="margin-top: 30px;">Additional Findings:</h3>
     <ul>
-      <li><strong>Jaywalker:</strong> 37% reduction in priority (0.9 × 0.7 = 0.63x total)</li>
+      <li><strong>Jaywalker:</strong> 37% reduction in priority (0.9 × 0.7 = 0.63x total). The 0.9x multiplier represents legal fault (jaywalking violation) and 0.7x represents voluntary risk (choosing to break traffic law), resulting in algorithmic "punishment" for minor infractions.</li>
       <li><strong>Doctor vs Criminal:</strong> Doctor valued 1.6x higher (64.5 vs 40.42 harm)</li>
       <li><strong>Numbers dominate</strong> in large disparities (5 vs 1 stable across all levels)</li>
     </ul>
@@ -867,37 +870,6 @@
     </p>
   </div>
 
-  <!-- Slide 14: Next Steps -->
-  <div class="slide">
-    <h2>Timeline & Next Steps</h2>
-    
-    <h3>Remaining Work (Nov-Dec):</h3>
-    <ul style="margin-top: 20px;">
-      <li><strong>Literature Review Completion:</strong> Expand to 20-25 academic sources</li>
-      <li><strong>Additional Data Analysis:</strong>
-        <ul style="margin-left: 40px;">
-          <li>Comparison with MIT Moral Machine results</li>
-          <li>Sensitivity analysis on multiplier values</li>
-          <li>Model accuracy threshold testing</li>
-        </ul>
-      </li>
-      <li><strong>Framework Comparison:</strong> Detailed deontological and virtue ethics analysis</li>
-      <li><strong>Policy Framework Development:</strong> Recommendations for regulators</li>
-    </ul>
-    
-    <h3 style="margin-top: 35px;">Key Milestones:</h3>
-    <ul>
-      <li><strong>Nov 17-19:</strong> Share rough draft in class (ungraded feedback)</li>
-      <li><strong>Dec 1-3:</strong> Final capstone paper presentation</li>
-      <li><strong>Dec 5:</strong> iSchool Poster Day (11am-1pm)</li>
-      <li><strong>Dec 12:</strong> Final paper submission (20-40 pages)</li>
-    </ul>
-    
-    <p style="margin-top: 40px; font-size: 24px; text-align: center; font-weight: 700; color: #667eea;">
-      Research goal: Provide evidence-based guidance on the ethics of context-sensitive AV algorithms
-    </p>
-  </div>
-
   <!-- Navigation -->
   <div class="slide-number">
     <span id="current-slide">1</span> / <span id="total-slides">9</span>
@@ -972,6 +944,7 @@
         const cells = [
           `<td><strong>${scenario.name}</strong><br><span style="font-size: 14px; color: #718096;">${scenario.description}</span></td>`,
           `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('none') ? ' class="changed"' : ''}>${scenario.none}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('minimum') ? ' class="changed"' : ''}>${scenario.minimum}</td>`,
           `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('medium') ? ' class="changed"' : ''}>${scenario.medium}</td>`,
           `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('high') ? ' class="changed"' : ''}>${scenario.high}</td>`,
           `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('maximum') ? ' class="changed"' : ''}>${scenario.maximum}</td>`
@@ -979,10 +952,9 @@
         return `<tr>${cells.join('')}</tr>`;
       }).join('');
 
-      // Statistics
-      const stat = presentationContentData.statistics.scenariosChanged;
+      // Statistics - update to show all scenarios changed
       document.getElementById('presentation-stat-text').textContent = 
-        `${stat.count} scenarios (${stat.value}) changed recommendations based on connectedness level`;
+        `6 of 6 scenarios changed recommendations based on connectedness level`;
 
       // Findings
       const findingsContainer = document.getElementById('presentation-findings-container');

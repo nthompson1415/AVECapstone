@@ -33,20 +33,20 @@
       "title": "🔗 Connectedness Spectrum",
       "levels": [
         {
-          "name": "None (Demographic-Blind)",
-          "description": "Age and severity only, no demographic weighting"
+          "name": "None",
+          "description": "Always neutral, no number of people or age involved"
         },
         {
-          "name": "Low (Age Only)",
-          "description": "Same as None for these scenarios (age already factored in base calculation)"
+          "name": "Minimum",
+          "description": "Number of people, no age"
         },
         {
           "name": "Medium",
-          "description": "Adds occupation, health status, criminal history"
+          "description": "Adds age, occupation, health status, criminal history"
         },
         {
           "name": "High",
-          "description": "Adds legal responsibility, voluntary risk, pregnancy, species"
+          "description": "Adds legal fault, pregnancy, species"
         },
         {
           "name": "Maximum",
@@ -64,20 +64,20 @@
         "value": "50%",
         "label": "of scenarios changed recommendations"
       },
-      "description": "3 out of 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
+      "description": "All 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
     },
     {
       "icon": "⚖️",
       "title": "The Pregnant Woman Paradox",
       "lowConnectedness": {
-        "decision": "Save the pregnant woman (1 person vs 2 people)",
-        "harm": "50 harm"
+        "decision": "Hit 2 people (save pregnant woman)",
+        "harm": "76 harm vs 50 harm"
       },
       "highConnectedness": {
-        "decision": "Kill the pregnant woman, save the 2 people",
-        "harm": "90 harm (with 1.8x multiplier)"
+        "decision": "Hit Pregnant (save 2 people)",
+        "harm": "90 harm (with 1.8x multiplier) vs 76 harm"
       },
-      "description": "MOST SIGNIFICANT FINDING: At high connectedness, the pregnancy multiplier (1.8x) makes saving the pregnant woman cause MORE harm (90 vs 76), creating a controversial outcome that flips the intuitive decision."
+      "description": "MOST SIGNIFICANT FINDING: At high connectedness, the pregnancy multiplier (1.8x) makes hitting the pregnant woman cause MORE harm (90 vs 76), creating a controversial outcome that flips the intuitive decision."
     },
     {
       "icon": "⚖️",
@@ -95,25 +95,38 @@
     }
   ],
   "scenarioData": {
-    "tableHeaders": ["Scenario", "None", "Medium", "High", "Maximum"],
+    "tableHeaders": ["Scenario", "None", "Minimum", "Medium", "High", "Maximum"],
     "scenarios": [
       {
         "name": "Classic Trolley (5 vs 1)",
         "description": "All else equal",
-        "none": "Save 5",
-        "medium": "Save 5",
-        "high": "Save 5",
-        "maximum": "Save 5",
-        "changed": false,
-        "changedAt": []
+        "none": "NEUTRAL",
+        "minimum": "Hit 1",
+        "medium": "Hit 1",
+        "high": "Hit 1",
+        "maximum": "Hit 1",
+        "changed": true,
+        "changedAt": ["minimum", "medium", "high", "maximum"]
+      },
+      {
+        "name": "Young vs Elderly (5 elderly vs 1 child)",
+        "description": "Age weighting effect",
+        "none": "NEUTRAL",
+        "minimum": "Hit Child",
+        "medium": "Hit 5 elderly",
+        "high": "Hit 5 elderly",
+        "maximum": "Hit 5 elderly",
+        "changed": true,
+        "changedAt": ["minimum", "medium", "high", "maximum"]
       },
       {
         "name": "Doctor vs Criminal",
         "description": "Neutral case becomes clear",
         "none": "NEUTRAL",
-        "medium": "Save Doctor",
-        "high": "Save Doctor",
-        "maximum": "Save Doctor",
+        "minimum": "NEUTRAL",
+        "medium": "Hit Criminal",
+        "high": "Hit Criminal",
+        "maximum": "Hit Criminal",
         "changed": true,
         "changedAt": ["medium", "high", "maximum"]
       },
@@ -121,6 +134,7 @@
         "name": "Legal vs Jaywalker",
         "description": "Responsibility weighting",
         "none": "NEUTRAL",
+        "minimum": "NEUTRAL",
         "medium": "NEUTRAL",
         "high": "Hit Jaywalker",
         "maximum": "Hit Jaywalker",
@@ -130,49 +144,61 @@
       {
         "name": "Pregnant Woman (1 vs 2)",
         "description": "Pregnancy multiplier effect",
-        "none": "Save Pregnant",
-        "medium": "Save Pregnant",
+        "none": "NEUTRAL",
+        "minimum": "Hit 2 people",
+        "medium": "Hit 2 people",
         "high": "Hit Pregnant",
         "maximum": "Hit Pregnant",
         "changed": true,
-        "changedAt": ["high", "maximum"]
+        "changedAt": ["minimum", "medium", "high", "maximum"]
+      },
+      {
+        "name": "Pet vs Person",
+        "description": "Species weighting",
+        "none": "NEUTRAL",
+        "minimum": "Hit Pet",
+        "medium": "Hit Pet",
+        "high": "Hit Pet",
+        "maximum": "Hit Pet",
+        "changed": true,
+        "changedAt": ["minimum", "medium", "high", "maximum"]
       }
     ],
     "note": "Red cells indicate decision changed at this connectedness level"
   },
   "pregnancyExample": {
     "lowConnectedness": {
-      "title": "Low Connectedness",
+      "title": "Minimum/Medium Connectedness",
       "option1": {
-        "label": "Save 2 people",
+        "label": "Hit 2 people",
         "harm": "76 harm",
-        "result": "SAVE",
+        "result": "HIT",
         "percentage": 60
       },
       "option2": {
-        "label": "Save 1 pregnant woman",
+        "label": "Hit Pregnant",
         "harm": "50 harm",
         "result": "SAVE",
         "percentage": 40
       },
-      "decision": "✓ Save 2 people (lower harm: 76 vs 50)",
+      "decision": "✓ Hit 2 people (save pregnant) - lower harm: 50 vs 76",
       "decisionType": "good"
     },
     "highConnectedness": {
-      "title": "High Connectedness",
+      "title": "High/Maximum Connectedness",
       "option1": {
-        "label": "Save 2 people",
+        "label": "Hit 2 people",
         "harm": "76 harm",
         "result": "SAVE",
         "percentage": 46
       },
       "option2": {
-        "label": "Save 1 pregnant woman (1.8x multiplier)",
+        "label": "Hit Pregnant (1.8x multiplier)",
         "harm": "90 harm",
         "result": "HIT",
         "percentage": 54
       },
-      "decision": "✗ Kill pregnant woman, save 2 people (lower harm: 76 vs 90)",
+      "decision": "✗ Hit Pregnant (save 2 people) - lower harm: 76 vs 90",
       "decisionType": "bad"
     },
     "insight": "Granular weighting produces mathematically consistent but socially controversial outcomes, illustrating the challenge of translating moral intuitions into algorithmic rules."
