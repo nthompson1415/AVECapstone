@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo, memo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, memo, useRef } from 'react';
 import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, BarChart3, Library, Plus, Minus } from 'lucide-react';
 
 const EthicalChoiceAnalyzer = () => {
@@ -636,21 +636,42 @@ const EthicalChoiceAnalyzer = () => {
   };
 
   const NumberInput = ({ label, value, onChange, min = 0, max = 999, disabled = false, step = 1, placeholder = "" }) => {
+    const [localValue, setLocalValue] = useState(value);
+    const inputRef = useRef(null);
+
+    // Sync local value when prop value changes (but not when user is typing)
+    useEffect(() => {
+      if (document.activeElement !== inputRef.current) {
+        setLocalValue(value);
+      }
+    }, [value]);
+
     const handleIncrement = () => {
       if (!disabled && value < max) {
-        onChange(value + step);
+        const newValue = value + step;
+        onChange(newValue);
+        setLocalValue(newValue);
       }
     };
 
     const handleDecrement = () => {
       if (!disabled && value > min) {
-        onChange(Math.max(min, value - step));
+        const newValue = Math.max(min, value - step);
+        onChange(newValue);
+        setLocalValue(newValue);
       }
     };
 
     const handleChange = (e) => {
+      const inputValue = e.target.value;
+      setLocalValue(inputValue);
+      // Don't update parent immediately - let user finish typing
+    };
+
+    const handleBlur = (e) => {
       const newValue = e.target.value === '' ? min : parseInt(e.target.value) || min;
       const clampedValue = Math.max(min, Math.min(max, newValue));
+      setLocalValue(clampedValue);
       onChange(clampedValue);
     };
 
@@ -661,6 +682,9 @@ const EthicalChoiceAnalyzer = () => {
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
         handleDecrement();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        e.target.blur(); // This will trigger handleBlur
       }
     };
 
@@ -677,13 +701,15 @@ const EthicalChoiceAnalyzer = () => {
             <Minus className="w-4 h-4 text-gray-700" />
           </button>
           <input
+            ref={inputRef}
             type="number"
             min={min}
             max={max}
             step={step}
-            value={value === 0 && placeholder ? '' : value}
+            value={localValue === 0 && placeholder ? '' : localValue}
             placeholder={placeholder}
             onChange={handleChange}
+            onBlur={handleBlur}
             onKeyDown={handleKeyDown}
             disabled={disabled}
             className="flex-1 px-3 py-2 text-center border-2 border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none font-semibold text-lg disabled:opacity-50 disabled:cursor-not-allowed"
