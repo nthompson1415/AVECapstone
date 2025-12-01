@@ -1046,17 +1046,36 @@ const EthicalChoiceAnalyzer = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Brain className="w-10 h-10 text-indigo-600" />
-            <h1 className="text-4xl font-bold text-gray-900">Ethical Decision Analyzer</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+      {/* Navigation Bar */}
+      <nav className="bg-white shadow-md sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center gap-2">
+              <Brain className="w-6 h-6 text-indigo-600" />
+              <span className="font-bold text-gray-900">AV Ethics Capstone</span>
+            </div>
+            <div className="flex gap-4">
+              <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Analyzer</Link>
+              <a href="/AVECapstone/poster.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Poster</a>
+              <a href="/AVECapstone/presentation.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Presentation</a>
+              <a href="/AVECapstone/final-capstone-presentation.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Final Presentation</a>
+            </div>
           </div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Analyze vehicle accident scenarios through multiple ethical frameworks with calculation transparency and preset scenarios.
-          </p>
         </div>
+      </nav>
+
+      <div className="p-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Brain className="w-10 h-10 text-indigo-600" />
+              <h1 className="text-4xl font-bold text-gray-900">Ethical Decision Analyzer</h1>
+            </div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Analyze vehicle accident scenarios through multiple ethical frameworks with calculation transparency and preset scenarios.
+            </p>
+          </div>
 
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
           <div className="flex items-start">
