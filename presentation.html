@@ -270,6 +270,242 @@
       font-weight: 700;
       color: #5a67d8;
     }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 50px 60px;
+      }
+      
+      .slide h1 {
+        font-size: 48px;
+      }
+      
+      .slide h2 {
+        font-size: 36px;
+      }
+      
+      .slide h3 {
+        font-size: 28px;
+      }
+      
+      .slide p, .slide li {
+        font-size: 20px;
+      }
+      
+      .stat-big {
+        font-size: 60px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto;
+      }
+      
+      .slide {
+        padding: 40px 30px;
+        min-height: auto;
+      }
+      
+      .slide h1 {
+        font-size: 32px;
+      }
+      
+      .slide h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      
+      .slide h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      
+      .slide h4 {
+        font-size: 20px;
+      }
+      
+      .slide p, .slide li {
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      
+      .slide ul {
+        margin-left: 30px;
+      }
+      
+      .subtitle {
+        font-size: 22px;
+      }
+      
+      .meta {
+        font-size: 18px;
+        margin-top: 30px;
+      }
+      
+      .ist-box {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .rq-box {
+        padding: 20px;
+        margin: 15px 0;
+      }
+      
+      .rq-box p {
+        font-size: 17px;
+      }
+      
+      .variables-box {
+        padding: 20px;
+      }
+      
+      .finding-highlight {
+        padding: 20px;
+      }
+      
+      .stat-big {
+        font-size: 48px;
+      }
+      
+      .table {
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .table thead, .table tbody, .table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+      
+      .table th, .table td {
+        padding: 10px 8px;
+      }
+      
+      .controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+        flex-direction: column;
+      }
+      
+      .controls button {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+      
+      .slide-number {
+        bottom: 20px;
+        left: 20px;
+        font-size: 20px;
+      }
+      
+      .ref-list {
+        font-size: 14px !important;
+      }
+      
+      .ref-list li {
+        font-size: 14px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .toc-item h4 {
+        font-size: 18px;
+      }
+      
+      .toc-item li {
+        font-size: 16px;
+      }
+      
+      /* Adjust inline styles for mobile */
+      .slide p[style*="font-size: 24px"] {
+        font-size: 18px !important;
+      }
+      
+      .slide p[style*="font-size: 22px"] {
+        font-size: 17px !important;
+      }
+      
+      .slide p[style*="font-size: 20px"] {
+        font-size: 16px !important;
+      }
+      
+      .slide p[style*="font-size: 18px"] {
+        font-size: 15px !important;
+      }
+      
+      .slide h4[style*="font-size: 22px"] {
+        font-size: 18px !important;
+      }
+      
+      .slide ul[style*="font-size: 18px"] {
+        font-size: 15px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .slide {
+        padding: 30px 20px;
+      }
+      
+      .slide h1 {
+        font-size: 28px;
+      }
+      
+      .slide h2 {
+        font-size: 24px;
+      }
+      
+      .slide h3 {
+        font-size: 20px;
+      }
+      
+      .slide h4 {
+        font-size: 18px;
+      }
+      
+      .slide p, .slide li {
+        font-size: 15px;
+      }
+      
+      .stat-big {
+        font-size: 40px;
+      }
+      
+      .controls {
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .controls button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .slide-number {
+        bottom: 15px;
+        left: 15px;
+        font-size: 18px;
+      }
+      
+      .table {
+        font-size: 12px;
+      }
+      
+      .table th, .table td {
+        padding: 8px 6px;
+      }
+    }
   </style>
 </head>
 <body>
