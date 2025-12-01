@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "title": "Should Autonomous Vehicles Use Context-Sensitive Ethics?",
+    "subtitle": "Examining Rigid Rules vs. Adaptive Algorithms Through Utilitarian Analysis",
+    "project": "IST 477 Capstone Project",
+    "semester": "Fall 2025",
+    "institution": "Syracuse University iSchool",
+    "program": "Innovation, Society & Technology"
+  },
+  "researchQuestions": {
+    "primary": {
+      "icon": "🎯",
+      "title": "Primary Research Question",
+      "question": "Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?"
+    },
+    "secondary": {
+      "icon": "🔍",
+      "title": "Secondary Research Question",
+      "question": "At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?"
+    }
+  },
+  "methodology": {
+    "researchApproach": {
+      "title": "📊 Research Approach",
+      "items": [
+        "Developed interactive Ethical Decision Analyzer tool",
+        "Tested 6 classic trolley problem scenarios",
+        "Systematic analysis across 5 \"connectedness\" levels (none → maximum demographic information)",
+        "Evidence-based weights from VSL, QALY, and recidivism research"
+      ]
+    },
+    "connectednessSpectrum": {
+      "title": "🔗 Connectedness Spectrum",
+      "levels": [
+        {
+          "name": "None (Demographic-Blind)",
+          "description": "Age and severity only, no demographic weighting"
+        },
+        {
+          "name": "Low (Age Only)",
+          "description": "Same as None for these scenarios (age already factored in base calculation)"
+        },
+        {
+          "name": "Medium",
+          "description": "Adds occupation, health status, criminal history"
+        },
+        {
+          "name": "High",
+          "description": "Adds legal responsibility, voluntary risk, pregnancy, species"
+        },
+        {
+          "name": "Maximum",
+          "description": "Adds network effects (dependents, caregivers)"
+        }
+      ],
+      "description": "Connectedness = Amount of demographic/contextual information available to the ethical decision model"
+    }
+  },
+  "findings": [
+    {
+      "icon": "📊",
+      "title": "Decision Instability",
+      "statistic": {
+        "value": "50%",
+        "label": "of scenarios changed recommendations"
+      },
+      "description": "3 out of 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
+    },
+    {
+      "icon": "⚖️",
+      "title": "The Pregnant Woman Paradox",
+      "lowConnectedness": {
+        "decision": "Save the pregnant woman (1 person vs 2 people)",
+        "harm": "50 harm"
+      },
+      "highConnectedness": {
+        "decision": "Kill the pregnant woman, save the 2 people",
+        "harm": "90 harm (with 1.8x multiplier)"
+      },
+      "description": "MOST SIGNIFICANT FINDING: At high connectedness, the pregnancy multiplier (1.8x) makes saving the pregnant woman cause MORE harm (90 vs 76), creating a controversial outcome that flips the intuitive decision."
+    },
+    {
+      "icon": "⚖️",
+      "title": "Legal Responsibility Creates \"Death Sentences\"",
+      "statistic": {
+        "value": "37%",
+        "label": "priority reduction for jaywalkers"
+      },
+      "description": "The system effectively \"punishes\" the jaywalker with death for a minor traffic violation. The 37% reduction in their life's value (23.94 vs 38) means jaywalking makes you expendable. Creates tension between equal protection (all lives equal worth) versus responsibility (rule-followers have stronger moral claims)."
+    },
+    {
+      "icon": "💼",
+      "title": "Doctor vs Criminal - Occupation Dominates",
+      "description": "Doctor valued at 1.5x vs criminal at 0.94x (total 1.6x difference). Resolves ambiguity through secondary effects logic but requires accepting profession-based value differentiation. Question: Should AVs consider social contributions when determining whom to save?"
+    }
+  ],
+  "scenarioData": {
+    "tableHeaders": ["Scenario", "None", "Medium", "High", "Maximum"],
+    "scenarios": [
+      {
+        "name": "Classic Trolley (5 vs 1)",
+        "description": "All else equal",
+        "none": "Save 5",
+        "medium": "Save 5",
+        "high": "Save 5",
+        "maximum": "Save 5",
+        "changed": false,
+        "changedAt": []
+      },
+      {
+        "name": "Doctor vs Criminal",
+        "description": "Neutral case becomes clear",
+        "none": "NEUTRAL",
+        "medium": "Save Doctor",
+        "high": "Save Doctor",
+        "maximum": "Save Doctor",
+        "changed": true,
+        "changedAt": ["medium", "high", "maximum"]
+      },
+      {
+        "name": "Legal vs Jaywalker",
+        "description": "Responsibility weighting",
+        "none": "NEUTRAL",
+        "medium": "NEUTRAL",
+        "high": "Hit Jaywalker",
+        "maximum": "Hit Jaywalker",
+        "changed": true,
+        "changedAt": ["high", "maximum"]
+      },
+      {
+        "name": "Pregnant Woman (1 vs 2)",
+        "description": "Pregnancy multiplier effect",
+        "none": "Save Pregnant",
+        "medium": "Save Pregnant",
+        "high": "Hit Pregnant",
+        "maximum": "Hit Pregnant",
+        "changed": true,
+        "changedAt": ["high", "maximum"]
+      }
+    ],
+    "note": "Red cells indicate decision changed at this connectedness level"
+  },
+  "pregnancyExample": {
+    "lowConnectedness": {
+      "title": "Low Connectedness",
+      "option1": {
+        "label": "Save 2 people",
+        "harm": "76 harm",
+        "result": "SAVE",
+        "percentage": 60
+      },
+      "option2": {
+        "label": "Save 1 pregnant woman",
+        "harm": "50 harm",
+        "result": "SAVE",
+        "percentage": 40
+      },
+      "decision": "✓ Save 2 people (lower harm: 76 vs 50)",
+      "decisionType": "good"
+    },
+    "highConnectedness": {
+      "title": "High Connectedness",
+      "option1": {
+        "label": "Save 2 people",
+        "harm": "76 harm",
+        "result": "SAVE",
+        "percentage": 46
+      },
+      "option2": {
+        "label": "Save 1 pregnant woman (1.8x multiplier)",
+        "harm": "90 harm",
+        "result": "HIT",
+        "percentage": 54
+      },
+      "decision": "✗ Kill pregnant woman, save 2 people (lower harm: 76 vs 90)",
+      "decisionType": "bad"
+    },
+    "insight": "Granular weighting produces mathematically consistent but socially controversial outcomes, illustrating the challenge of translating moral intuitions into algorithmic rules."
+  },
+  "frameworks": [
+    {
+      "icon": "⚖️",
+      "name": "Utilitarian",
+      "description": "Maximize overall well-being. Used in this analysis with evidence-based harm calculations."
+    },
+    {
+      "icon": "🛡️",
+      "name": "Deontological",
+      "description": "Duty-based ethics. All lives have equal intrinsic worth regardless of context."
+    },
+    {
+      "icon": "💭",
+      "name": "Virtue Ethics",
+      "description": "Character-based. Focuses on what a virtuous person would do in the situation."
+    }
+  ],
+  "implications": {
+    "analyticalQuestions": [
+      "Should AVs consider social contributions (doctor vs criminal)?",
+      "Is it ethical to \"punish\" rule-breakers (jaywalkers) with death?",
+      "Does pregnancy create a moral multiplier, or should all lives be equal?",
+      "At what accuracy threshold does context-sensitive become defensible?"
+    ],
+    "remainingResearch": [
+      "Compare findings to MIT Moral Machine public opinion data",
+      "Expert validation from ethicists and ASPI researchers",
+      "Model accuracy threshold analysis",
+      "Policy framework recommendations for regulators"
+    ]
+  },
+  "conclusions": {
+    "preliminaryInsights": [
+      {
+        "text": "Informational connectedness is a critical policy variable that fundamentally shapes AV ethical behavior (50% of scenarios changed)."
+      },
+      {
+        "text": "Utilitarian quantification creates value hierarchies (doctor 1.5x, criminal 0.94x, pregnancy 1.8x) that may conflict with equal human dignity."
+      },
+      {
+        "text": "No clear threshold exists where increased connectedness consistently improves ethical outcomes—it both resolves ambiguity AND introduces controversial results."
+      },
+      {
+        "text": "The choice is not technical but political: Society must explicitly decide which factors AVs should consider."
+      }
+    ]
+  },
+  "footer": {
+    "tools": "React-based Ethical Decision Analyzer | Evidence-based multipliers from government VSL estimates, QALY medical frameworks, and criminal justice recidivism research",
+    "timeline": "Literature Review (Nov) | Final Paper (20-40 pages, Dec 12) | Poster Day (Dec 5)"
+  }
+}
