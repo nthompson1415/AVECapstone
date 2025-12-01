@@ -75,6 +75,7 @@ const FindingsPage = () => {
             </section>
           )}
         </div>
+      </div>
     </div>
   );
 };
