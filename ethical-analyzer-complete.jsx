@@ -1431,7 +1431,6 @@ const EthicalChoiceAnalyzer = () => {
             )}
           </div>
         )}
-        </div>
       </div>
     </div>
   );
