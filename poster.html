@@ -14,6 +14,62 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0;
+    }
+    
+    .nav-bar {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0 20px;
+    }
+    
+    .nav-content {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+    
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      color: #1a202c;
+      font-size: 18px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .nav-links a {
+      padding: 8px 12px;
+      text-decoration: none;
+      color: #4a5568;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    
+    .nav-links a:hover {
+      color: #667eea;
+      background: #eef2ff;
+    }
+    
+    .nav-links a.active {
+      color: #667eea;
+      background: #eef2ff;
+    }
+    
+    .poster-container {
       padding: 30px;
     }
     
@@ -505,9 +561,25 @@
       }
     }
   </style>
-</head>
-<body>
-  <div class="poster">
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <div class="nav-brand">
+          <span>🧠 AV Ethics Capstone</span>
+        </div>
+        <div class="nav-links">
+          <a href="/AVECapstone/">Analyzer</a>
+          <a href="/AVECapstone/poster.html" class="active">Poster</a>
+          <a href="/AVECapstone/presentation.html">Presentation</a>
+          <a href="/AVECapstone/final-capstone-presentation.html">Final Presentation</a>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="poster-container">
+    <div class="poster">
     <!-- Header -->
     <div class="header">
       <h1 data-content="metadata.title">Should Autonomous Vehicles Use Context-Sensitive Ethics?</h1>
