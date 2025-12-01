@@ -664,15 +664,28 @@ const EthicalChoiceAnalyzer = () => {
 
     const handleChange = (e) => {
       const inputValue = e.target.value;
+      // Keep as string while typing to allow empty/partial input
       setLocalValue(inputValue);
       // Don't update parent immediately - let user finish typing
     };
 
     const handleBlur = (e) => {
-      const newValue = e.target.value === '' ? min : parseInt(e.target.value) || min;
-      const clampedValue = Math.max(min, Math.min(max, newValue));
-      setLocalValue(clampedValue);
-      onChange(clampedValue);
+      const inputValue = e.target.value;
+      if (inputValue === '' || inputValue === '-') {
+        // Empty or just minus sign - set to min
+        setLocalValue(min);
+        onChange(min);
+      } else {
+        const parsed = parseInt(inputValue, 10);
+        if (isNaN(parsed)) {
+          // Invalid input - revert to current value
+          setLocalValue(value);
+        } else {
+          const clampedValue = Math.max(min, Math.min(max, parsed));
+          setLocalValue(clampedValue);
+          onChange(clampedValue);
+        }
+      }
     };
 
     const handleKeyDown = (e) => {
@@ -702,11 +715,12 @@ const EthicalChoiceAnalyzer = () => {
           </button>
           <input
             ref={inputRef}
-            type="number"
+            type="text"
+            inputMode="numeric"
             min={min}
             max={max}
             step={step}
-            value={localValue === 0 && placeholder ? '' : localValue}
+            value={localValue}
             placeholder={placeholder}
             onChange={handleChange}
             onBlur={handleBlur}
