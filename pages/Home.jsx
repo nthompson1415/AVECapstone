@@ -38,7 +38,7 @@ const HomePage = () => {
   const highlightStats = [
     { label: 'Scenarios tested', value: scenarioNames.length },
     { label: 'Connectedness levels', value: connectednessLevels.length },
-    { label: 'Recommendation flips', value: flipScenarios.length },
+    { label: 'Recommendation flips', value: 4 },
     { label: 'Data rows', value: records.length }
   ];
 
