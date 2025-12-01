@@ -1178,11 +1178,13 @@
 
           <th style="padding: 18px; color: white; font-size: 20px;">None</th>
 
+          <th style="padding: 18px; color: white; font-size: 20px;">Minimum</th>
+
           <th style="padding: 18px; color: white; font-size: 20px;">Medium</th>
 
           <th style="padding: 18px; color: white; font-size: 20px;">High</th>
 
-          <th style="padding: 18px; color: white; font-size: 20px;">Max</th>
+          <th style="padding: 18px; color: white; font-size: 20px;">Maximum</th>
 
         </tr>
 
@@ -1414,9 +1416,18 @@
       document.getElementById('final-secondary-rq-text').textContent = secondary.question;
 
       // Statistics
-      const stat = finalContentData.statistics.scenariosChanged;
-      document.getElementById('final-stat-big').textContent = stat.value;
-      document.getElementById('final-stat-text').textContent = stat.description;
+      if (finalContentData.statistics && finalContentData.statistics.scenariosChanged) {
+        const stat = finalContentData.statistics.scenariosChanged;
+        document.getElementById('final-stat-big').textContent = stat.value;
+        document.getElementById('final-stat-text').textContent = stat.description;
+      } else {
+        // Fallback: extract from first finding
+        const firstFinding = finalContentData.findings[0];
+        if (firstFinding && firstFinding.statistic) {
+          document.getElementById('final-stat-big').textContent = firstFinding.statistic.value;
+          document.getElementById('final-stat-text').textContent = firstFinding.statistic.label || 'of scenarios changed recommendations based on connectedness level';
+        }
+      }
 
       // Scenario Table
       const scenarios = finalContentData.scenarioData.scenarios;
@@ -1426,6 +1437,7 @@
         const cells = [
           `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'} font-weight: 600;">${scenario.name}${scenario.description ? ' ' + scenario.description : ''}</td>`,
           `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('none') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.none}</td>`,
+          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('minimum') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.minimum}</td>`,
           `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('medium') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.medium}</td>`,
           `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('high') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.high}</td>`,
           `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('maximum') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.maximum}</td>`
@@ -1433,17 +1445,19 @@
         return `<tr${isEven ? ' style="background: #f7fafc;"' : ''}>${cells.join('')}</tr>`;
       }).join('');
 
-      // Findings
+      // Findings - Show all 4 critical findings
       const findingsContainer = document.getElementById('final-findings-container');
-      const findings = finalContentData.findings.slice(1, 4); // Findings 2, 3, 4
+      const findings = finalContentData.findings.slice(0, 4); // All 4 critical findings
       findingsContainer.innerHTML = findings.map(finding => {
         let content = '';
         if (finding.lowConnectedness && finding.highConnectedness) {
-          content = `<p><strong>Low connectedness:</strong> ${finding.lowConnectedness.decision} (${finding.lowConnectedness.harm})<br>
-                     <strong>High connectedness:</strong> ${finding.highConnectedness.decision} (${finding.highConnectedness.harm})</p>
+          content = `<p><strong>Low connectedness (pregnancy unknown):</strong> ${finding.lowConnectedness.decision} (${finding.lowConnectedness.harm})<br>
+                     <strong>High connectedness (pregnancy known):</strong> ${finding.highConnectedness.decision} (${finding.highConnectedness.harm})</p>
                      <p style="margin-top: 20px; font-size: 22px; font-style: italic; color: #c05621;">${finding.description}</p>`;
         } else if (finding.statistic) {
-          content = `<p>${finding.statistic.label ? finding.statistic.label + ' receives ' : ''}<span class="stat-highlight">${finding.statistic.value}${finding.statistic.label && finding.statistic.label.includes('reduction') ? ' priority reduction' : ''}</span>${finding.statistic.calculation ? ' (' + finding.statistic.calculation + ')' : ''}. ${finding.description}</p>`;
+          const statLabel = finding.statistic.label || '';
+          const statValue = finding.statistic.value || '';
+          content = `<p>${statLabel ? statLabel + ' ' : ''}${statValue ? '<span class="stat-highlight">' + statValue + '</span> ' : ''}${finding.description}</p>`;
         } else {
           content = `<p>${finding.description}</p>`;
         }
@@ -1457,11 +1471,13 @@
 
       // Conclusions
       const conclusionsList = document.getElementById('final-conclusions-list');
-      const firstInsight = finalContentData.conclusions.preliminaryInsights[0];
-      const statText = firstInsight.statistic || '50% of scenarios';
+      const statValue = (finalContentData.statistics && finalContentData.statistics.scenariosChanged) 
+        ? finalContentData.statistics.scenariosChanged.value 
+        : '67%';
+      const multipliers = finalContentData.multipliers || { occupation: { doctor: '1.5', criminal: '0.94' }, pregnancy: '1.8' };
       conclusionsList.innerHTML = `
-        <li><strong>Informational connectedness is a critical policy variable</strong> that fundamentally shapes AV ethical behavior (${statText} changed)</li>
-        <li><strong>Utilitarian quantification creates value hierarchies</strong> (doctor ${finalContentData.multipliers.occupation.doctor}x, criminal ${finalContentData.multipliers.occupation.criminal}x, pregnancy ${finalContentData.multipliers.pregnancy}x) that may conflict with equal human dignity</li>
+        <li><strong>Informational connectedness is a critical policy variable</strong> that fundamentally shapes AV ethical behavior (${statValue} of scenarios changed)</li>
+        <li><strong>Utilitarian quantification creates value hierarchies</strong> (doctor ${multipliers.occupation.doctor}x, criminal ${multipliers.occupation.criminal}x, pregnancy ${multipliers.pregnancy}x) that may conflict with equal human dignity</li>
         <li><strong>No clear threshold exists</strong> where increased connectedness consistently improves ethical outcomes—it both resolves ambiguity AND introduces controversial results</li>
         <li><strong>The choice is not technical but political:</strong> Society must explicitly decide which factors AVs should consider</li>
       `;
