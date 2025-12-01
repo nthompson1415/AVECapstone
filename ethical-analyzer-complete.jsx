@@ -1327,8 +1327,8 @@ const EthicalChoiceAnalyzer = () => {
                   <h3 className="text-xl font-bold mb-3"><TrendingUp className="w-6 h-6 inline" /> Utilitarian Recommendation</h3>
                   <p className="text-lg mb-2">
                     {result.recommendation === 'neutral' ? 'Both options result in similar expected harm.' :
-                     result.recommendation === 'option1' ? `${scenario.option1.name} minimizes harm.` :
-                     `${scenario.option2.name} minimizes harm.`}
+                     result.recommendation === 'option1' ? scenario.option1.name :
+                     scenario.option2.name}
                   </p>
                   <p className="text-sm"><strong>Confidence:</strong> {result.confidence.toFixed(1)}%</p>
                 </div>
