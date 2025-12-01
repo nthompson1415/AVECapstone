@@ -1,16 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import EthicalChoiceAnalyzer from './ethical-analyzer-complete.jsx'
+import { BrowserRouter } from 'react-router-dom'
+import App from './App.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter basename="/AVECapstone">
-      <Routes>
-        <Route path="/" element={<EthicalChoiceAnalyzer />} />
-        <Route path="/analyzer" element={<EthicalChoiceAnalyzer />} />
-      </Routes>
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
 )

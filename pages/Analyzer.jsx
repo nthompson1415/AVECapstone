@@ -1,0 +1,8 @@
+import EthicalChoiceAnalyzer from '../ethical-analyzer-complete.jsx';
+
+const AnalyzerPage = () => {
+  return <EthicalChoiceAnalyzer />;
+};
+
+export default AnalyzerPage;
+
