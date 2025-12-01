@@ -1048,23 +1048,6 @@ const EthicalChoiceAnalyzer = () => {
 
   return (
     <div>
-      {/* Navigation Bar - Removed since App.jsx handles it */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center gap-2">
-              <Brain className="w-6 h-6 text-indigo-600" />
-              <span className="font-bold text-gray-900">AV Ethics Capstone</span>
-            </div>
-            <div className="flex gap-4">
-              <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Analyzer</Link>
-              <a href="/AVECapstone/poster.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Poster</a>
-              <a href="/AVECapstone/presentation.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Presentation</a>
-              <a href="/AVECapstone/final-capstone-presentation.html" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-indigo-600 hover:bg-indigo-50">Final Presentation</a>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       <div className="py-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
