@@ -121,7 +121,7 @@ const EthicalChoiceAnalyzer = () => {
     },
     doctorVsCriminal: {
       name: "Doctor vs Criminal",
-      description: "Save doctor or violent offender",
+      description: "Hit doctor or violent offender",
       scenario: {
         option1: {
           name: 'Hit Criminal', occupants: 0, pedestrians: 1, pedestrianAge: 35, occupantAge: 0,
