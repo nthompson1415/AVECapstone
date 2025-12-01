@@ -202,7 +202,7 @@ const EthicalChoiceAnalyzer = () => {
       description: "Dog vs human stranger",
       scenario: {
         option1: {
-          name: 'Save Dog', occupants: 0, pedestrians: 1, pedestrianAge: 0, occupantAge: 0,
+          name: 'Hit Dog', occupants: 0, pedestrians: 1, pedestrianAge: 0, occupantAge: 0,
           occupantJob: 'average', occupantHealth: 'healthy', occupantCriminal: 'none',
           occupantLegalFault: 'legal', occupantRisk: 'normal', occupantPregnant: false,
           occupantSpecies: 'human', occupantNetwork: 'none',
@@ -212,7 +212,7 @@ const EthicalChoiceAnalyzer = () => {
           certainty: 100, severity: 'fatal'
         },
         option2: {
-          name: 'Save Person', occupants: 0, pedestrians: 1, pedestrianAge: 40, occupantAge: 0,
+          name: 'Hit Person', occupants: 0, pedestrians: 1, pedestrianAge: 40, occupantAge: 0,
           occupantJob: 'average', occupantHealth: 'healthy', occupantCriminal: 'none',
           occupantLegalFault: 'legal', occupantRisk: 'normal', occupantPregnant: false,
           occupantSpecies: 'human', occupantNetwork: 'none',
