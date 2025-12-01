@@ -13,7 +13,7 @@ const FindingsPage = () => {
 
   if (!contentData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="py-8">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <p className="text-gray-600">Loading findings...</p>
@@ -24,7 +24,7 @@ const FindingsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+    <div className="py-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="bg-white rounded-lg shadow-md p-8">
           <div className="flex items-center gap-3 mb-6">
@@ -75,7 +75,6 @@ const FindingsPage = () => {
             </section>
           )}
         </div>
-      </div>
     </div>
   );
 };

@@ -50,40 +50,7 @@ const HomePage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-amber-50 to-indigo-50 py-10 px-4">
-      <div className="max-w-6xl mx-auto space-y-10">
-        <section className="bg-white/80 backdrop-blur rounded-3xl shadow-2xl border border-indigo-100 p-8 text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-indigo-100 text-indigo-700 rounded-full p-3">
-              <Brain className="w-8 h-8" />
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Autonomous Vehicle Ethics Lab</h1>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-            Interact with utilitarian decision models, personalize ethical weights, and review presentation-ready findings from the IST 477
-            capstone on German Ethics Commission guidance vs. context-sensitive AV logic.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              to="/analyzer"
-              className="px-6 py-3 rounded-full bg-indigo-600 text-white font-semibold shadow-lg hover:bg-indigo-700"
-            >
-              Launch Ethical Analyzer
-            </Link>
-            <Link
-              to="/calibrator"
-              className="px-6 py-3 rounded-full bg-white border border-indigo-200 text-indigo-700 font-semibold hover:bg-indigo-50"
-            >
-              Personalize Your Values
-            </Link>
-            <Link
-              to="/findings"
-              className="px-6 py-3 rounded-full bg-amber-100 border border-amber-300 text-amber-900 font-semibold hover:bg-amber-200"
-            >
-              Read Findings
-            </Link>
-          </div>
-        </section>
+    <div className="space-y-10">
 
         <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {highlightStats.map((stat) => (
@@ -204,7 +171,6 @@ const HomePage = () => {
             </span>
           </Link>
         </section>
-      </div>
     </div>
   );
 };

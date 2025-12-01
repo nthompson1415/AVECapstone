@@ -1047,9 +1047,8 @@ const EthicalChoiceAnalyzer = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      {/* Navigation Bar */}
-      <nav className="bg-white shadow-md sticky top-0 z-50">
+    <div>
+      {/* Navigation Bar - Removed since App.jsx handles it */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
@@ -1066,7 +1065,7 @@ const EthicalChoiceAnalyzer = () => {
         </div>
       </nav>
 
-      <div className="p-8">
+      <div className="py-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-3 mb-4">
