@@ -172,7 +172,7 @@ const DataViewer = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="p-8">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <p className="text-gray-600">Loading data...</p>
@@ -184,7 +184,7 @@ const DataViewer = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="p-8">
         <div className="max-w-6xl mx-auto">
           <div className="bg-red-50 rounded-lg shadow-md p-8 text-center border-2 border-red-200">
             <p className="text-red-600 font-semibold">{error}</p>
@@ -196,7 +196,7 @@ const DataViewer = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+    <div className="p-8">
       <div className="max-w-7xl mx-auto">
         <div className="bg-white rounded-lg shadow-xl p-6 mb-6">
           <div className="flex items-center gap-3 mb-6">
