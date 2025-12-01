@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo, memo } from 'react';
-import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, ChevronDown, ChevronUp, BarChart3, Library, Plus, Minus } from 'lucide-react';
+import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, BarChart3, Library, Plus, Minus } from 'lucide-react';
 
 const EthicalChoiceAnalyzer = () => {
   const [includeControversial, setIncludeControversial] = useState(false);
@@ -10,8 +10,6 @@ const EthicalChoiceAnalyzer = () => {
   const [showResources, setShowResources] = useState(false);
   const [showResearchFindings, setShowResearchFindings] = useState(false);
   const [activeFramework, setActiveFramework] = useState('utilitarian');
-  const [showCalculationBreakdown, setShowCalculationBreakdown] = useState(false);
-  const [calculationSteps, setCalculationSteps] = useState(null);
   const [contentData, setContentData] = useState(null);
 
   const [scenario, setScenario] = useState({
@@ -494,7 +492,6 @@ const EthicalChoiceAnalyzer = () => {
       return;
     }
 
-    const calcSteps = { option1: { occupants: null, pedestrians: null }, option2: { occupants: null, pedestrians: null } };
     const option1Analysis = {
       totalPeople: option1TotalPeople, lifeYearsLost: 0,
       certainty: scenario.option1.certainty / 100,
@@ -509,45 +506,41 @@ const EthicalChoiceAnalyzer = () => {
     };
 
     if (scenario.option1.occupants > 0) {
-      const result = calculateLifeYears(
+      const lifeYears = calculateLifeYears(
         scenario.option1.occupantAge, scenario.option1.severity, scenario.option1.occupantJob,
         scenario.option1.occupantHealth, scenario.option1.occupantCriminal, scenario.option1.occupantLegalFault,
         scenario.option1.occupantRisk, scenario.option1.occupantPregnant, scenario.option1.occupantSpecies,
-        scenario.option1.occupantNetwork, true
+        scenario.option1.occupantNetwork, false
       );
-      calcSteps.option1.occupants = result.steps;
-      option1Analysis.lifeYearsLost += scenario.option1.occupants * result.value;
+      option1Analysis.lifeYearsLost += scenario.option1.occupants * lifeYears;
     }
     if (scenario.option1.pedestrians > 0) {
-      const result = calculateLifeYears(
+      const lifeYears = calculateLifeYears(
         scenario.option1.pedestrianAge, scenario.option1.severity, scenario.option1.pedestrianJob,
         scenario.option1.pedestrianHealth, scenario.option1.pedestrianCriminal, scenario.option1.pedestrianLegalFault,
         scenario.option1.pedestrianRisk, scenario.option1.pedestrianPregnant, scenario.option1.pedestrianSpecies,
-        scenario.option1.pedestrianNetwork, true
+        scenario.option1.pedestrianNetwork, false
       );
-      calcSteps.option1.pedestrians = result.steps;
-      option1Analysis.lifeYearsLost += scenario.option1.pedestrians * result.value;
+      option1Analysis.lifeYearsLost += scenario.option1.pedestrians * lifeYears;
     }
 
     if (scenario.option2.occupants > 0) {
-      const result = calculateLifeYears(
+      const lifeYears = calculateLifeYears(
         scenario.option2.occupantAge, scenario.option2.severity, scenario.option2.occupantJob,
         scenario.option2.occupantHealth, scenario.option2.occupantCriminal, scenario.option2.occupantLegalFault,
         scenario.option2.occupantRisk, scenario.option2.occupantPregnant, scenario.option2.occupantSpecies,
-        scenario.option2.occupantNetwork, true
+        scenario.option2.occupantNetwork, false
       );
-      calcSteps.option2.occupants = result.steps;
-      option2Analysis.lifeYearsLost += scenario.option2.occupants * result.value;
+      option2Analysis.lifeYearsLost += scenario.option2.occupants * lifeYears;
     }
     if (scenario.option2.pedestrians > 0) {
-      const result = calculateLifeYears(
+      const lifeYears = calculateLifeYears(
         scenario.option2.pedestrianAge, scenario.option2.severity, scenario.option2.pedestrianJob,
         scenario.option2.pedestrianHealth, scenario.option2.pedestrianCriminal, scenario.option2.pedestrianLegalFault,
         scenario.option2.pedestrianRisk, scenario.option2.pedestrianPregnant, scenario.option2.pedestrianSpecies,
-        scenario.option2.pedestrianNetwork, true
+        scenario.option2.pedestrianNetwork, false
       );
-      calcSteps.option2.pedestrians = result.steps;
-      option2Analysis.lifeYearsLost += scenario.option2.pedestrians * result.value;
+      option2Analysis.lifeYearsLost += scenario.option2.pedestrians * lifeYears;
     }
 
     const uncertainty1 = option1Analysis.lifeYearsLost * (1 - option1Analysis.certainty) * 0.5;
@@ -583,7 +576,6 @@ const EthicalChoiceAnalyzer = () => {
       deontological: analyzeDeontological(option1Analysis, option2Analysis),
       virtue: analyzeVirtueEthics()
     });
-    setCalculationSteps(calcSteps);
   };
 
   const resetForm = () => {
@@ -610,7 +602,6 @@ const EthicalChoiceAnalyzer = () => {
       }
     });
     setResult(null); setActiveFramework('utilitarian'); setSimpleMode(false);
-    setCalculationSteps(null); setShowCalculationBreakdown(false);
   };
 
   const exportScenario = () => {
@@ -1331,90 +1322,6 @@ const EthicalChoiceAnalyzer = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Calculation Breakdown */}
-                {calculationSteps && (
-                  <div className="bg-gray-50 rounded-lg p-6 mb-6 border-2 border-gray-300">
-                    <button onClick={() => setShowCalculationBreakdown(!showCalculationBreakdown)} className="w-full flex items-center justify-between">
-                      <h3 className="text-lg font-bold"><BarChart3 className="w-5 h-5 inline text-gray-600" /> Show Calculation Steps</h3>
-                      {showCalculationBreakdown ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                    </button>
-                    
-                    {showCalculationBreakdown && (
-                      <div className="mt-4 space-y-6">
-                        {/* Option 1 */}
-                        <div>
-                          <h4 className="font-semibold mb-3">{scenario.option1.name}:</h4>
-                          {calculationSteps.option1.occupants && scenario.option1.occupants > 0 && (
-                            <div className="bg-white rounded p-4 mb-3">
-                              <div className="text-sm font-medium mb-2">Occupants ({scenario.option1.occupants}):</div>
-                              {calculationSteps.option1.occupants.map((step, idx) => (
-                                <div key={idx} className="flex justify-between py-1 text-xs border-b">
-                                  <span>{step.step}:</span><span className="font-mono">{step.calculation}</span>
-                                </div>
-                              ))}
-                              <div className="flex justify-between py-2 font-semibold text-sm border-t-2 mt-2">
-                                <span>Total:</span><span className="text-blue-600">{(scenario.option1.occupants * calculationSteps.option1.occupants[calculationSteps.option1.occupants.length - 1].value).toFixed(2)}</span>
-                              </div>
-                            </div>
-                          )}
-                          {calculationSteps.option1.pedestrians && scenario.option1.pedestrians > 0 && (
-                            <div className="bg-white rounded p-4">
-                              <div className="text-sm font-medium mb-2">Pedestrians ({scenario.option1.pedestrians}):</div>
-                              {calculationSteps.option1.pedestrians.map((step, idx) => (
-                                <div key={idx} className="flex justify-between py-1 text-xs border-b">
-                                  <span>{step.step}:</span><span className="font-mono">{step.calculation}</span>
-                                </div>
-                              ))}
-                              <div className="flex justify-between py-2 font-semibold text-sm border-t-2 mt-2">
-                                <span>Total:</span><span className="text-blue-600">{(scenario.option1.pedestrians * calculationSteps.option1.pedestrians[calculationSteps.option1.pedestrians.length - 1].value).toFixed(2)}</span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Option 2 */}
-                        <div>
-                          <h4 className="font-semibold mb-3">{scenario.option2.name}:</h4>
-                          {calculationSteps.option2.occupants && scenario.option2.occupants > 0 && (
-                            <div className="bg-white rounded p-4 mb-3">
-                              <div className="text-sm font-medium mb-2">Occupants ({scenario.option2.occupants}):</div>
-                              {calculationSteps.option2.occupants.map((step, idx) => (
-                                <div key={idx} className="flex justify-between py-1 text-xs border-b">
-                                  <span>{step.step}:</span><span className="font-mono">{step.calculation}</span>
-                                </div>
-                              ))}
-                              <div className="flex justify-between py-2 font-semibold text-sm border-t-2 mt-2">
-                                <span>Total:</span><span className="text-purple-600">{(scenario.option2.occupants * calculationSteps.option2.occupants[calculationSteps.option2.occupants.length - 1].value).toFixed(2)}</span>
-                              </div>
-                            </div>
-                          )}
-                          {calculationSteps.option2.pedestrians && scenario.option2.pedestrians > 0 && (
-                            <div className="bg-white rounded p-4">
-                              <div className="text-sm font-medium mb-2">Pedestrians ({scenario.option2.pedestrians}):</div>
-                              {calculationSteps.option2.pedestrians.map((step, idx) => (
-                                <div key={idx} className="flex justify-between py-1 text-xs border-b">
-                                  <span>{step.step}:</span><span className="font-mono">{step.calculation}</span>
-                                </div>
-                              ))}
-                              <div className="flex justify-between py-2 font-semibold text-sm border-t-2 mt-2">
-                                <span>Total:</span><span className="text-purple-600">{(scenario.option2.pedestrians * calculationSteps.option2.pedestrians[calculationSteps.option2.pedestrians.length - 1].value).toFixed(2)}</span>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        <div className="bg-indigo-50 rounded p-4 border-l-4 border-indigo-400 text-sm">
-                          <strong>Final:</strong> Multiply by certainty for expected harm.
-                          <div className="mt-2 space-y-1">
-                            <div><strong>{scenario.option1.name}:</strong> {result.option1.lifeYearsLost.toFixed(2)} × {result.option1.certainty.toFixed(2)} = <span className="font-bold text-blue-600">{result.option1.expectedHarm.toFixed(2)}</span></div>
-                            <div><strong>{scenario.option2.name}:</strong> {result.option2.lifeYearsLost.toFixed(2)} × {result.option2.certainty.toFixed(2)} = <span className="font-bold text-purple-600">{result.option2.expectedHarm.toFixed(2)}</span></div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
 
                 <div className={`rounded-lg p-6 border-2 ${result.recommendation === 'option1' ? 'bg-blue-100 border-blue-400' : result.recommendation === 'option2' ? 'bg-purple-100 border-purple-400' : 'bg-gray-100 border-gray-400'}`}>
                   <h3 className="text-xl font-bold mb-3"><TrendingUp className="w-6 h-6 inline" /> Utilitarian Recommendation</h3>
