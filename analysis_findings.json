@@ -1,0 +1,267 @@
+{
+  "summary": {
+    "totalScenarios": 100,
+    "totalDataPoints": 500,
+    "stableDecisions": 88,
+    "changingDecisions": 12,
+    "decisionFlips": 12,
+    "scenariosWithNeutral": 5,
+    "averageHarm": 62.029619999999944,
+    "minHarm": 0,
+    "maxHarm": 471.24,
+    "medianHarm": 34.67
+  },
+  "decisionFlips": [
+    {
+      "name": "Doctor vs Criminal",
+      "recommendations": [
+        "neutral",
+        "option1"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Legal vs Jaywalker",
+      "recommendations": [
+        "neutral",
+        "option2"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 9",
+      "recommendations": [
+        "option2",
+        "option1"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 24",
+      "recommendations": [
+        "option2",
+        "option1"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 37",
+      "recommendations": [
+        "option1",
+        "option2"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 38",
+      "recommendations": [
+        "option1",
+        "option2",
+        "neutral"
+      ],
+      "changes": 3
+    },
+    {
+      "name": "Scenario 54",
+      "recommendations": [
+        "option2",
+        "option1"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 60",
+      "recommendations": [
+        "neutral",
+        "option1"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 77",
+      "recommendations": [
+        "option1",
+        "option2"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 91",
+      "recommendations": [
+        "option1",
+        "option2"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 94",
+      "recommendations": [
+        "option2",
+        "neutral"
+      ],
+      "changes": 2
+    },
+    {
+      "name": "Scenario 98",
+      "recommendations": [
+        "option2",
+        "option1"
+      ],
+      "changes": 2
+    }
+  ],
+  "topInteresting": [
+    {
+      "name": "Scenario 54",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 224.2
+    },
+    {
+      "name": "Scenario 37",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 166.81
+    },
+    {
+      "name": "Scenario 9",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 54.980000000000004
+    },
+    {
+      "name": "Scenario 98",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 48.64
+    },
+    {
+      "name": "Scenario 77",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 38.64000000000001
+    },
+    {
+      "name": "Scenario 24",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 24.729999999999997
+    },
+    {
+      "name": "Doctor vs Criminal",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 24.08
+    },
+    {
+      "name": "Scenario 91",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 15.899999999999999
+    },
+    {
+      "name": "Scenario 94",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 14.07
+    },
+    {
+      "name": "Legal vs Jaywalker",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 14.059999999999999
+    },
+    {
+      "name": "Scenario 38",
+      "hasFlip": true,
+      "uniqueRecs": 3,
+      "totalChange": 9.149999999999999
+    },
+    {
+      "name": "Scenario 60",
+      "hasFlip": true,
+      "uniqueRecs": 2,
+      "totalChange": 1.0200000000000005
+    },
+    {
+      "name": "Scenario 12",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 166.79000000000002
+    },
+    {
+      "name": "Scenario 87",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 102.41999999999999
+    },
+    {
+      "name": "Scenario 19",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 99.18
+    },
+    {
+      "name": "Scenario 36",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 97.71999999999997
+    },
+    {
+      "name": "Scenario 15",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 92.04
+    },
+    {
+      "name": "Scenario 28",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 90.54999999999998
+    },
+    {
+      "name": "Scenario 27",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 82.85
+    },
+    {
+      "name": "Scenario 10",
+      "hasFlip": false,
+      "uniqueRecs": 1,
+      "totalChange": 75.64
+    }
+  ],
+  "connectednessImpact": [
+    {
+      "level": "None (Demographic-Blind)",
+      "option1": 54,
+      "option2": 43,
+      "neutral": 3
+    },
+    {
+      "level": "Low (Age Only)",
+      "option1": 54,
+      "option2": 43,
+      "neutral": 3
+    },
+    {
+      "level": "Medium (+ Occupation/Health/Criminal)",
+      "option1": 54,
+      "option2": 45,
+      "neutral": 1
+    },
+    {
+      "level": "High (+ Legal/Pregnancy/Species)",
+      "option1": 56,
+      "option2": 42,
+      "neutral": 2
+    },
+    {
+      "level": "Maximum (+ Network Effects)",
+      "option1": 58,
+      "option2": 42,
+      "neutral": 0
+    }
+  ]
+}

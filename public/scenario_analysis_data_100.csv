@@ -1,0 +1,501 @@
+Scenario,Connectedness,Harm1,Harm2,Recommendation,Difference
+Classic Trolley (5 vs 1),None (Demographic-Blind),190.00,38.00,option2,152.00
+Classic Trolley (5 vs 1),Low (Age Only),190.00,38.00,option2,152.00
+Classic Trolley (5 vs 1),Medium (+ Occupation/Health/Criminal),190.00,38.00,option2,152.00
+Classic Trolley (5 vs 1),High (+ Legal/Pregnancy/Species),190.00,38.00,option2,152.00
+Classic Trolley (5 vs 1),Maximum (+ Network Effects),190.00,38.00,option2,152.00
+Young vs Elderly,None (Demographic-Blind),9.00,70.00,option1,61.00
+Young vs Elderly,Low (Age Only),9.00,70.00,option1,61.00
+Young vs Elderly,Medium (+ Occupation/Health/Criminal),9.00,70.00,option1,61.00
+Young vs Elderly,High (+ Legal/Pregnancy/Species),9.00,70.00,option1,61.00
+Young vs Elderly,Maximum (+ Network Effects),9.00,70.00,option1,61.00
+Doctor vs Criminal,None (Demographic-Blind),43.00,43.00,neutral,0.00
+Doctor vs Criminal,Low (Age Only),43.00,43.00,neutral,0.00
+Doctor vs Criminal,Medium (+ Occupation/Health/Criminal),40.42,64.50,option1,24.08
+Doctor vs Criminal,High (+ Legal/Pregnancy/Species),40.42,64.50,option1,24.08
+Doctor vs Criminal,Maximum (+ Network Effects),40.42,64.50,option1,24.08
+Legal vs Jaywalker,None (Demographic-Blind),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,Low (Age Only),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,Medium (+ Occupation/Health/Criminal),38.00,38.00,neutral,0.00
+Legal vs Jaywalker,High (+ Legal/Pregnancy/Species),38.00,23.94,option2,14.06
+Legal vs Jaywalker,Maximum (+ Network Effects),38.00,23.94,option2,14.06
+Pregnant Woman,None (Demographic-Blind),76.00,90.00,option1,14.00
+Pregnant Woman,Low (Age Only),76.00,90.00,option1,14.00
+Pregnant Woman,Medium (+ Occupation/Health/Criminal),76.00,90.00,option1,14.00
+Pregnant Woman,High (+ Legal/Pregnancy/Species),76.00,90.00,option1,14.00
+Pregnant Woman,Maximum (+ Network Effects),76.00,90.00,option1,14.00
+Pet vs Person,None (Demographic-Blind),3.90,38.00,option1,34.10
+Pet vs Person,Low (Age Only),3.90,38.00,option1,34.10
+Pet vs Person,Medium (+ Occupation/Health/Criminal),3.90,38.00,option1,34.10
+Pet vs Person,High (+ Legal/Pregnancy/Species),3.90,38.00,option1,34.10
+Pet vs Person,Maximum (+ Network Effects),3.90,38.00,option1,34.10
+Scenario 7,None (Demographic-Blind),1.86,2.46,option1,0.60
+Scenario 7,Low (Age Only),1.86,2.46,option1,0.60
+Scenario 7,Medium (+ Occupation/Health/Criminal),1.80,2.46,option1,0.66
+Scenario 7,High (+ Legal/Pregnancy/Species),1.77,2.46,option1,0.69
+Scenario 7,Maximum (+ Network Effects),1.78,2.46,option1,0.68
+Scenario 8,None (Demographic-Blind),46.72,0.00,option2,46.72
+Scenario 8,Low (Age Only),46.72,0.00,option2,46.72
+Scenario 8,Medium (+ Occupation/Health/Criminal),38.30,0.00,option2,38.30
+Scenario 8,High (+ Legal/Pregnancy/Species),38.30,0.00,option2,38.30
+Scenario 8,Maximum (+ Network Effects),38.60,0.00,option2,38.60
+Scenario 9,None (Demographic-Blind),53.10,37.01,option2,16.09
+Scenario 9,Low (Age Only),53.10,37.01,option2,16.09
+Scenario 9,Medium (+ Occupation/Health/Criminal),67.50,48.85,option2,18.65
+Scenario 9,High (+ Legal/Pregnancy/Species),57.78,48.85,option2,8.93
+Scenario 9,Maximum (+ Network Effects),71.39,73.70,option1,2.31
+Scenario 10,None (Demographic-Blind),109.62,18.93,option2,90.69
+Scenario 10,Low (Age Only),109.62,18.93,option2,90.69
+Scenario 10,Medium (+ Occupation/Health/Criminal),164.43,18.93,option2,145.50
+Scenario 10,High (+ Legal/Pregnancy/Species),88.79,18.93,option2,69.86
+Scenario 10,Maximum (+ Network Effects),88.79,18.93,option2,69.86
+Scenario 11,None (Demographic-Blind),128.62,5.70,option2,122.92
+Scenario 11,Low (Age Only),128.62,5.70,option2,122.92
+Scenario 11,Medium (+ Occupation/Health/Criminal),198.12,5.70,option2,192.42
+Scenario 11,High (+ Legal/Pregnancy/Species),188.26,2.85,option2,185.40
+Scenario 11,Maximum (+ Network Effects),188.26,2.85,option2,185.40
+Scenario 12,None (Demographic-Blind),365.11,175.68,option2,189.43
+Scenario 12,Low (Age Only),365.11,175.68,option2,189.43
+Scenario 12,Medium (+ Occupation/Health/Criminal),198.32,175.68,option2,22.64
+Scenario 12,High (+ Legal/Pregnancy/Species),198.32,175.68,option2,22.64
+Scenario 12,Maximum (+ Network Effects),231.68,175.68,option2,56.00
+Scenario 13,None (Demographic-Blind),48.10,6.05,option2,42.05
+Scenario 13,Low (Age Only),48.10,6.05,option2,42.05
+Scenario 13,Medium (+ Occupation/Health/Criminal),40.81,5.01,option2,35.81
+Scenario 13,High (+ Legal/Pregnancy/Species),40.81,4.81,option2,36.00
+Scenario 13,Maximum (+ Network Effects),40.81,4.81,option2,36.00
+Scenario 14,None (Demographic-Blind),11.32,61.94,option1,50.62
+Scenario 14,Low (Age Only),11.32,61.94,option1,50.62
+Scenario 14,Medium (+ Occupation/Health/Criminal),11.32,61.94,option1,50.62
+Scenario 14,High (+ Legal/Pregnancy/Species),11.32,61.94,option1,50.62
+Scenario 14,Maximum (+ Network Effects),11.32,61.94,option1,50.62
+Scenario 15,None (Demographic-Blind),275.56,58.46,option2,217.10
+Scenario 15,Low (Age Only),275.56,58.46,option2,217.10
+Scenario 15,Medium (+ Occupation/Health/Criminal),347.43,44.55,option2,302.88
+Scenario 15,High (+ Legal/Pregnancy/Species),320.92,38.29,option2,282.63
+Scenario 15,Maximum (+ Network Effects),320.92,38.29,option2,282.63
+Scenario 16,None (Demographic-Blind),19.68,471.24,option1,451.56
+Scenario 16,Low (Age Only),19.68,471.24,option1,451.56
+Scenario 16,Medium (+ Occupation/Health/Criminal),11.81,471.24,option1,459.43
+Scenario 16,High (+ Legal/Pregnancy/Species),5.90,471.24,option1,465.34
+Scenario 16,Maximum (+ Network Effects),5.90,471.24,option1,465.34
+Scenario 17,None (Demographic-Blind),30.80,92.03,option1,61.23
+Scenario 17,Low (Age Only),30.80,92.03,option1,61.23
+Scenario 17,Medium (+ Occupation/Health/Criminal),29.72,88.60,option1,58.88
+Scenario 17,High (+ Legal/Pregnancy/Species),29.72,79.74,option1,50.02
+Scenario 17,Maximum (+ Network Effects),29.72,79.87,option1,50.15
+Scenario 18,None (Demographic-Blind),11.66,44.00,option1,32.34
+Scenario 18,Low (Age Only),11.66,44.00,option1,32.34
+Scenario 18,Medium (+ Occupation/Health/Criminal),11.66,44.00,option1,32.34
+Scenario 18,High (+ Legal/Pregnancy/Species),11.66,44.00,option1,32.34
+Scenario 18,Maximum (+ Network Effects),11.66,44.00,option1,32.34
+Scenario 19,None (Demographic-Blind),144.48,232.05,option1,87.57
+Scenario 19,Low (Age Only),144.48,232.05,option1,87.57
+Scenario 19,Medium (+ Occupation/Health/Criminal),88.75,202.23,option1,113.48
+Scenario 19,High (+ Legal/Pregnancy/Species),84.57,192.78,option1,108.21
+Scenario 19,Maximum (+ Network Effects),84.57,192.78,option1,108.21
+Scenario 20,None (Demographic-Blind),1.31,115.78,option1,114.47
+Scenario 20,Low (Age Only),1.31,115.78,option1,114.47
+Scenario 20,Medium (+ Occupation/Health/Criminal),1.21,155.87,option1,154.65
+Scenario 20,High (+ Legal/Pregnancy/Species),1.17,99.74,option1,98.57
+Scenario 20,Maximum (+ Network Effects),1.17,99.74,option1,98.57
+Scenario 21,None (Demographic-Blind),56.00,210.10,option1,154.10
+Scenario 21,Low (Age Only),56.00,210.10,option1,154.10
+Scenario 21,Medium (+ Occupation/Health/Criminal),56.00,210.10,option1,154.10
+Scenario 21,High (+ Legal/Pregnancy/Species),56.00,210.10,option1,154.10
+Scenario 21,Maximum (+ Network Effects),56.00,210.10,option1,154.10
+Scenario 22,None (Demographic-Blind),112.64,32.56,option2,80.08
+Scenario 22,Low (Age Only),112.64,32.56,option2,80.08
+Scenario 22,Medium (+ Occupation/Health/Criminal),112.92,32.56,option2,80.36
+Scenario 22,High (+ Legal/Pregnancy/Species),112.92,32.56,option2,80.36
+Scenario 22,Maximum (+ Network Effects),114.16,32.56,option2,81.60
+Scenario 23,None (Demographic-Blind),11.03,42.42,option1,31.39
+Scenario 23,Low (Age Only),11.03,42.42,option1,31.39
+Scenario 23,Medium (+ Occupation/Health/Criminal),14.71,40.36,option1,25.65
+Scenario 23,High (+ Legal/Pregnancy/Species),14.28,36.58,option1,22.30
+Scenario 23,Maximum (+ Network Effects),19.95,39.86,option1,19.92
+Scenario 24,None (Demographic-Blind),36.62,14.64,option2,21.98
+Scenario 24,Low (Age Only),36.62,14.64,option2,21.98
+Scenario 24,Medium (+ Occupation/Health/Criminal),11.89,14.64,option1,2.75
+Scenario 24,High (+ Legal/Pregnancy/Species),11.89,14.64,option1,2.75
+Scenario 24,Maximum (+ Network Effects),12.53,14.64,option1,2.10
+Scenario 25,None (Demographic-Blind),176.09,1.98,option2,174.10
+Scenario 25,Low (Age Only),176.09,1.98,option2,174.10
+Scenario 25,Medium (+ Occupation/Health/Criminal),176.09,1.98,option2,174.10
+Scenario 25,High (+ Legal/Pregnancy/Species),176.09,1.98,option2,174.10
+Scenario 25,Maximum (+ Network Effects),176.09,3.12,option2,172.97
+Scenario 26,None (Demographic-Blind),76.20,26.36,option2,49.84
+Scenario 26,Low (Age Only),76.20,26.36,option2,49.84
+Scenario 26,Medium (+ Occupation/Health/Criminal),75.86,16.02,option2,59.84
+Scenario 26,High (+ Legal/Pregnancy/Species),74.70,15.85,option2,58.86
+Scenario 26,Maximum (+ Network Effects),74.70,16.02,option2,58.69
+Scenario 27,None (Demographic-Blind),23.12,165.63,option1,142.51
+Scenario 27,Low (Age Only),23.12,165.63,option1,142.51
+Scenario 27,Medium (+ Occupation/Health/Criminal),23.12,165.40,option1,142.28
+Scenario 27,High (+ Legal/Pregnancy/Species),23.12,82.78,option1,59.66
+Scenario 27,Maximum (+ Network Effects),23.12,82.78,option1,59.66
+Scenario 28,None (Demographic-Blind),0.73,172.48,option1,171.75
+Scenario 28,Low (Age Only),0.73,172.48,option1,171.75
+Scenario 28,Medium (+ Occupation/Health/Criminal),0.73,172.48,option1,171.75
+Scenario 28,High (+ Legal/Pregnancy/Species),0.73,81.93,option1,81.20
+Scenario 28,Maximum (+ Network Effects),0.73,81.93,option1,81.20
+Scenario 29,None (Demographic-Blind),3.78,13.29,option1,9.50
+Scenario 29,Low (Age Only),3.78,13.29,option1,9.50
+Scenario 29,Medium (+ Occupation/Health/Criminal),3.03,13.29,option1,10.26
+Scenario 29,High (+ Legal/Pregnancy/Species),2.82,6.64,option1,3.83
+Scenario 29,Maximum (+ Network Effects),3.16,6.64,option1,3.48
+Scenario 30,None (Demographic-Blind),143.11,26.69,option2,116.42
+Scenario 30,Low (Age Only),143.11,26.69,option2,116.42
+Scenario 30,Medium (+ Occupation/Health/Criminal),143.11,15.61,option2,127.50
+Scenario 30,High (+ Legal/Pregnancy/Species),143.11,15.61,option2,127.50
+Scenario 30,Maximum (+ Network Effects),143.11,15.61,option2,127.50
+Scenario 31,None (Demographic-Blind),48.60,88.27,option1,39.67
+Scenario 31,Low (Age Only),48.60,88.27,option1,39.67
+Scenario 31,Medium (+ Occupation/Health/Criminal),48.60,78.31,option1,29.71
+Scenario 31,High (+ Legal/Pregnancy/Species),48.60,76.74,option1,28.14
+Scenario 31,Maximum (+ Network Effects),48.60,120.59,option1,71.99
+Scenario 32,None (Demographic-Blind),2.06,107.64,option1,105.58
+Scenario 32,Low (Age Only),2.06,107.64,option1,105.58
+Scenario 32,Medium (+ Occupation/Health/Criminal),1.94,104.49,option1,102.55
+Scenario 32,High (+ Legal/Pregnancy/Species),1.78,102.03,option1,100.25
+Scenario 32,Maximum (+ Network Effects),1.78,120.76,option1,118.98
+Scenario 33,None (Demographic-Blind),0.33,27.33,option1,27.00
+Scenario 33,Low (Age Only),0.33,27.33,option1,27.00
+Scenario 33,Medium (+ Occupation/Health/Criminal),0.19,27.33,option1,27.14
+Scenario 33,High (+ Legal/Pregnancy/Species),0.14,27.33,option1,27.20
+Scenario 33,Maximum (+ Network Effects),0.14,27.33,option1,27.20
+Scenario 34,None (Demographic-Blind),368.10,25.46,option2,342.64
+Scenario 34,Low (Age Only),368.10,25.46,option2,342.64
+Scenario 34,Medium (+ Occupation/Health/Criminal),368.10,25.46,option2,342.64
+Scenario 34,High (+ Legal/Pregnancy/Species),368.10,25.42,option2,342.68
+Scenario 34,Maximum (+ Network Effects),368.10,25.49,option2,342.61
+Scenario 35,None (Demographic-Blind),0.00,24.00,option1,24.00
+Scenario 35,Low (Age Only),0.00,24.00,option1,24.00
+Scenario 35,Medium (+ Occupation/Health/Criminal),0.00,23.52,option1,23.52
+Scenario 35,High (+ Legal/Pregnancy/Species),0.00,23.52,option1,23.52
+Scenario 35,Maximum (+ Network Effects),0.00,23.52,option1,23.52
+Scenario 36,None (Demographic-Blind),13.20,200.05,option1,186.85
+Scenario 36,Low (Age Only),13.20,200.05,option1,186.85
+Scenario 36,Medium (+ Occupation/Health/Criminal),13.38,297.59,option1,284.21
+Scenario 36,High (+ Legal/Pregnancy/Species),13.38,219.56,option1,206.18
+Scenario 36,Maximum (+ Network Effects),13.38,219.56,option1,206.18
+Scenario 37,None (Demographic-Blind),278.71,303.06,option1,24.34
+Scenario 37,Low (Age Only),278.71,303.06,option1,24.34
+Scenario 37,Medium (+ Occupation/Health/Criminal),278.71,175.14,option2,103.57
+Scenario 37,High (+ Legal/Pregnancy/Species),278.71,158.69,option2,120.02
+Scenario 37,Maximum (+ Network Effects),301.15,158.69,option2,142.45
+Scenario 38,None (Demographic-Blind),4.10,12.78,option1,8.68
+Scenario 38,Low (Age Only),4.10,12.78,option1,8.68
+Scenario 38,Medium (+ Occupation/Health/Criminal),3.94,3.84,option2,0.10
+Scenario 38,High (+ Legal/Pregnancy/Species),3.89,3.84,neutral,0.06
+Scenario 38,Maximum (+ Network Effects),4.01,6.14,option1,2.13
+Scenario 39,None (Demographic-Blind),7.32,72.38,option1,65.06
+Scenario 39,Low (Age Only),7.32,72.38,option1,65.06
+Scenario 39,Medium (+ Occupation/Health/Criminal),4.10,66.61,option1,62.51
+Scenario 39,High (+ Legal/Pregnancy/Species),3.42,66.61,option1,63.18
+Scenario 39,Maximum (+ Network Effects),3.42,66.61,option1,63.18
+Scenario 40,None (Demographic-Blind),18.97,4.67,option2,14.30
+Scenario 40,Low (Age Only),18.97,4.67,option2,14.30
+Scenario 40,Medium (+ Occupation/Health/Criminal),14.51,4.67,option2,9.83
+Scenario 40,High (+ Legal/Pregnancy/Species),14.51,4.21,option2,10.30
+Scenario 40,Maximum (+ Network Effects),15.18,4.21,option2,10.97
+Scenario 41,None (Demographic-Blind),1.18,17.61,option1,16.43
+Scenario 41,Low (Age Only),1.18,17.61,option1,16.43
+Scenario 41,Medium (+ Occupation/Health/Criminal),1.08,17.31,option1,16.23
+Scenario 41,High (+ Legal/Pregnancy/Species),1.08,9.78,option1,8.70
+Scenario 41,Maximum (+ Network Effects),1.08,11.96,option1,10.87
+Scenario 42,None (Demographic-Blind),2.58,39.74,option1,37.16
+Scenario 42,Low (Age Only),2.58,39.74,option1,37.16
+Scenario 42,Medium (+ Occupation/Health/Criminal),2.58,39.15,option1,36.56
+Scenario 42,High (+ Legal/Pregnancy/Species),2.58,36.35,option1,33.76
+Scenario 42,Maximum (+ Network Effects),2.58,36.35,option1,33.76
+Scenario 43,None (Demographic-Blind),121.04,0.00,option2,121.04
+Scenario 43,Low (Age Only),121.04,0.00,option2,121.04
+Scenario 43,Medium (+ Occupation/Health/Criminal),102.93,0.00,option2,102.93
+Scenario 43,High (+ Legal/Pregnancy/Species),101.45,0.00,option2,101.45
+Scenario 43,Maximum (+ Network Effects),109.45,0.00,option2,109.45
+Scenario 44,None (Demographic-Blind),68.16,16.68,option2,51.48
+Scenario 44,Low (Age Only),68.16,16.68,option2,51.48
+Scenario 44,Medium (+ Occupation/Health/Criminal),68.16,16.68,option2,51.48
+Scenario 44,High (+ Legal/Pregnancy/Species),68.16,16.68,option2,51.48
+Scenario 44,Maximum (+ Network Effects),68.16,16.68,option2,51.48
+Scenario 45,None (Demographic-Blind),38.64,13.52,option2,25.12
+Scenario 45,Low (Age Only),38.64,13.52,option2,25.12
+Scenario 45,Medium (+ Occupation/Health/Criminal),38.64,13.29,option2,25.35
+Scenario 45,High (+ Legal/Pregnancy/Species),38.64,13.29,option2,25.35
+Scenario 45,Maximum (+ Network Effects),38.64,13.29,option2,25.35
+Scenario 46,None (Demographic-Blind),47.70,5.93,option2,41.77
+Scenario 46,Low (Age Only),47.70,5.93,option2,41.77
+Scenario 46,Medium (+ Occupation/Health/Criminal),28.93,5.93,option2,22.99
+Scenario 46,High (+ Legal/Pregnancy/Species),17.73,5.93,option2,11.79
+Scenario 46,Maximum (+ Network Effects),22.14,5.93,option2,16.20
+Scenario 47,None (Demographic-Blind),203.63,2.91,option2,200.72
+Scenario 47,Low (Age Only),203.63,2.91,option2,200.72
+Scenario 47,Medium (+ Occupation/Health/Criminal),149.80,2.91,option2,146.89
+Scenario 47,High (+ Legal/Pregnancy/Species),149.80,2.77,option2,147.03
+Scenario 47,Maximum (+ Network Effects),207.22,2.77,option2,204.45
+Scenario 48,None (Demographic-Blind),0.00,80.24,option1,80.24
+Scenario 48,Low (Age Only),0.00,80.24,option1,80.24
+Scenario 48,Medium (+ Occupation/Health/Criminal),0.00,9.63,option1,9.63
+Scenario 48,High (+ Legal/Pregnancy/Species),0.00,6.74,option1,6.74
+Scenario 48,Maximum (+ Network Effects),0.00,6.74,option1,6.74
+Scenario 49,None (Demographic-Blind),5.08,32.66,option1,27.58
+Scenario 49,Low (Age Only),5.08,32.66,option1,27.58
+Scenario 49,Medium (+ Occupation/Health/Criminal),5.23,32.66,option1,27.43
+Scenario 49,High (+ Legal/Pregnancy/Species),5.23,32.66,option1,27.43
+Scenario 49,Maximum (+ Network Effects),6.39,32.66,option1,26.27
+Scenario 50,None (Demographic-Blind),194.07,142.56,option2,51.51
+Scenario 50,Low (Age Only),194.07,142.56,option2,51.51
+Scenario 50,Medium (+ Occupation/Health/Criminal),192.57,142.56,option2,50.01
+Scenario 50,High (+ Legal/Pregnancy/Species),192.40,142.56,option2,49.84
+Scenario 50,Maximum (+ Network Effects),192.40,142.56,option2,49.84
+Scenario 51,None (Demographic-Blind),31.64,212.52,option1,180.88
+Scenario 51,Low (Age Only),31.64,212.52,option1,180.88
+Scenario 51,Medium (+ Occupation/Health/Criminal),8.94,212.52,option1,203.58
+Scenario 51,High (+ Legal/Pregnancy/Species),8.87,212.52,option1,203.65
+Scenario 51,Maximum (+ Network Effects),13.37,212.52,option1,199.15
+Scenario 52,None (Demographic-Blind),12.68,19.95,option1,7.27
+Scenario 52,Low (Age Only),12.68,19.95,option1,7.27
+Scenario 52,Medium (+ Occupation/Health/Criminal),15.68,19.11,option1,3.43
+Scenario 52,High (+ Legal/Pregnancy/Species),11.48,19.11,option1,7.63
+Scenario 52,Maximum (+ Network Effects),14.63,26.75,option1,12.13
+Scenario 53,None (Demographic-Blind),16.33,0.37,option2,15.96
+Scenario 53,Low (Age Only),16.33,0.37,option2,15.96
+Scenario 53,Medium (+ Occupation/Health/Criminal),16.25,0.38,option2,15.87
+Scenario 53,High (+ Legal/Pregnancy/Species),16.25,0.34,option2,15.91
+Scenario 53,Maximum (+ Network Effects),17.87,0.37,option2,17.50
+Scenario 54,None (Demographic-Blind),249.92,35.52,option2,214.40
+Scenario 54,Low (Age Only),249.92,35.52,option2,214.40
+Scenario 54,Medium (+ Occupation/Health/Criminal),102.87,35.52,option2,67.35
+Scenario 54,High (+ Legal/Pregnancy/Species),25.72,35.52,option1,9.80
+Scenario 54,Maximum (+ Network Effects),25.72,35.52,option1,9.80
+Scenario 55,None (Demographic-Blind),72.54,44.38,option2,28.16
+Scenario 55,Low (Age Only),72.54,44.38,option2,28.16
+Scenario 55,Medium (+ Occupation/Health/Criminal),72.54,7.90,option2,64.64
+Scenario 55,High (+ Legal/Pregnancy/Species),72.54,4.93,option2,67.61
+Scenario 55,Maximum (+ Network Effects),72.54,6.65,option2,65.89
+Scenario 56,None (Demographic-Blind),8.14,6.43,option2,1.71
+Scenario 56,Low (Age Only),8.14,6.43,option2,1.71
+Scenario 56,Medium (+ Occupation/Health/Criminal),8.14,4.58,option2,3.57
+Scenario 56,High (+ Legal/Pregnancy/Species),8.14,4.49,option2,3.65
+Scenario 56,Maximum (+ Network Effects),8.14,5.30,option2,2.84
+Scenario 57,None (Demographic-Blind),36.70,72.13,option1,35.42
+Scenario 57,Low (Age Only),36.70,72.13,option1,35.42
+Scenario 57,Medium (+ Occupation/Health/Criminal),36.70,70.36,option1,33.66
+Scenario 57,High (+ Legal/Pregnancy/Species),36.70,70.10,option1,33.39
+Scenario 57,Maximum (+ Network Effects),36.70,70.81,option1,34.11
+Scenario 58,None (Demographic-Blind),1.81,241.70,option1,239.89
+Scenario 58,Low (Age Only),1.81,241.70,option1,239.89
+Scenario 58,Medium (+ Occupation/Health/Criminal),1.59,241.70,option1,240.11
+Scenario 58,High (+ Legal/Pregnancy/Species),1.59,241.70,option1,240.11
+Scenario 58,Maximum (+ Network Effects),1.62,288.94,option1,287.32
+Scenario 59,None (Demographic-Blind),34.03,198.05,option1,164.02
+Scenario 59,Low (Age Only),34.03,198.05,option1,164.02
+Scenario 59,Medium (+ Occupation/Health/Criminal),34.03,198.05,option1,164.02
+Scenario 59,High (+ Legal/Pregnancy/Species),22.82,188.36,option1,165.53
+Scenario 59,Maximum (+ Network Effects),22.82,190.62,option1,167.80
+Scenario 60,None (Demographic-Blind),6.82,6.81,neutral,0.00
+Scenario 60,Low (Age Only),6.82,6.81,neutral,0.00
+Scenario 60,Medium (+ Occupation/Health/Criminal),6.82,7.49,option1,0.68
+Scenario 60,High (+ Legal/Pregnancy/Species),6.82,7.12,option1,0.30
+Scenario 60,Maximum (+ Network Effects),6.82,7.83,option1,1.01
+Scenario 61,None (Demographic-Blind),70.29,0.82,option2,69.47
+Scenario 61,Low (Age Only),70.29,0.82,option2,69.47
+Scenario 61,Medium (+ Occupation/Health/Criminal),65.57,0.54,option2,65.04
+Scenario 61,High (+ Legal/Pregnancy/Species),43.57,0.32,option2,43.25
+Scenario 61,Maximum (+ Network Effects),43.57,0.32,option2,43.25
+Scenario 62,None (Demographic-Blind),1.31,154.22,option1,152.92
+Scenario 62,Low (Age Only),1.31,154.22,option1,152.92
+Scenario 62,Medium (+ Occupation/Health/Criminal),0.78,90.68,option1,89.90
+Scenario 62,High (+ Legal/Pregnancy/Species),0.55,90.68,option1,90.14
+Scenario 62,Maximum (+ Network Effects),0.60,90.68,option1,90.08
+Scenario 63,None (Demographic-Blind),109.59,32.04,option2,77.55
+Scenario 63,Low (Age Only),109.59,32.04,option2,77.55
+Scenario 63,Medium (+ Occupation/Health/Criminal),109.59,32.04,option2,77.55
+Scenario 63,High (+ Legal/Pregnancy/Species),109.19,32.04,option2,77.15
+Scenario 63,Maximum (+ Network Effects),109.19,32.04,option2,77.15
+Scenario 64,None (Demographic-Blind),61.25,0.00,option2,61.25
+Scenario 64,Low (Age Only),61.25,0.00,option2,61.25
+Scenario 64,Medium (+ Occupation/Health/Criminal),27.56,0.00,option2,27.56
+Scenario 64,High (+ Legal/Pregnancy/Species),17.36,0.00,option2,17.36
+Scenario 64,Maximum (+ Network Effects),22.57,0.00,option2,22.57
+Scenario 65,None (Demographic-Blind),196.67,48.37,option2,148.30
+Scenario 65,Low (Age Only),196.67,48.37,option2,148.30
+Scenario 65,Medium (+ Occupation/Health/Criminal),196.75,29.60,option2,167.15
+Scenario 65,High (+ Legal/Pregnancy/Species),196.75,25.58,option2,171.17
+Scenario 65,Maximum (+ Network Effects),196.75,25.98,option2,170.77
+Scenario 66,None (Demographic-Blind),96.72,118.58,option1,21.86
+Scenario 66,Low (Age Only),96.72,118.58,option1,21.86
+Scenario 66,Medium (+ Occupation/Health/Criminal),96.72,118.58,option1,21.86
+Scenario 66,High (+ Legal/Pregnancy/Species),96.72,118.58,option1,21.86
+Scenario 66,Maximum (+ Network Effects),96.72,118.58,option1,21.86
+Scenario 67,None (Demographic-Blind),2.49,50.86,option1,48.37
+Scenario 67,Low (Age Only),2.49,50.86,option1,48.37
+Scenario 67,Medium (+ Occupation/Health/Criminal),2.49,50.86,option1,48.37
+Scenario 67,High (+ Legal/Pregnancy/Species),2.49,50.86,option1,48.37
+Scenario 67,Maximum (+ Network Effects),3.05,50.86,option1,47.81
+Scenario 68,None (Demographic-Blind),7.90,214.62,option1,206.72
+Scenario 68,Low (Age Only),7.90,214.62,option1,206.72
+Scenario 68,Medium (+ Occupation/Health/Criminal),6.63,214.62,option1,207.98
+Scenario 68,High (+ Legal/Pregnancy/Species),6.63,203.89,option1,197.25
+Scenario 68,Maximum (+ Network Effects),6.63,203.89,option1,197.25
+Scenario 69,None (Demographic-Blind),162.69,9.63,option2,153.06
+Scenario 69,Low (Age Only),162.69,9.63,option2,153.06
+Scenario 69,Medium (+ Occupation/Health/Criminal),92.10,8.29,option2,83.81
+Scenario 69,High (+ Legal/Pregnancy/Species),92.10,7.50,option2,84.60
+Scenario 69,Maximum (+ Network Effects),138.15,7.97,option2,130.17
+Scenario 70,None (Demographic-Blind),42.92,311.04,option1,268.11
+Scenario 70,Low (Age Only),42.92,311.04,option1,268.11
+Scenario 70,Medium (+ Occupation/Health/Criminal),42.92,311.04,option1,268.11
+Scenario 70,High (+ Legal/Pregnancy/Species),42.92,311.04,option1,268.11
+Scenario 70,Maximum (+ Network Effects),42.92,311.04,option1,268.11
+Scenario 71,None (Demographic-Blind),14.72,2.00,option2,12.72
+Scenario 71,Low (Age Only),14.72,2.00,option2,12.72
+Scenario 71,Medium (+ Occupation/Health/Criminal),9.65,1.84,option2,7.81
+Scenario 71,High (+ Legal/Pregnancy/Species),8.94,0.92,option2,8.02
+Scenario 71,Maximum (+ Network Effects),8.94,1.29,option2,7.66
+Scenario 72,None (Demographic-Blind),3.92,2.49,option2,1.43
+Scenario 72,Low (Age Only),3.92,2.49,option2,1.43
+Scenario 72,Medium (+ Occupation/Health/Criminal),3.89,1.76,option2,2.13
+Scenario 72,High (+ Legal/Pregnancy/Species),3.68,1.23,option2,2.45
+Scenario 72,Maximum (+ Network Effects),4.02,1.23,option2,2.79
+Scenario 73,None (Demographic-Blind),2.00,14.62,option1,12.61
+Scenario 73,Low (Age Only),2.00,14.62,option1,12.61
+Scenario 73,Medium (+ Occupation/Health/Criminal),2.07,6.05,option1,3.98
+Scenario 73,High (+ Legal/Pregnancy/Species),1.95,4.38,option1,2.43
+Scenario 73,Maximum (+ Network Effects),1.95,4.60,option1,2.64
+Scenario 74,None (Demographic-Blind),187.36,30.19,option2,157.17
+Scenario 74,Low (Age Only),187.36,30.19,option2,157.17
+Scenario 74,Medium (+ Occupation/Health/Criminal),187.36,26.83,option2,160.53
+Scenario 74,High (+ Legal/Pregnancy/Species),187.36,26.26,option2,161.10
+Scenario 74,Maximum (+ Network Effects),187.36,26.26,option2,161.10
+Scenario 75,None (Demographic-Blind),196.02,53.42,option2,142.60
+Scenario 75,Low (Age Only),196.02,53.42,option2,142.60
+Scenario 75,Medium (+ Occupation/Health/Criminal),196.02,43.50,option2,152.52
+Scenario 75,High (+ Legal/Pregnancy/Species),196.02,43.50,option2,152.52
+Scenario 75,Maximum (+ Network Effects),196.02,43.50,option2,152.52
+Scenario 76,None (Demographic-Blind),0.76,17.36,option1,16.60
+Scenario 76,Low (Age Only),0.76,17.36,option1,16.60
+Scenario 76,Medium (+ Occupation/Health/Criminal),0.76,15.78,option1,15.02
+Scenario 76,High (+ Legal/Pregnancy/Species),0.76,15.45,option1,14.69
+Scenario 76,Maximum (+ Network Effects),0.77,15.65,option1,14.88
+Scenario 77,None (Demographic-Blind),59.25,65.16,option1,5.91
+Scenario 77,Low (Age Only),59.25,65.16,option1,5.91
+Scenario 77,Medium (+ Occupation/Health/Criminal),89.37,65.16,option2,24.22
+Scenario 77,High (+ Legal/Pregnancy/Species),50.73,65.16,option1,14.42
+Scenario 77,Maximum (+ Network Effects),57.54,65.16,option1,7.62
+Scenario 78,None (Demographic-Blind),2.02,108.29,option1,106.27
+Scenario 78,Low (Age Only),2.02,108.29,option1,106.27
+Scenario 78,Medium (+ Occupation/Health/Criminal),2.02,108.29,option1,106.27
+Scenario 78,High (+ Legal/Pregnancy/Species),2.02,108.29,option1,106.27
+Scenario 78,Maximum (+ Network Effects),2.02,108.29,option1,106.27
+Scenario 79,None (Demographic-Blind),14.45,65.15,option1,50.70
+Scenario 79,Low (Age Only),14.45,65.15,option1,50.70
+Scenario 79,Medium (+ Occupation/Health/Criminal),6.68,65.15,option1,58.46
+Scenario 79,High (+ Legal/Pregnancy/Species),3.62,45.60,option1,41.98
+Scenario 79,Maximum (+ Network Effects),4.19,45.60,option1,41.41
+Scenario 80,None (Demographic-Blind),3.59,32.08,option1,28.49
+Scenario 80,Low (Age Only),3.59,32.08,option1,28.49
+Scenario 80,Medium (+ Occupation/Health/Criminal),3.59,18.43,option1,14.85
+Scenario 80,High (+ Legal/Pregnancy/Species),3.59,13.39,option1,9.81
+Scenario 80,Maximum (+ Network Effects),3.59,18.91,option1,15.33
+Scenario 81,None (Demographic-Blind),80.88,81.20,option1,0.32
+Scenario 81,Low (Age Only),80.88,81.20,option1,0.32
+Scenario 81,Medium (+ Occupation/Health/Criminal),47.45,78.96,option1,31.51
+Scenario 81,High (+ Legal/Pregnancy/Species),45.09,78.43,option1,33.35
+Scenario 81,Maximum (+ Network Effects),45.09,78.43,option1,33.35
+Scenario 82,None (Demographic-Blind),50.97,9.36,option2,41.62
+Scenario 82,Low (Age Only),50.97,9.36,option2,41.62
+Scenario 82,Medium (+ Occupation/Health/Criminal),25.81,9.36,option2,16.45
+Scenario 82,High (+ Legal/Pregnancy/Species),20.82,9.36,option2,11.46
+Scenario 82,Maximum (+ Network Effects),20.82,9.36,option2,11.46
+Scenario 83,None (Demographic-Blind),1.04,14.99,option1,13.94
+Scenario 83,Low (Age Only),1.04,14.99,option1,13.94
+Scenario 83,Medium (+ Occupation/Health/Criminal),1.03,14.99,option1,13.96
+Scenario 83,High (+ Legal/Pregnancy/Species),0.95,14.99,option1,14.03
+Scenario 83,Maximum (+ Network Effects),0.95,19.48,option1,18.53
+Scenario 84,None (Demographic-Blind),1.45,10.34,option1,8.89
+Scenario 84,Low (Age Only),1.45,10.34,option1,8.89
+Scenario 84,Medium (+ Occupation/Health/Criminal),2.61,10.33,option1,7.72
+Scenario 84,High (+ Legal/Pregnancy/Species),1.31,10.26,option1,8.95
+Scenario 84,Maximum (+ Network Effects),1.31,10.26,option1,8.95
+Scenario 85,None (Demographic-Blind),34.20,5.88,option2,28.32
+Scenario 85,Low (Age Only),34.20,5.88,option2,28.32
+Scenario 85,Medium (+ Occupation/Health/Criminal),34.20,6.29,option2,27.91
+Scenario 85,High (+ Legal/Pregnancy/Species),30.78,5.90,option2,24.88
+Scenario 85,Maximum (+ Network Effects),30.78,6.05,option2,24.73
+Scenario 86,None (Demographic-Blind),9.38,86.10,option1,76.72
+Scenario 86,Low (Age Only),9.38,86.10,option1,76.72
+Scenario 86,Medium (+ Occupation/Health/Criminal),9.01,54.61,option1,45.60
+Scenario 86,High (+ Legal/Pregnancy/Species),9.01,52.25,option1,43.24
+Scenario 86,Maximum (+ Network Effects),9.01,52.25,option1,43.24
+Scenario 87,None (Demographic-Blind),190.96,139.16,option2,51.80
+Scenario 87,Low (Age Only),190.96,139.16,option2,51.80
+Scenario 87,Medium (+ Occupation/Health/Criminal),190.96,36.74,option2,154.22
+Scenario 87,High (+ Legal/Pregnancy/Species),190.96,36.74,option2,154.22
+Scenario 87,Maximum (+ Network Effects),190.96,36.74,option2,154.22
+Scenario 88,None (Demographic-Blind),0.98,4.06,option1,3.07
+Scenario 88,Low (Age Only),0.98,4.06,option1,3.07
+Scenario 88,Medium (+ Occupation/Health/Criminal),0.98,1.20,option1,0.22
+Scenario 88,High (+ Legal/Pregnancy/Species),0.49,1.17,option1,0.68
+Scenario 88,Maximum (+ Network Effects),0.74,1.35,option1,0.61
+Scenario 89,None (Demographic-Blind),49.86,147.70,option1,97.85
+Scenario 89,Low (Age Only),49.86,147.70,option1,97.85
+Scenario 89,Medium (+ Occupation/Health/Criminal),49.86,147.70,option1,97.85
+Scenario 89,High (+ Legal/Pregnancy/Species),49.86,88.74,option1,38.88
+Scenario 89,Maximum (+ Network Effects),49.86,89.24,option1,39.38
+Scenario 90,None (Demographic-Blind),0.00,95.23,option1,95.23
+Scenario 90,Low (Age Only),0.00,95.23,option1,95.23
+Scenario 90,Medium (+ Occupation/Health/Criminal),0.00,95.23,option1,95.23
+Scenario 90,High (+ Legal/Pregnancy/Species),0.00,95.23,option1,95.23
+Scenario 90,Maximum (+ Network Effects),0.00,95.23,option1,95.23
+Scenario 91,None (Demographic-Blind),49.01,50.57,option1,1.56
+Scenario 91,Low (Age Only),49.01,50.57,option1,1.56
+Scenario 91,Medium (+ Occupation/Health/Criminal),49.01,34.67,option2,14.33
+Scenario 91,High (+ Legal/Pregnancy/Species),49.01,34.67,option2,14.33
+Scenario 91,Maximum (+ Network Effects),49.01,34.67,option2,14.33
+Scenario 92,None (Demographic-Blind),50.62,4.20,option2,46.41
+Scenario 92,Low (Age Only),50.62,4.20,option2,46.41
+Scenario 92,Medium (+ Occupation/Health/Criminal),46.50,4.20,option2,42.30
+Scenario 92,High (+ Legal/Pregnancy/Species),46.50,3.78,option2,42.72
+Scenario 92,Maximum (+ Network Effects),47.13,3.78,option2,43.35
+Scenario 93,None (Demographic-Blind),0.60,101.62,option1,101.02
+Scenario 93,Low (Age Only),0.60,101.62,option1,101.02
+Scenario 93,Medium (+ Occupation/Health/Criminal),0.20,97.88,option1,97.68
+Scenario 93,High (+ Legal/Pregnancy/Species),0.12,53.03,option1,52.91
+Scenario 93,Maximum (+ Network Effects),0.19,53.03,option1,52.84
+Scenario 94,None (Demographic-Blind),53.46,39.44,option2,14.02
+Scenario 94,Low (Age Only),53.46,39.44,option2,14.02
+Scenario 94,Medium (+ Occupation/Health/Criminal),41.46,39.44,option2,2.02
+Scenario 94,High (+ Legal/Pregnancy/Species),39.39,39.44,neutral,0.05
+Scenario 94,Maximum (+ Network Effects),40.46,39.44,option2,1.02
+Scenario 95,None (Demographic-Blind),123.12,112.48,option2,10.64
+Scenario 95,Low (Age Only),123.12,112.48,option2,10.64
+Scenario 95,Medium (+ Occupation/Health/Criminal),123.12,112.48,option2,10.64
+Scenario 95,High (+ Legal/Pregnancy/Species),123.12,112.48,option2,10.64
+Scenario 95,Maximum (+ Network Effects),123.12,112.48,option2,10.64
+Scenario 96,None (Demographic-Blind),9.48,2.98,option2,6.50
+Scenario 96,Low (Age Only),9.48,2.98,option2,6.50
+Scenario 96,Medium (+ Occupation/Health/Criminal),9.24,4.46,option2,4.78
+Scenario 96,High (+ Legal/Pregnancy/Species),9.24,2.23,option2,7.01
+Scenario 96,Maximum (+ Network Effects),9.24,2.23,option2,7.01
+Scenario 97,None (Demographic-Blind),92.56,4.22,option2,88.34
+Scenario 97,Low (Age Only),92.56,4.22,option2,88.34
+Scenario 97,Medium (+ Occupation/Health/Criminal),60.52,4.22,option2,56.30
+Scenario 97,High (+ Legal/Pregnancy/Species),60.52,4.22,option2,56.30
+Scenario 97,Maximum (+ Network Effects),60.52,4.22,option2,56.30
+Scenario 98,None (Demographic-Blind),69.12,66.99,option2,2.13
+Scenario 98,Low (Age Only),69.12,66.99,option2,2.13
+Scenario 98,Medium (+ Occupation/Health/Criminal),32.51,66.99,option1,34.48
+Scenario 98,High (+ Legal/Pregnancy/Species),20.48,66.99,option1,46.51
+Scenario 98,Maximum (+ Network Effects),20.48,66.99,option1,46.51
+Scenario 99,None (Demographic-Blind),65.71,127.28,option1,61.57
+Scenario 99,Low (Age Only),65.71,127.28,option1,61.57
+Scenario 99,Medium (+ Occupation/Health/Criminal),65.71,127.28,option1,61.57
+Scenario 99,High (+ Legal/Pregnancy/Species),65.71,127.28,option1,61.57
+Scenario 99,Maximum (+ Network Effects),65.71,127.28,option1,61.57
+Scenario 100,None (Demographic-Blind),12.20,151.32,option1,139.12
+Scenario 100,Low (Age Only),12.20,151.32,option1,139.12
+Scenario 100,Medium (+ Occupation/Health/Criminal),4.70,148.22,option1,143.52
+Scenario 100,High (+ Legal/Pregnancy/Species),2.87,137.04,option1,134.17
+Scenario 100,Maximum (+ Network Effects),2.87,137.04,option1,134.17

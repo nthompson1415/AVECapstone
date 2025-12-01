@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Library, TrendingUp, Users, AlertCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Library, TrendingUp, Users, AlertCircle, BarChart3, FileText, Table } from 'lucide-react';
 
 const FindingsPage = () => {
   const [contentData, setContentData] = useState(null);
@@ -74,6 +75,33 @@ const FindingsPage = () => {
               </div>
             </section>
           )}
+
+          {/* Data Analysis Section */}
+          <section className="mt-8">
+            <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6 border-2 border-green-300 shadow-md">
+              <div className="flex items-center gap-3 mb-4">
+                <BarChart3 className="w-6 h-6 text-green-600" />
+                <h2 className="text-2xl font-bold text-gray-900">Extended Data Analysis</h2>
+              </div>
+              <p className="text-gray-700 mb-4">
+                Explore the complete analysis of 100 unique ethical scenarios across 5 connectedness levels. 
+                View the detailed report and interact with the full dataset.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to="/data"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition shadow-md"
+                >
+                  <BarChart3 className="w-5 h-5" />
+                  View Data Analysis
+                </Link>
+                <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <FileText className="w-4 h-4" />
+                  <span>100 scenarios × 5 levels = 500 data points</span>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>
