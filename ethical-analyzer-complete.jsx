@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, memo } from 'react';
 import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, ChevronDown, ChevronUp, BarChart3, Library, Plus, Minus } from 'lucide-react';
 
 const EthicalChoiceAnalyzer = () => {
@@ -260,6 +260,14 @@ const EthicalChoiceAnalyzer = () => {
       });
     }
   }, [simpleMode]);
+
+  // Memoized update handler to prevent re-renders and maintain focus
+  const handleOptionUpdate = useCallback((optionKey, updatedOption) => {
+    setScenario(prevScenario => ({
+      ...prevScenario,
+      [optionKey]: updatedOption
+    }));
+  }, []);
 
   const severityScores = {
     none: 0, minor: 1, moderate: 2, serious: 3, critical: 4, fatal: 5
@@ -686,18 +694,27 @@ const EthicalChoiceAnalyzer = () => {
     );
   };
 
-  const OptionInput = ({ option, optionKey }) => (
-    <div className="bg-white rounded-lg shadow-md p-6 border-2 border-gray-200">
-      <input type="text" value={option.name}
-        onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, name: e.target.value } })}
-        className="text-xl font-bold mb-4 w-full border-b-2 border-blue-300 focus:border-blue-500 outline-none pb-2"
-        disabled={simpleMode} />
+  const OptionInput = memo(({ option, optionKey, simpleMode, onUpdate, includeControversial, includeExtendedFactors, includeNetworkEffects }) => {
+    const handleNameChange = useCallback((e) => {
+      onUpdate(optionKey, { ...option, name: e.target.value });
+    }, [optionKey, option, onUpdate]);
+
+    const handleFieldUpdate = useCallback((field, value) => {
+      onUpdate(optionKey, { ...option, [field]: value });
+    }, [optionKey, option, onUpdate]);
+
+    return (
+      <div className="bg-white rounded-lg shadow-md p-6 border-2 border-gray-200">
+        <input type="text" value={option.name}
+          onChange={handleNameChange}
+          className="text-xl font-bold mb-4 w-full border-b-2 border-blue-300 focus:border-blue-500 outline-none pb-2"
+          disabled={simpleMode} />
 
       <div className="space-y-4">
         <NumberInput
           label="Vehicle Occupants"
           value={option.occupants}
-          onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, occupants: val } })}
+          onChange={(val) => handleFieldUpdate('occupants', val)}
           min={0}
           max={20}
           disabled={simpleMode}
@@ -708,7 +725,7 @@ const EthicalChoiceAnalyzer = () => {
             <NumberInput
               label="Average Age of Occupants"
               value={option.occupantAge}
-              onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, occupantAge: val } })}
+              onChange={(val) => handleFieldUpdate('occupantAge', val)}
               min={0}
               max={120}
               disabled={simpleMode}
@@ -719,7 +736,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Occupation</label>
                   <select value={option.occupantJob}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantJob: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantJob', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="unemployed">Unemployed</option>
                     <option value="average">Average Worker</option>
@@ -734,7 +751,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Health</label>
                   <select value={option.occupantHealth}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantHealth: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantHealth', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="healthy">Healthy</option>
                     <option value="chronic">Chronic Condition</option>
@@ -744,7 +761,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Criminal History</label>
                   <select value={option.occupantCriminal}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantCriminal: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantCriminal', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="none">No History</option>
                     <option value="minor">Minor Offenses</option>
@@ -762,7 +779,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Legal Status</label>
                   <select value={option.occupantLegalFault}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantLegalFault: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantLegalFault', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="legal">Following Laws</option>
                     <option value="minorViolation">Minor Violation</option>
@@ -775,7 +792,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Risk Level</label>
                   <select value={option.occupantRisk}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantRisk: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantRisk', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="innocent">Innocent</option>
                     <option value="normal">Normal</option>
@@ -787,7 +804,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Pregnancy</label>
                   <select value={option.occupantPregnant}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantPregnant: e.target.value === 'true' } })}
+                    onChange={(e) => handleFieldUpdate('occupantPregnant', e.target.value === 'true')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="false">Not Pregnant</option>
                     <option value="true">Pregnant</option>
@@ -796,7 +813,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Species</label>
                   <select value={option.occupantSpecies}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantSpecies: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('occupantSpecies', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="human">Human</option>
                     <option value="petDog">Pet Dog</option>
@@ -811,7 +828,7 @@ const EthicalChoiceAnalyzer = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Occupant Network</label>
                 <select value={option.occupantNetwork}
-                  onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, occupantNetwork: e.target.value } })}
+                  onChange={(e) => handleFieldUpdate('occupantNetwork', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md">
                   <option value="none">None</option>
                   <option value="partner">Partner</option>
@@ -828,7 +845,7 @@ const EthicalChoiceAnalyzer = () => {
         <NumberInput
           label="Pedestrians"
           value={option.pedestrians}
-          onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrians: val } })}
+          onChange={(val) => handleFieldUpdate('pedestrians', val)}
           min={0}
           max={20}
           disabled={simpleMode}
@@ -839,7 +856,7 @@ const EthicalChoiceAnalyzer = () => {
             <NumberInput
               label="Pedestrian Age"
               value={option.pedestrianAge}
-              onChange={(val) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianAge: val } })}
+              onChange={(val) => handleFieldUpdate('pedestrianAge', val)}
               min={0}
               max={120}
               disabled={simpleMode}
@@ -850,7 +867,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Occupation</label>
                   <select value={option.pedestrianJob}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianJob: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianJob', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="unemployed">Unemployed</option>
                     <option value="average">Average Worker</option>
@@ -865,7 +882,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Health</label>
                   <select value={option.pedestrianHealth}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianHealth: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianHealth', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="healthy">Healthy</option>
                     <option value="chronic">Chronic Condition</option>
@@ -875,7 +892,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Criminal History</label>
                   <select value={option.pedestrianCriminal}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianCriminal: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianCriminal', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="none">No History</option>
                     <option value="minor">Minor Offenses</option>
@@ -893,7 +910,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Legal Status</label>
                   <select value={option.pedestrianLegalFault}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianLegalFault: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianLegalFault', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="legal">Following Laws</option>
                     <option value="minorViolation">Minor Violation</option>
@@ -906,7 +923,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Risk</label>
                   <select value={option.pedestrianRisk}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianRisk: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianRisk', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="innocent">Innocent</option>
                     <option value="normal">Normal</option>
@@ -918,7 +935,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Pregnancy</label>
                   <select value={option.pedestrianPregnant}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianPregnant: e.target.value === 'true' } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianPregnant', e.target.value === 'true')}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="false">Not Pregnant</option>
                     <option value="true">Pregnant</option>
@@ -927,7 +944,7 @@ const EthicalChoiceAnalyzer = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Species</label>
                   <select value={option.pedestrianSpecies}
-                    onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianSpecies: e.target.value } })}
+                    onChange={(e) => handleFieldUpdate('pedestrianSpecies', e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md">
                     <option value="human">Human</option>
                     <option value="petDog">Pet Dog</option>
@@ -942,7 +959,7 @@ const EthicalChoiceAnalyzer = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Pedestrian Network</label>
                 <select value={option.pedestrianNetwork}
-                  onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, pedestrianNetwork: e.target.value } })}
+                  onChange={(e) => handleFieldUpdate('pedestrianNetwork', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md">
                   <option value="none">None</option>
                   <option value="partner">Partner</option>
@@ -959,7 +976,7 @@ const EthicalChoiceAnalyzer = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Injury Severity</label>
           <select value={option.severity}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, severity: e.target.value } })}
+            onChange={(e) => handleFieldUpdate('severity', e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md" disabled={simpleMode}>
             <option value="none">None</option>
             <option value="minor">Minor</option>
@@ -973,12 +990,13 @@ const EthicalChoiceAnalyzer = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Certainty: {option.certainty}%</label>
           <input type="range" min="0" max="100" value={option.certainty}
-            onChange={(e) => setScenario({ ...scenario, [optionKey]: { ...option, certainty: parseInt(e.target.value) } })}
+            onChange={(e) => handleFieldUpdate('certainty', parseInt(e.target.value))}
             className="w-full" disabled={simpleMode} />
         </div>
       </div>
     </div>
-  );
+    );
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
@@ -1068,8 +1086,24 @@ const EthicalChoiceAnalyzer = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <OptionInput option={scenario.option1} optionKey="option1" />
-          <OptionInput option={scenario.option2} optionKey="option2" />
+          <OptionInput 
+            option={scenario.option1} 
+            optionKey="option1" 
+            simpleMode={simpleMode}
+            onUpdate={handleOptionUpdate}
+            includeControversial={includeControversial}
+            includeExtendedFactors={includeExtendedFactors}
+            includeNetworkEffects={includeNetworkEffects}
+          />
+          <OptionInput 
+            option={scenario.option2} 
+            optionKey="option2"
+            simpleMode={simpleMode}
+            onUpdate={handleOptionUpdate}
+            includeControversial={includeControversial}
+            includeExtendedFactors={includeExtendedFactors}
+            includeNetworkEffects={includeNetworkEffects}
+          />
         </div>
 
         <div className="flex flex-wrap gap-4 justify-center mb-8">
