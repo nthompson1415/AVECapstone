@@ -1,29 +1,23 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Capstone Presentation</title>
-
+  <title>Presentation 3: Preliminary Data Analysis</title>
   <style>
-
     * {
-
       margin: 0;
-
       padding: 0;
-
       box-sizing: border-box;
-
     }
-
     
-
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
+      background: #1a202c;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    
     .nav-bar {
       background: white;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -76,934 +70,626 @@
       background: #eef2ff;
     }
     
-    body {
-
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
-
-      background: #1a202c;
-
-      overflow-y: auto;
-      overflow-x: hidden;
-
-    }
-    
-    
-
     .slide {
-
       display: none;
-
       min-height: 100vh;
-
-      padding: 70px 100px;
-
+      padding: 60px 80px;
       background: white;
-
     }
     
-    
-
     .slide.active {
-
       display: flex;
-
       flex-direction: column;
-
       justify-content: flex-start;
       overflow-y: auto;
-
     }
-
     
-
     .slide h1 {
-
-      font-size: 62px;
-
+      font-size: 56px;
       color: #1a202c;
-
       margin-bottom: 30px;
-
       font-weight: 800;
-
       line-height: 1.2;
-
     }
-
     
-
     .slide h2 {
-
-      font-size: 48px;
-
+      font-size: 42px;
       color: #667eea;
-
-      margin-bottom: 35px;
-
-      font-weight: 700;
-
-    }
-
-    
-
-    .slide h3 {
-
-      font-size: 36px;
-
-      color: #4a5568;
-
       margin-bottom: 25px;
-
-      font-weight: 600;
-
+      font-weight: 700;
     }
-
     
-
-    .slide p {
-
-      font-size: 26px;
-
-      color: #4a5568;
-
-      line-height: 1.8;
-
-      margin-bottom: 20px;
-
-    }
-
-    
-
-    .slide ul {
-
-      margin-left: 50px;
-
-      margin-top: 20px;
-
-    }
-
-    
-
-    .slide li {
-
-      font-size: 26px;
-
-      color: #4a5568;
-
-      line-height: 1.9;
-
-      margin-bottom: 18px;
-
-    }
-
-    
-
-    .subtitle {
-
-      font-size: 34px;
-
-      color: #718096;
-
-      font-weight: 400;
-
-      margin-top: 20px;
-
-      line-height: 1.4;
-
-    }
-
-    
-
-    .meta {
-
-      font-size: 28px;
-
-      color: #a0aec0;
-
-      margin-top: 60px;
-
-      line-height: 1.8;
-
-    }
-
-    
-
-    .rq-box {
-
-      background: linear-gradient(135deg, #667eea18, #764ba218);
-
-      border-left: 7px solid #667eea;
-
-      padding: 35px;
-
-      margin: 30px 0;
-
-      border-radius: 14px;
-
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.12);
-
-    }
-
-    
-
-    .rq-box h3 {
-
-      color: #2d3748;
-
-      margin-bottom: 18px;
-
-      font-size: 30px;
-
-    }
-
-    
-
-    .rq-box p {
-
-      font-style: italic;
-
-      font-size: 24px;
-
-      line-height: 1.8;
-
-      color: #4a5568;
-
-    }
-
-    
-
-    .finding-box {
-
-      background: #fffaf0;
-
-      border: 4px solid #ed8936;
-
-      border-radius: 16px;
-
-      padding: 35px;
-
-      margin: 30px 0;
-
-      box-shadow: 0 6px 20px rgba(237, 137, 54, 0.15);
-
-    }
-
-    
-
-    .finding-box h4 {
-
+    .slide h3 {
       font-size: 32px;
-
-      color: #c05621;
-
-      margin-bottom: 18px;
-
-      font-weight: 700;
-
+      color: #4a5568;
+      margin-bottom: 20px;
+      font-weight: 600;
     }
-
     
-
-    .finding-box p {
-
-      font-size: 24px;
-
-      color: #2d3748;
-
-      line-height: 1.9;
-
-    }
-
-    
-
-    .stat-highlight {
-
-      background: linear-gradient(135deg, #667eea, #764ba2);
-
-      color: white;
-
-      padding: 8px 20px;
-
-      border-radius: 8px;
-
-      font-weight: 800;
-
-      display: inline-block;
-
-      margin: 0 5px;
-
-    }
-
-    
-
-    .conclusion-slide {
-
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-      color: white;
-
-    }
-
-    
-
-    .conclusion-slide h2,
-
-    .conclusion-slide h3,
-
-    .conclusion-slide p,
-
-    .conclusion-slide li {
-
-      color: white;
-
-    }
-
-    
-
-    .conclusion-slide .rq-box {
-
-      background: rgba(255, 255, 255, 0.15);
-
-      border-left-color: white;
-
-    }
-
-    
-
-    .controls {
-
-      position: fixed;
-
-      bottom: 35px;
-
-      right: 35px;
-
-      display: flex;
-
-      gap: 18px;
-
-      z-index: 1000;
-
-    }
-
-    
-
-    .controls button {
-
-      background: #667eea;
-
-      color: white;
-
-      border: none;
-
-      padding: 18px 35px;
-
-      font-size: 20px;
-
-      border-radius: 10px;
-
-      cursor: pointer;
-
-      font-weight: 700;
-
-      box-shadow: 0 6px 15px rgba(102, 126, 234, 0.35);
-
-      transition: all 0.3s;
-
-    }
-
-    
-
-    .controls button:hover {
-
-      background: #5a67d8;
-
-      transform: translateY(-3px);
-
-      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.45);
-
-    }
-
-    
-
-    .slide-number {
-
-      position: fixed;
-
-      bottom: 35px;
-
-      left: 35px;
-
+    .slide h4 {
       font-size: 26px;
-
+      color: #2d3748;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    
+    .slide p, .slide li {
+      font-size: 22px;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    
+    .slide ul {
+      margin-left: 45px;
+      margin-top: 15px;
+    }
+    
+    .slide li {
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      font-size: 28px;
+      color: #718096;
+      font-weight: 400;
+      margin-top: 15px;
+    }
+    
+    .meta {
+      font-size: 24px;
       color: #a0aec0;
-
-      font-weight: 700;
-
-      z-index: 1000;
-
+      margin-top: 40px;
+      line-height: 1.6;
     }
-
     
-
-    .emphasis {
-
-      background: linear-gradient(135deg, #fed7d7, #feebc8);
-
-      padding: 5px 14px;
-
-      border-radius: 7px;
-
-      font-weight: 700;
-
-      color: #c05621;
-
+    .ist-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 25px;
+      margin-top: 30px;
     }
-
     
-
-    .stat-big {
-
-      font-size: 120px;
-
-      font-weight: 900;
-
-      text-align: center;
-
+    .ist-card {
+      background: linear-gradient(135deg, #667eea15, #764ba215);
+      border: 3px solid #667eea;
+      border-radius: 12px;
+      padding: 25px;
+    }
+    
+    .ist-card h4 {
+      color: #667eea;
+      margin-bottom: 15px;
+    }
+    
+    .rq-box {
+      background: linear-gradient(135deg, #667eea10, #764ba210);
+      border-left: 6px solid #667eea;
+      padding: 25px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    
+    .rq-box p {
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.7;
+    }
+    
+    .variables-box {
+      background: #f7fafc;
+      border: 3px solid #cbd5e0;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+    
+    .table {
+      width: 100%;
+      margin-top: 25px;
+      font-size: 17px;
+      border-collapse: collapse;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .table th {
       background: linear-gradient(135deg, #667eea, #764ba2);
-
-      -webkit-background-clip: text;
-
-      -webkit-text-fill-color: transparent;
-
-      background-clip: text;
-
-      margin: 30px 0;
-
-      line-height: 1;
-
+      color: white;
+      padding: 15px;
+      text-align: left;
+      font-weight: 700;
     }
-
     
-
-    /* Responsive Design - Media Queries */
-
+    .table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #e2e8f0;
+      background: white;
+    }
+    
+    .table tr:nth-child(even) td {
+      background: #f7fafc;
+    }
+    
+    .table .changed {
+      background: #fff5f5 !important;
+      font-weight: 700;
+      color: #c53030;
+    }
+    
+    .finding-highlight {
+      background: linear-gradient(135deg, #fffaf0 0%, #ffeaa7 100%);
+      border: 3px solid #ed8936;
+      border-radius: 16px;
+      padding: 30px;
+      margin: 20px 0;
+      box-shadow: 0 8px 24px rgba(237, 137, 54, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .finding-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #ed8936, #c05621);
+    }
+    
+    .finding-highlight h4 {
+      color: #c05621;
+      margin-bottom: 15px;
+      font-size: 24px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .finding-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 35px;
+      margin: 25px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .finding-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    }
+    
+    .finding-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+      border-color: #667eea;
+    }
+    
+    .finding-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .finding-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      margin-right: 20px;
+    }
+    
+    .finding-title {
+      flex: 1;
+      font-size: 26px;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 0;
+    }
+    
+    .finding-icon {
+      font-size: 32px;
+      margin-right: 15px;
+    }
+    
+    .finding-stat-badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #fed7d7, #fc8181);
+      color: #742a2a;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(252, 129, 129, 0.3);
+      margin: 10px 10px 10px 0;
+      border: 2px solid #fc8181;
+    }
+    
+    .finding-content {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #4a5568;
+      margin-top: 15px;
+    }
+    
+    .finding-details {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .finding-details strong {
+      color: #2d3748;
+      font-weight: 700;
+    }
+    
+    .finding-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    @media (min-width: 1200px) {
+      .finding-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .stat-big {
+      font-size: 72px;
+      font-weight: 800;
+      color: #667eea;
+      text-align: center;
+      margin: 25px 0;
+    }
+    
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .ref-list {
+      font-size: 16px !important;
+      line-height: 1.5 !important;
+      margin-left: 0 !important;
+      list-style: none !important;
+    }
+    
+    .ref-list li {
+      margin-bottom: 18px !important;
+      padding-left: 25px;
+      text-indent: -25px;
+      font-size: 16px !important;
+    }
+    
+    .toc-item {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    
+    .toc-item h4 {
+      font-size: 22px;
+      color: #2d3748;
+      margin-bottom: 10px;
+    }
+    
+    .toc-item ul {
+      margin-left: 30px;
+      list-style: disc;
+    }
+    
+    .toc-item li {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    
+    .controls {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      gap: 15px;
+      z-index: 1000;
+    }
+    
+    .controls button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      transition: all 0.3s;
+    }
+    
+    .controls button:hover {
+      background: #5a67d8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    .slide-number {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      font-size: 24px;
+      color: #a0aec0;
+      font-weight: 700;
+      z-index: 1000;
+    }
+    
+    .emphasis {
+      background: linear-gradient(135deg, #667eea20, #764ba220);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+      color: #5a67d8;
+    }
+    
+    /* Responsive Design */
     @media (max-width: 1024px) {
-
       .slide {
-
         padding: 50px 60px;
-
       }
-
       
-
       .slide h1 {
-
         font-size: 48px;
-
       }
-
       
-
       .slide h2 {
-
-        font-size: 38px;
-
-      }
-
-      
-
-      .slide h3 {
-
-        font-size: 30px;
-
-      }
-
-      
-
-      .slide p, .slide li {
-
-        font-size: 22px;
-
-      }
-
-      
-
-      .stat-big {
-
-        font-size: 90px;
-
-      }
-
-      
-
-      .controls button {
-
-        padding: 14px 28px;
-
-        font-size: 18px;
-
-      }
-
-    }
-
-    
-
-    @media (max-width: 768px) {
-
-      body {
-
-        overflow-y: auto;
-
-      }
-
-      
-
-      .slide {
-
-        padding: 40px 30px;
-
-        min-height: auto;
-
-      }
-
-      
-
-      .slide h1 {
-
         font-size: 36px;
-
       }
-
       
-
-      .slide h2 {
-
-        font-size: 30px;
-
-        margin-bottom: 25px;
-
-      }
-
-      
-
       .slide h3 {
-
-        font-size: 24px;
-
-        margin-bottom: 20px;
-
-      }
-
-      
-
-      .slide p, .slide li {
-
-        font-size: 18px;
-
-        line-height: 1.6;
-
-      }
-
-      
-
-      .slide ul {
-
-        margin-left: 30px;
-
-      }
-
-      
-
-      .subtitle {
-
-        font-size: 24px;
-
-      }
-
-      
-
-      .meta {
-
-        font-size: 20px;
-
-        margin-top: 40px;
-
-      }
-
-      
-
-      .rq-box {
-
-        padding: 25px;
-
-        margin: 20px 0;
-
-      }
-
-      
-
-      .rq-box h3 {
-
-        font-size: 24px;
-
-      }
-
-      
-
-      .rq-box p {
-
-        font-size: 18px;
-
-      }
-
-      
-
-      .finding-box {
-
-        padding: 25px;
-
-        margin: 20px 0;
-
-      }
-
-      
-
-      .finding-box h4 {
-
-        font-size: 24px;
-
-      }
-
-      
-
-      .finding-box p {
-
-        font-size: 18px;
-
-      }
-
-      
-
-      .stat-big {
-
-        font-size: 60px;
-
-      }
-
-      
-
-      .stat-highlight {
-
-        padding: 6px 14px;
-
-        font-size: 16px;
-
-      }
-
-      
-
-      .controls {
-
-        bottom: 20px;
-
-        right: 20px;
-
-        gap: 12px;
-
-        flex-direction: column;
-
-      }
-
-      
-
-      .controls button {
-
-        padding: 12px 24px;
-
-        font-size: 16px;
-
-      }
-
-      
-
-      .slide-number {
-
-        bottom: 20px;
-
-        left: 20px;
-
-        font-size: 20px;
-
-      }
-
-      
-
-      /* Make tables scrollable on mobile */
-
-      table {
-
-        display: block;
-
-        overflow-x: auto;
-
-        -webkit-overflow-scrolling: touch;
-
-        white-space: nowrap;
-
-      }
-
-      
-
-      table thead, table tbody, table tr {
-
-        display: table;
-
-        width: 100%;
-
-        table-layout: fixed;
-
-      }
-
-      
-
-      /* Stack grid layouts on mobile */
-
-      div[style*="grid-template-columns"] {
-
-        grid-template-columns: 1fr !important;
-
-        gap: 20px !important;
-
-      }
-
-      
-
-      /* Adjust inline styles for mobile */
-
-      .slide p[style*="font-size: 28px"] {
-
-        font-size: 20px !important;
-
-      }
-
-      
-
-      .slide p[style*="font-size: 24px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide h1[style*="font-size: 58px"] {
-
-        font-size: 32px !important;
-
-      }
-
-      
-
-      .slide h2[style*="font-size: 52px"] {
-
-        font-size: 32px !important;
-
-      }
-
-      
-
-      .slide ul[style*="font-size: 26px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide ul[style*="font-size: 24px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide ul[style*="font-size: 23px"] {
-
-        font-size: 17px !important;
-
-      }
-
-      
-
-      .slide p[style*="font-size: 30px"] {
-
-        font-size: 20px !important;
-
-      }
-
-      
-
-      .slide p[style*="font-size: 26px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide div[style*="font-size: 26px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide div[style*="font-size: 24px"] {
-
-        font-size: 18px !important;
-
-      }
-
-      
-
-      .slide div[style*="font-size: 22px"] {
-
-        font-size: 16px !important;
-
-      }
-
-      
-
-      .slide h4[style*="font-size: 26px"] {
-
-        font-size: 20px !important;
-
-      }
-
-      
-
-      .slide h3[style*="font-size: 28px"] {
-
-        font-size: 22px !important;
-
-      }
-
-      
-
-      table th[style*="font-size: 20px"] {
-
-        font-size: 14px !important;
-
-        padding: 12px 8px !important;
-
-      }
-
-      
-
-      table td {
-
-        padding: 10px 8px !important;
-
-        font-size: 14px !important;
-
-        white-space: normal !important;
-
-      }
-
-    }
-
-    
-
-    @media (max-width: 480px) {
-
-      .slide {
-
-        padding: 30px 20px;
-
-      }
-
-      
-
-      .slide h1 {
-
         font-size: 28px;
-
       }
-
       
-
-      .slide h2 {
-
-        font-size: 24px;
-
-      }
-
-      
-
-      .slide h3 {
-
-        font-size: 20px;
-
-      }
-
-      
-
       .slide p, .slide li {
-
-        font-size: 16px;
-
+        font-size: 20px;
       }
-
       
-
       .stat-big {
-
-        font-size: 48px;
-
+        font-size: 60px;
       }
-
-      
-
-      .controls {
-
-        bottom: 15px;
-
-        right: 15px;
-
-      }
-
-      
-
-      .controls button {
-
-        padding: 10px 20px;
-
-        font-size: 14px;
-
-      }
-
-      
-
-      .slide-number {
-
-        bottom: 15px;
-
-        left: 15px;
-
-        font-size: 18px;
-
-      }
-
     }
-
+    
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto;
+      }
+      
+      .slide {
+        padding: 40px 30px;
+        min-height: auto;
+      }
+      
+      .slide h1 {
+        font-size: 32px;
+      }
+      
+      .slide h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+      
+      .slide h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      
+      .slide h4 {
+        font-size: 20px;
+      }
+      
+      .slide p, .slide li {
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      
+      .slide ul {
+        margin-left: 30px;
+      }
+      
+      .subtitle {
+        font-size: 22px;
+      }
+      
+      .meta {
+        font-size: 18px;
+        margin-top: 30px;
+      }
+      
+      .ist-box {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .rq-box {
+        padding: 20px;
+        margin: 15px 0;
+      }
+      
+      .rq-box p {
+        font-size: 17px;
+      }
+      
+      .variables-box {
+        padding: 20px;
+      }
+      
+      .finding-highlight {
+        padding: 20px;
+      }
+      
+      .stat-big {
+        font-size: 48px;
+      }
+      
+      .table {
+        font-size: 14px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      
+      .table thead, .table tbody, .table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+      }
+      
+      .table th, .table td {
+        padding: 10px 8px;
+      }
+      
+      .controls {
+        bottom: 20px;
+        right: 20px;
+        gap: 12px;
+        flex-direction: column;
+      }
+      
+      .controls button {
+        padding: 12px 24px;
+        font-size: 16px;
+      }
+      
+      .slide-number {
+        bottom: 20px;
+        left: 20px;
+        font-size: 20px;
+      }
+      
+      .ref-list {
+        font-size: 14px !important;
+      }
+      
+      .ref-list li {
+        font-size: 14px !important;
+        margin-bottom: 12px !important;
+      }
+      
+      .toc-item h4 {
+        font-size: 18px;
+      }
+      
+      .toc-item li {
+        font-size: 16px;
+      }
+      
+      /* Adjust inline styles for mobile */
+      .slide p[style*="font-size: 24px"] {
+        font-size: 18px !important;
+      }
+      
+      .slide p[style*="font-size: 22px"] {
+        font-size: 17px !important;
+      }
+      
+      .slide p[style*="font-size: 20px"] {
+        font-size: 16px !important;
+      }
+      
+      .slide p[style*="font-size: 18px"] {
+        font-size: 15px !important;
+      }
+      
+      .slide h4[style*="font-size: 22px"] {
+        font-size: 18px !important;
+      }
+      
+      .slide ul[style*="font-size: 18px"] {
+        font-size: 15px !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .slide {
+        padding: 30px 20px;
+      }
+      
+      .slide h1 {
+        font-size: 28px;
+      }
+      
+      .slide h2 {
+        font-size: 24px;
+      }
+      
+      .slide h3 {
+        font-size: 20px;
+      }
+      
+      .slide h4 {
+        font-size: 18px;
+      }
+      
+      .slide p, .slide li {
+        font-size: 15px;
+      }
+      
+      .stat-big {
+        font-size: 40px;
+      }
+      
+      .controls {
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .controls button {
+        padding: 10px 20px;
+        font-size: 14px;
+      }
+      
+      .slide-number {
+        bottom: 15px;
+        left: 15px;
+        font-size: 18px;
+      }
+      
+      .table {
+        font-size: 12px;
+      }
+      
+      .table th, .table td {
+        padding: 8px 6px;
+      }
+    }
   </style>
-
 </head>
-
 <body>
   <!-- Navigation Bar -->
   <nav class="nav-bar">
@@ -1015,482 +701,612 @@
         <a href="/AVECapstone/">Analyzer</a>
         <a href="/AVECapstone/poster.html">Poster</a>
         <a href="/AVECapstone/presentation.html" class="active">Presentation</a>
+        <a href="/AVECapstone/final-capstone-presentation.html">Final Presentation</a>
       </div>
     </div>
   </nav>
-
-  <!-- Slide 1: Title -->
-
+  
+  <!-- Slide 1: Title Page -->
   <div class="slide active">
-
-    <h1>Context-Sensitive Ethics in Autonomous Vehicles:</h1>
-
-    <h1 style="font-size: 58px;">Rigid Rules vs. Adaptive Algorithms</h1>
-
-    <div class="subtitle">IST 477 Capstone in Innovation, Society & Technology</div>
-
+    <h1>Context-Sensitive Ethics in Autonomous Vehicles</h1>
+    <div class="subtitle">Examining the Trade-offs Between Rigid Demographic-Blind Rules and Adaptive Utilitarian Algorithms</div>
     <div class="meta">
-
-      <p>Noah Thompson</p>
-
-      <p>Professor Lee W. McKnight</p>
-
-      <p>Syracuse University iSchool</p>
-
-      <p>December 2025</p>
-
+      <p><strong>IST 477: Capstone in Innovation, Society & Technology</strong></p>
+      <p style="margin-top: 30px;">Student: Noah Thompson</p>
+      <p>Instructor: Lee W. McKnight</p>
     </div>
-
   </div>
 
-
-
-  <!-- Slide 2: Problem/Topic -->
-
+  <!-- Slide 2: Problem & I/S/T Dimensions -->
   <div class="slide">
-
-    <h2>The Problem</h2>
-
+    <h2>The Problem: Programming Morality</h2>
     
-
-    <p style="font-size: 28px; margin-bottom: 35px; line-height: 1.7;">
-
-      As autonomous vehicles advance toward widespread deployment, they must be programmed to handle unavoidable accident scenarios. <span class="emphasis">Should these life-or-death decisions be governed by simple demographic-blind rules or complex context-sensitive algorithms?</span>
-
+    <p style="font-size: 24px; margin-bottom: 30px;">
+      As autonomous vehicles advance, they must be programmed to handle unavoidable accident scenarios. 
+      Should these decisions be governed by simple rules or context-sensitive algorithms?
     </p>
-
     
-
-    <h3 style="margin-top: 40px;">Two Competing Approaches:</h3>
-
-    
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
-
-      <div style="background: #f0fff4; border: 4px solid #68d391; border-radius: 15px; padding: 30px;">
-
-        <h4 style="font-size: 26px; color: #2f855a; margin-bottom: 15px;">Rigid Demographic-Blind Rules</h4>
-
-        <p style="font-size: 22px; color: #2d3748;">German Ethics Commission (2017): "Treat all humans equally, minimize casualties, avoid discrimination"</p>
-
+    <div class="ist-box">
+      <div class="ist-card">
+        <h4>🔬 Innovation</h4>
+        <p>AI/ML systems making life-or-death decisions in real-time</p>
+        <p style="margin-top: 15px; font-size: 18px;">Algorithmic ethics, utilitarian calculus, decision frameworks</p>
       </div>
-
       
-
-      <div style="background: #fffaf0; border: 4px solid #ed8936; border-radius: 15px; padding: 30px;">
-
-        <h4 style="font-size: 26px; color: #c05621; margin-bottom: 15px;">Context-Sensitive Algorithms</h4>
-
-        <p style="font-size: 22px; color: #2d3748;">Utilitarian approach: Consider age, occupation, health, legal responsibility, pregnancy, network effects</p>
-
+      <div class="ist-card">
+        <h4>👥 Society</h4>
+        <p>Public trust, moral frameworks, discrimination concerns</p>
+        <p style="margin-top: 15px; font-size: 18px;">Equal protection, human dignity, policy implications</p>
       </div>
-
+      
+      <div class="ist-card">
+        <h4>⚙️ Technology</h4>
+        <p>Sensor data, contextual information, model accuracy</p>
+        <p style="margin-top: 15px; font-size: 18px;">Informational connectedness, implementation challenges</p>
+      </div>
     </div>
-
     
-
-    <p style="margin-top: 45px; font-size: 24px; text-align: center; font-weight: 600; color: #667eea;">
-
-      This research examines which approach is more ethically defensible through systematic scenario analysis
-
-    </p>
-
-  </div>
-
-
-
-  <!-- Slide 3: Research Questions -->
-
-  <div class="slide">
-
-    <h2>Research Questions</h2>
-
-    
-
-    <div class="rq-box" id="final-primary-rq-box">
-
-      <h3 id="final-primary-rq-title">🎯 Primary Research Question</h3>
-
-      <p id="final-primary-rq-text">Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
-
-    </div>
-
-    
-
-    <div class="rq-box" id="final-secondary-rq-box">
-
-      <h3 id="final-secondary-rq-title">🔍 Secondary Research Question</h3>
-
-      <p id="final-secondary-rq-text">At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
-
-    </div>
-
-    
-
-    <div style="margin-top: 40px; background: #f7fafc; border: 3px solid #cbd5e0; border-radius: 12px; padding: 30px;">
-
-      <h3 style="font-size: 28px; margin-bottom: 15px;">Methodology:</h3>
-
-      <ul style="font-size: 23px;">
-
-        <li>Developed interactive Ethical Decision Analyzer tool</li>
-
-        <li>Tested 6 classic trolley problem scenarios</li>
-
-        <li>Systematic analysis across 5 "connectedness" levels (none → maximum demographic information)</li>
-
-        <li>Evidence-based weights from VSL, QALY, and recidivism research</li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- Slide 4: Findings 1 -->
-
-  <div class="slide">
-
-    <h2>Findings I: Decision Instability</h2>
-
-    
-
-    <div class="stat-big" id="final-stat-big">50%</div>
-
-    <p style="text-align: center; font-size: 30px; margin-bottom: 45px;" id="final-stat-text">
-
-      of scenarios changed recommendations based on connectedness level
-
-    </p>
-
-    
-
-    <table style="width: 100%; border-collapse: collapse; margin-top: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" id="final-scenario-table">
-
-      <thead>
-
-        <tr style="background: linear-gradient(135deg, #667eea, #764ba2);">
-
-          <th style="padding: 18px; color: white; text-align: left; font-size: 20px;">Scenario</th>
-
-          <th style="padding: 18px; color: white; font-size: 20px;">None</th>
-
-          <th style="padding: 18px; color: white; font-size: 20px;">Minimum</th>
-
-          <th style="padding: 18px; color: white; font-size: 20px;">Medium</th>
-
-          <th style="padding: 18px; color: white; font-size: 20px;">High</th>
-
-          <th style="padding: 18px; color: white; font-size: 20px;">Maximum</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody id="final-table-body"></tbody>
-
-    </table>
-
-    
-
-    <p style="margin-top: 35px; font-size: 24px; font-weight: 600; color: #c05621; text-align: center;" id="final-insight-text">
-
-      🔍 Key Insight: Informational connectedness is not ethically neutral—it fundamentally determines which lives AVs prioritize
-
-    </p>
-
-  </div>
-
-
-
-  <!-- Slide 5: Findings 2 -->
-
-  <div class="slide">
-
-    <h2>Findings II: Critical Tensions</h2>
-
-    <div id="final-findings-container"></div>
-
-  </div>
-
-
-
-  <!-- Slide 6: Conclusions & Next Steps -->
-
-  <div class="slide conclusion-slide">
-
-    <h2 style="font-size: 52px;">Conclusions & Next Steps</h2>
-
-    
-
-    <h3 style="margin-top: 40px;">Key Conclusions:</h3>
-
-    <ul style="font-size: 26px; line-height: 2.0;" id="final-conclusions-list">
-
-      <li><strong>Informational connectedness is a critical policy variable</strong> that fundamentally shapes AV ethical behavior (50% of scenarios changed)</li>
-
-      <li><strong>Utilitarian quantification creates value hierarchies</strong> (doctor 1.5x, criminal 0.94x, pregnancy 1.8x) that may conflict with equal human dignity</li>
-
-      <li><strong>No clear threshold exists</strong> where increased connectedness consistently improves ethical outcomes—it both resolves ambiguity AND introduces controversial results</li>
-
-      <li><strong>The choice is not technical but political:</strong> Society must explicitly decide which factors AVs should consider</li>
-
-    </ul>
-
-    
-
-    <h3 style="margin-top: 50px;">Next Steps for Research:</h3>
-
-    <ul style="font-size: 24px;" id="final-next-steps-list">
-
-      <li>Compare findings to MIT Moral Machine public opinion data</li>
-
-      <li>Expert validation from ethicists and ASPI researchers</li>
-
-      <li>Model accuracy threshold analysis</li>
-
-      <li>Policy framework recommendations for regulators</li>
-
-    </ul>
-
-    
-
-    <div style="margin-top: 50px; padding: 30px; background: rgba(255,255,255,0.15); border-radius: 15px; border: 3px solid rgba(255,255,255,0.3);">
-
-      <p style="font-size: 26px; font-weight: 600; text-align: center;">
-
-        Research suggests the German Ethics Commission's demographic-blind approach may be more ethically defensible—but the question requires ongoing societal deliberation, not just algorithmic optimization.
-
+    <div style="margin-top: 40px; padding: 25px; background: #fff5f5; border-radius: 10px; border-left: 5px solid #fc8181;">
+      <p style="font-size: 20px;">
+        <strong>German Ethics Commission (2017):</strong> "Genuine dilemmatic decisions cannot be clearly standardized, nor programmed such that they are ethically unquestionable."
       </p>
-
     </div>
-
   </div>
 
+  <!-- Slide 3: Research Questions & Variables -->
+  <div class="slide">
+    <h2>Research Questions & Variables</h2>
+    
+    <div class="rq-box" id="primary-rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;" id="primary-rq-title">🎯 Primary RQ</h4>
+      <p id="primary-rq-text">Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
+    </div>
+    
+    <div class="rq-box" id="secondary-rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;" id="secondary-rq-title">🔍 Secondary RQ</h4>
+      <p id="secondary-rq-text">At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
+    </div>
+    
+    <div class="variables-box">
+      <h4>Variables:</h4>
+      <div class="two-col" style="margin-top: 15px;">
+        <div>
+          <p style="font-size: 20px;"><strong>Independent Variables:</strong></p>
+          <ul style="font-size: 18px; margin-top: 10px;">
+            <li>Informational connectedness level</li>
+            <li>Ethical framework applied</li>
+            <li>Demographic factors included</li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size: 20px;"><strong>Dependent Variables:</strong></p>
+          <ul style="font-size: 18px; margin-top: 10px;">
+            <li>Ethical recommendation</li>
+            <li>Decision stability</li>
+            <li>Harm calculation output</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Slide 4: Research Methods -->
+  <div class="slide">
+    <h2>Research Methods & Approach</h2>
+    
+    <h3>Methodology:</h3>
+    <ul>
+      <li><strong>Tool Development:</strong> Interactive Ethical Decision Analyzer with utilitarian, deontological, and virtue ethics frameworks</li>
+      <li><strong>Evidence-Based Weights:</strong> Multipliers derived from:
+        <ul style="margin-left: 40px; margin-top: 10px;">
+          <li>Government VSL estimates ($6-14M per statistical life)</li>
+          <li>QALY medical ethics frameworks (quality-adjusted life years)</li>
+          <li>Criminal justice recidivism data (federal statistics)</li>
+        </ul>
+      </li>
+      <li><strong>Systematic Testing:</strong> 6 classic trolley problem scenarios across 5 connectedness levels</li>
+      <li><strong>Comparative Analysis:</strong> Framework agreement/disagreement patterns</li>
+    </ul>
+    
+    <h3 style="margin-top: 35px;">Connectedness Levels Tested:</h3>
+    <ul>
+      <li><strong>None:</strong> Always neutral, no number of people or age involved</li>
+      <li><strong>Minimum:</strong> Number of people, no age</li>
+      <li><strong>Medium:</strong> Adds age, occupation, health status, criminal history</li>
+      <li><strong>High:</strong> Adds legal fault, pregnancy, species</li>
+      <li><strong>Maximum:</strong> Adds network effects (dependents, caregivers)</li>
+    </ul>
+  </div>
+
+  <!-- Slide 5: Data Tables I -->
+  <div class="slide">
+    <h2>Preliminary Findings I: Decision Stability</h2>
+    
+    <table class="table" id="presentation-scenario-table">
+      <thead id="presentation-table-head">
+        <tr>
+          <th>Scenario</th>
+          <th>None</th>
+          <th>Minimum</th>
+          <th>Medium</th>
+          <th>High</th>
+          <th>Maximum</th>
+        </tr>
+      </thead>
+      <tbody id="presentation-table-body"></tbody>
+    </table>
+    
+    <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;" id="presentation-stat-text">
+      4 of 6 scenarios (67%) changed recommendations based on connectedness level
+    </p>
+  </div>
+
+  <!-- Slide 6: Data Tables II -->
+  <div class="slide">
+    <h2>Preliminary Findings II: Harm Calculations</h2>
+    
+    <h3>Example: Pregnancy Weighting Effect</h3>
+    
+    <table class="table" style="margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Connectedness</th>
+          <th>Option 1: Hit 2 People</th>
+          <th>Option 2: Hit Pregnant Woman</th>
+          <th>Recommendation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Low Connectedness<br>(Pregnancy Unknown)</strong></td>
+          <td>76.0 harm</td>
+          <td>50.0 harm</td>
+          <td class="changed">Hit Pregnant (save 2 people)</td>
+        </tr>
+        <tr>
+          <td><strong>High Connectedness<br>(Pregnancy Known)</strong></td>
+          <td>76.0 harm</td>
+          <td>90.0 harm (50 × 1.8)</td>
+          <td class="changed">Hit 2 People (save pregnant)</td>
+        </tr>
+      </tbody>
+    </table>
+    
+      <div class="finding-highlight" style="margin-top: 35px; background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 50%, #fffaf0 100%); border: 3px solid #fc8181; box-shadow: 0 12px 32px rgba(252, 129, 129, 0.25);">
+        <div style="display: flex; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #fc8181;">
+          <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fc8181, #f56565); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; box-shadow: 0 6px 20px rgba(252, 129, 129, 0.4);">
+            <span style="font-size: 32px;">⚖️</span>
+          </div>
+          <h4 style="color: #c53030; margin: 0; font-size: 26px; flex: 1;">Pregnancy Information Reverses Intuitive Logic</h4>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+          <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #fed7d7; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <span style="background: #fed7d7; color: #742a2a; padding: 6px 12px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-right: 10px;">LOW</span>
+              <strong style="color: #c53030;">Connectedness</strong>
+            </div>
+            <p style="font-size: 17px; margin: 8px 0; line-height: 1.7; color: #4a5568;">
+              System doesn't know she's pregnant. Model treats her as <strong>1 person</strong>: hitting her causes <span style="color: #c53030; font-weight: 700;">50 harm</span> vs hitting 2 people causes <span style="color: #c53030; font-weight: 700;">76 harm</span>.
+            </p>
+            <div style="margin-top: 12px; padding: 12px; background: #fff5f5; border-radius: 8px; border-left: 4px solid #fc8181;">
+              <strong style="color: #c53030;">Decision:</strong> Hit pregnant woman, save 2 people
+            </div>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 12px; border: 2px solid #fc8181; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <div style="display: flex; align-items: center; margin-bottom: 12px;">
+              <span style="background: #fc8181; color: white; padding: 6px 12px; border-radius: 20px; font-weight: 700; font-size: 14px; margin-right: 10px;">HIGH</span>
+              <strong style="color: #c53030;">Connectedness</strong>
+            </div>
+            <p style="font-size: 17px; margin: 8px 0; line-height: 1.7; color: #4a5568;">
+              System knows she's pregnant. Pregnancy multiplier (1.8x) increases value: hitting her causes <span style="color: #c53030; font-weight: 700;">90 harm</span> (50 × 1.8) vs hitting 2 people still causes <span style="color: #c53030; font-weight: 700;">76 harm</span>.
+            </p>
+            <div style="margin-top: 12px; padding: 12px; background: #fff5f5; border-radius: 8px; border-left: 4px solid #fc8181;">
+              <strong style="color: #c53030;">Decision:</strong> Hit 2 people, save pregnant woman
+            </div>
+          </div>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #fffaf0, #ffeaa7); padding: 20px; border-radius: 12px; border: 2px solid #f6ad55; margin-bottom: 15px;">
+          <p style="font-size: 18px; margin: 0; line-height: 1.8; color: #744210;">
+            <strong style="color: #c05621;">🔍 Key Insight:</strong> Learning she is pregnant (increased connectedness) causes the system to save <strong>FEWER people</strong> (1 pregnant woman instead of 2 regular people), prioritizing her weighted value (1.8 lives) over raw numbers. This demonstrates how connectedness can reverse "save more people" intuitions.
+          </p>
+        </div>
+        
+        <div style="background: #f7fafc; padding: 15px; border-radius: 8px; border-left: 4px solid #a0aec0; margin-top: 15px;">
+          <p style="font-size: 15px; margin: 0; font-style: italic; color: #718096;">
+            <strong>Robustness Note:</strong> Any pregnancy value >1.52 produces this reversal. At maximum connectedness, certainty about fetal health/viability could further refine this weight.
+          </p>
+        </div>
+      </div>
+    
+    <div style="margin-top: 40px;">
+      <h3 style="margin-bottom: 25px; font-size: 28px; color: #2d3748; display: flex; align-items: center;">
+        <span style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 20px; box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);">📊</span>
+        Additional Findings
+      </h3>
+      
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+        <div style="background: linear-gradient(135deg, #fff5f5, #fed7d7); padding: 20px; border-radius: 16px; border: 2px solid #fc8181; box-shadow: 0 6px 20px rgba(252, 129, 129, 0.15);">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 28px; margin-right: 10px;">⚖️</span>
+            <strong style="color: #c53030; font-size: 18px;">Jaywalker</strong>
+          </div>
+          <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+            <div style="font-size: 32px; font-weight: 800; color: #c53030; text-align: center; margin-bottom: 5px;">37%</div>
+            <div style="font-size: 12px; color: #718096; text-align: center;">Priority Reduction</div>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">
+            <strong>Calculation:</strong> 0.9 × 0.7 = 0.63x total. The 0.9x multiplier represents legal fault (jaywalking violation) and 0.7x represents voluntary risk, resulting in algorithmic "punishment" for minor infractions.
+          </p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #eef2ff, #e9d5ff); padding: 20px; border-radius: 16px; border: 2px solid #667eea; box-shadow: 0 6px 20px rgba(102, 126, 234, 0.15);">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 28px; margin-right: 10px;">💼</span>
+            <strong style="color: #5a67d8; font-size: 18px;">Doctor vs Criminal</strong>
+          </div>
+          <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+            <div style="font-size: 32px; font-weight: 800; color: #667eea; text-align: center; margin-bottom: 5px;">1.6x</div>
+            <div style="font-size: 12px; color: #718096; text-align: center;">Value Difference</div>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">
+            Doctor valued <strong>1.6x higher</strong> (64.5 vs 40.42 harm). Resolves ambiguity through secondary effects logic but requires accepting profession-based value differentiation.
+          </p>
+        </div>
+        
+        <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 20px; border-radius: 16px; border: 2px solid #43e97b; box-shadow: 0 6px 20px rgba(67, 233, 123, 0.15);">
+          <div style="display: flex; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 28px; margin-right: 10px;">🔢</span>
+            <strong style="color: #16a34a; font-size: 18px;">Numbers Dominate</strong>
+          </div>
+          <div style="background: white; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+            <div style="font-size: 32px; font-weight: 800; color: #16a34a; text-align: center; margin-bottom: 5px;">5 vs 1</div>
+            <div style="font-size: 12px; color: #718096; text-align: center;">Stable Across Levels</div>
+          </div>
+          <p style="font-size: 15px; line-height: 1.6; color: #4a5568; margin: 0;">
+            In large disparities, raw numbers dominate utilitarian calculations. The 5 vs 1 scenario remains stable across all connectedness levels, demonstrating that quantity can override context.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 7: Key Findings -->
+  <div class="slide">
+    <h2>Four Critical Findings</h2>
+    <div id="presentation-findings-container"></div>
+  </div>
+
+  <!-- Slide 8: Conclusions & Implications -->
+  <div class="slide">
+    <h2>Implications for AV Policy</h2>
+    
+    <h3>Central Research Tension:</h3>
+    <p style="font-size: 22px; margin-top: 15px; line-height: 1.8;">
+      Utilitarian frameworks require <span class="emphasis">quantifying factors</span> (occupation = 1.5x, criminal = 0.94x, pregnancy = 1.8x), 
+      but quantification creates hierarchies that may conflict with principles of equal human dignity.
+    </p>
+    
+    <h3 style="margin-top: 40px;">Key Questions Raised:</h3>
+    <ul id="presentation-questions-list">
+      <li>At what connectedness threshold do benefits outweigh discrimination risks?</li>
+      <li>Can model accuracy ever be high enough to justify demographic-sensitive decisions?</li>
+      <li>Should pregnancy, legal fault, or occupation inform AV algorithms?</li>
+      <li>Is decision instability (50% flip rate) acceptable in life-or-death systems?</li>
+    </ul>
+    
+    <div style="margin-top: 35px; padding: 25px; background: linear-gradient(135deg, #667eea15, #764ba215); border-radius: 12px; border-left: 6px solid #667eea;">
+      <p style="font-size: 20px; font-weight: 600;">
+        <strong>Preliminary Direction:</strong> Research will examine whether <em>any</em> level of accuracy and connectedness can ethically justify these trade-offs, or whether the German Ethics Commission's demographic-blind approach is inherently more defensible.
+      </p>
+    </div>
+  </div>
+
+  <!-- Slide 9: Appendix I - Table of Contents -->
+  <div class="slide">
+    <h2>Appendix I: Capstone Paper Outline</h2>
+    
+    <div class="toc-item">
+      <h4>Chapter 1: Introduction</h4>
+      <ul>
+        <li>Background: AV ethics and the trolley problem</li>
+        <li>German Ethics Commission guidelines (2017)</li>
+        <li>Research questions and significance</li>
+        <li>Paper structure overview</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 2: Literature Review</h4>
+      <ul>
+        <li>Ethical frameworks: Utilitarian, deontological, virtue ethics</li>
+        <li>AV ethics research (MIT Moral Machine, industry guidelines)</li>
+        <li>Value of Statistical Life (VSL) and QALY frameworks</li>
+        <li>Algorithmic fairness and discrimination literature</li>
+        <li>Legal and policy frameworks for AV decision-making</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 3: Methodology</h4>
+      <ul>
+        <li>Tool design: Ethical Decision Analyzer architecture</li>
+        <li>Evidence-based weight selection process</li>
+        <li>Connectedness spectrum operationalization</li>
+        <li>Scenario selection and testing protocol</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 10: Appendix I Continued -->
+  <div class="slide">
+    <h2>Appendix I: Table of Contents (cont.)</h2>
+    
+    <div class="toc-item">
+      <h4>Chapter 4: Data Analysis</h4>
+      <ul>
+        <li>Systematic scenario testing results</li>
+        <li>Decision stability analysis across connectedness levels</li>
+        <li>Framework comparison (utilitarian vs deontological vs virtue)</li>
+        <li>Sensitivity analysis on multiplier values</li>
+        <li>Identification of decision flip patterns</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 5: Discussion</h4>
+      <ul>
+        <li>Interpretation of pregnancy paradox findings</li>
+        <li>Legal responsibility and algorithmic accountability</li>
+        <li>Occupation-based hierarchies: justifiable or discriminatory?</li>
+        <li>Model accuracy requirements and practical limitations</li>
+        <li>Comparison to public moral intuitions (MIT Moral Machine)</li>
+      </ul>
+    </div>
+    
+    <div class="toc-item">
+      <h4>Chapter 6: Conclusions & Policy Recommendations</h4>
+      <ul>
+        <li>Answering the primary and secondary research questions</li>
+        <li>Policy framework for AV ethical decision-making</li>
+        <li>Recommendations for regulators and manufacturers</li>
+        <li>Limitations of this research</li>
+        <li>Future research directions</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Slide 11: Appendix II - References Page 1 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 1 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Awad, E., Dsouza, S., Kim, R., Schulz, J., Henrich, J., Shariff, A., Bonnefon, J. F., & Rahwan, I. (2018). The Moral Machine experiment. <em>Nature, 563</em>(7729), 59-64. https://doi.org/10.1038/s41586-018-0637-6</li>
+      
+      <li>Bonnefon, J. F., Shariff, A., & Rahwan, I. (2016). The social dilemma of autonomous vehicles. <em>Science, 352</em>(6293), 1573-1576. https://doi.org/10.1126/science.aaf2654</li>
+      
+      <li>Ethics Commission Automated and Connected Driving. (2017). <em>Report</em>. Federal Ministry of Transport and Digital Infrastructure, Germany. https://www.bmvi.de/SharedDocs/EN/publications/report-ethics-commission.pdf</li>
+      
+      <li>Foot, P. (1967). The problem of abortion and the doctrine of double effect. <em>Oxford Review, 5</em>, 5-15.</li>
+      
+      <li>Goodall, N. J. (2016). Away from trolley problems and toward risk management. <em>Applied Artificial Intelligence, 30</em>(8), 810-821. https://doi.org/10.1080/08839514.2016.1229922</li>
+      
+      <li>Lin, P. (2016). Why ethics matters for autonomous cars. In M. Maurer et al. (Eds.), <em>Autonomous Driving</em> (pp. 69-85). Springer. https://doi.org/10.1007/978-3-662-48847-8_4</li>
+      
+      <li>Millar, J. (2016). An ethics evaluation tool for automating ethical decision-making in robots and self-driving cars. <em>Applied Artificial Intelligence, 30</em>(8), 787-809.</li>
+      
+      <li>Nyholm, S., & Smids, J. (2016). The ethics of accident-algorithms for self-driving cars: an applied trolley problem? <em>Ethical Theory and Moral Practice, 19</em>(5), 1275-1289.</li>
+    </ul>
+  </div>
+
+  <!-- Slide 12: Appendix II - References Page 2 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 2 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Rawls, J. (1971). <em>A Theory of Justice</em>. Harvard University Press.</li>
+      
+      <li>Thomson, J. J. (1985). The trolley problem. <em>Yale Law Journal, 94</em>(6), 1395-1415.</li>
+      
+      <li>U.S. Department of Health and Human Services. (2025). <em>HHS Standard Values for Regulatory Analysis, 2025</em>. Office of the Assistant Secretary for Planning and Evaluation. https://aspe.hhs.gov/reports/standard-ria-values-2025</li>
+      
+      <li>U.S. Department of Transportation. (2024). <em>Departmental Guidance on Valuation of a Statistical Life in Economic Analysis</em>. https://www.transportation.gov/office-policy/transportation-policy/revised-departmental-guidance-on-valuation-of-a-statistical-life</li>
+      
+      <li>U.S. Sentencing Commission. (2022). <em>Recidivism of Federal Violent Offenders Released in 2010</em>. https://www.ussc.gov/research/research-reports/recidivism-federal-violent-offenders-released-2010</li>
+      
+      <li>Viscusi, W. K. (2018). Best estimate selection bias in the value of a statistical life. <em>Journal of Benefit-Cost Analysis, 9</em>(2), 205-246.</li>
+      
+      <li>Weinstein, M. C., Torrance, G., & McGuire, A. (2009). QALYs: The basics. <em>Value in Health, 12</em>(Suppl 1), S5-S9.</li>
+    </ul>
+  </div>
+
+  <!-- Slide 13: Appendix II - References Page 3 -->
+  <div class="slide">
+    <h2>Appendix II: References (Page 3 of 3)</h2>
+    
+    <ul class="ref-list">
+      <li>Wolkenstein, A. (2018). What has the trolley dilemma ever done for us (and what will it do in the future)? On some recent debates about the ethics of self-driving cars. <em>Ethics and Information Technology, 20</em>(3), 163-173.</li>
+      
+      <li>Social Security Administration. (2025). <em>Actuarial Life Table: Period Life Table, 2022</em>. Office of the Chief Actuary. https://www.ssa.gov/oact/STATS/table4c6.html</li>
+      
+      <li>Himmelreich, J. (2018). Never mind the trolley: The ethics of autonomous vehicles in mundane situations. <em>Ethical Theory and Moral Practice, 21</em>(3), 669-684.</li>
+      
+      <li>Santoni de Sio, F. (2017). Killing by autonomous vehicles and the legal doctrine of necessity. <em>Ethical Theory and Moral Practice, 20</em>(2), 411-429.</li>
+      
+      <li>Keeling, G. (2020). Why trolley problems matter for the ethics of automated vehicles. <em>Science and Engineering Ethics, 26</em>(1), 293-307.</li>
+      
+      <li>Leben, D. (2017). A Rawlsian algorithm for autonomous vehicles. <em>Ethics and Information Technology, 19</em>(2), 107-115.</li>
+      
+      <li>Gogoll, J., & Müller, J. F. (2017). Autonomous cars: In favor of a mandatory ethics setting. <em>Science and Engineering Ethics, 23</em>(3), 681-700.</li>
+      
+      <li>Holstein, T., Dodig-Crnkovic, G., & Pelliccione, P. (2018). Ethical and social aspects of self-driving cars. <em>arXiv preprint</em> arXiv:1802.04103.</li>
+    </ul>
+    
+    <p style="margin-top: 30px; font-size: 18px; color: #718096; font-style: italic;">
+      Additional sources on algorithmic fairness, machine ethics, and utilitarian philosophy to be added in final paper.
+    </p>
+  </div>
 
   <!-- Navigation -->
-
   <div class="slide-number">
-
-    <span id="current-slide">1</span> / 6
-
+    <span id="current-slide">1</span> / <span id="total-slides">9</span>
   </div>
-
   
-
   <div class="controls">
-
     <button onclick="prevSlide()">← Previous</button>
-
     <button onclick="nextSlide()">Next →</button>
-
   </div>
-
-
 
   <script>
-
     let currentSlide = 0;
-
     const slides = document.querySelectorAll('.slide');
-
-    const totalSlides = 6;
-
+    const totalSlides = slides.length;
     
-
+    document.getElementById('total-slides').textContent = totalSlides;
+    
     function showSlide(n) {
-
       slides[currentSlide].classList.remove('active');
-
       currentSlide = (n + totalSlides) % totalSlides;
-
       slides[currentSlide].classList.add('active');
-
       document.getElementById('current-slide').textContent = currentSlide + 1;
-
     }
-
     
-
     function nextSlide() {
-
       showSlide(currentSlide + 1);
-
     }
-
     
-
     function prevSlide() {
-
       showSlide(currentSlide - 1);
-
     }
-
     
-
-    // Keyboard navigation
-
     document.addEventListener('keydown', (e) => {
-
-      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
-
+      if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault();
-
         nextSlide();
-
       } else if (e.key === 'ArrowLeft') {
-
         e.preventDefault();
-
         prevSlide();
-
-      } else if (e.key === 'Home') {
-
-        e.preventDefault();
-
-        showSlide(0);
-
-      } else if (e.key === 'End') {
-
-        e.preventDefault();
-
-        showSlide(5);
-
       }
-
-    });
-
-    
-
-    // Click to advance (for touch screens)
-
-    document.addEventListener('click', (e) => {
-
-      if (!e.target.closest('.controls')) {
-
-        const clickX = e.clientX;
-
-        const windowWidth = window.innerWidth;
-
-        if (clickX > windowWidth / 2) {
-
-          nextSlide();
-
-        } else {
-
-          prevSlide();
-
-        }
-
-      }
-
     });
 
     // Load and populate content from content-data.json
-    let finalContentData = null;
+    let presentationContentData = null;
 
-    async function loadFinalContent() {
+    async function loadPresentationContent() {
       try {
         const response = await fetch('content-data.json');
-        finalContentData = await response.json();
-        populateFinalContent();
+        presentationContentData = await response.json();
+        populatePresentationContent();
       } catch (error) {
         console.error('Error loading content-data.json:', error);
       }
     }
 
-    function populateFinalContent() {
-      if (!finalContentData) return;
+    function populatePresentationContent() {
+      if (!presentationContentData) return;
 
       // Research Questions
-      const primary = finalContentData.researchQuestions.primary;
-      document.getElementById('final-primary-rq-title').textContent = `${primary.icon} ${primary.title}`;
-      document.getElementById('final-primary-rq-text').textContent = primary.question;
+      const primary = presentationContentData.researchQuestions.primary;
+      document.getElementById('primary-rq-title').textContent = `${primary.icon} Primary RQ`;
+      document.getElementById('primary-rq-text').textContent = primary.question;
 
-      const secondary = finalContentData.researchQuestions.secondary;
-      document.getElementById('final-secondary-rq-title').textContent = `${secondary.icon} ${secondary.title}`;
-      document.getElementById('final-secondary-rq-text').textContent = secondary.question;
-
-      // Statistics
-      if (finalContentData.statistics && finalContentData.statistics.scenariosChanged) {
-        const stat = finalContentData.statistics.scenariosChanged;
-        document.getElementById('final-stat-big').textContent = stat.value;
-        document.getElementById('final-stat-text').textContent = stat.description;
-      } else {
-        // Fallback: extract from first finding
-        const firstFinding = finalContentData.findings[0];
-        if (firstFinding && firstFinding.statistic) {
-          document.getElementById('final-stat-big').textContent = firstFinding.statistic.value;
-          document.getElementById('final-stat-text').textContent = firstFinding.statistic.label || 'of scenarios changed recommendations based on connectedness level';
-        }
-      }
+      const secondary = presentationContentData.researchQuestions.secondary;
+      document.getElementById('secondary-rq-title').textContent = `${secondary.icon} Secondary RQ`;
+      document.getElementById('secondary-rq-text').textContent = secondary.question;
 
       // Scenario Table
-      const scenarios = finalContentData.scenarioData.scenarios;
-      const tbody = document.getElementById('final-table-body');
-      tbody.innerHTML = scenarios.map((scenario, index) => {
-        const isEven = index % 2 === 1;
+      const scenarios = presentationContentData.scenarioData.scenarios;
+      const tbody = document.getElementById('presentation-table-body');
+      tbody.innerHTML = scenarios.map(scenario => {
         const cells = [
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'} font-weight: 600;">${scenario.name}${scenario.description ? ' ' + scenario.description : ''}</td>`,
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('none') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.none}</td>`,
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('minimum') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.minimum}</td>`,
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('medium') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.medium}</td>`,
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('high') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.high}</td>`,
-          `<td style="padding: 14px; ${isEven ? '' : 'border-bottom: 1px solid #e2e8f0;'}${scenario.changed && scenario.changedAt && scenario.changedAt.includes('maximum') ? ' background: #fff5f5; font-weight: 700; color: #c53030;' : ''}">${scenario.maximum}</td>`
+          `<td><strong>${scenario.name}</strong><br><span style="font-size: 14px; color: #718096;">${scenario.description}</span></td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('none') ? ' class="changed"' : ''}>${scenario.none}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('minimum') ? ' class="changed"' : ''}>${scenario.minimum}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('medium') ? ' class="changed"' : ''}>${scenario.medium}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('high') ? ' class="changed"' : ''}>${scenario.high}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('maximum') ? ' class="changed"' : ''}>${scenario.maximum}</td>`
         ];
-        return `<tr${isEven ? ' style="background: #f7fafc;"' : ''}>${cells.join('')}</tr>`;
+        return `<tr>${cells.join('')}</tr>`;
       }).join('');
 
-      // Findings - Show all 4 critical findings
-      const findingsContainer = document.getElementById('final-findings-container');
-      const findings = finalContentData.findings.slice(0, 4); // All 4 critical findings
-      findingsContainer.innerHTML = findings.map(finding => {
-        let content = '';
-        if (finding.lowConnectedness && finding.highConnectedness) {
-          content = `<p><strong>Low connectedness (pregnancy unknown):</strong> ${finding.lowConnectedness.decision} (${finding.lowConnectedness.harm})<br>
-                     <strong>High connectedness (pregnancy known):</strong> ${finding.highConnectedness.decision} (${finding.highConnectedness.harm})</p>
-                     <p style="margin-top: 20px; font-size: 22px; font-style: italic; color: #c05621;">${finding.description}</p>`;
-        } else if (finding.statistic) {
-          const statLabel = finding.statistic.label || '';
-          const statValue = finding.statistic.value || '';
-          content = `<p>${statLabel ? statLabel + ' ' : ''}${statValue ? '<span class="stat-highlight">' + statValue + '</span> ' : ''}${finding.description}</p>`;
-        } else {
-          content = `<p>${finding.description}</p>`;
-        }
-        return `
-          <div class="finding-box">
-            <h4>${finding.icon} ${finding.title.replace(/^Finding #\d+: /, '')}</h4>
-            ${content}
-          </div>
-        `;
-      }).join('');
+      // Statistics - update to show 4 of 6 scenarios changed
+      document.getElementById('presentation-stat-text').textContent = 
+        `4 of 6 scenarios (67%) changed recommendations based on connectedness level`;
 
-      // Conclusions
-      const conclusionsList = document.getElementById('final-conclusions-list');
-      const statValue = (finalContentData.statistics && finalContentData.statistics.scenariosChanged) 
-        ? finalContentData.statistics.scenariosChanged.value 
-        : '67%';
-      const multipliers = finalContentData.multipliers || { occupation: { doctor: '1.5', criminal: '0.94' }, pregnancy: '1.8' };
-      conclusionsList.innerHTML = `
-        <li><strong>Informational connectedness is a critical policy variable</strong> that fundamentally shapes AV ethical behavior (${statValue} of scenarios changed)</li>
-        <li><strong>Utilitarian quantification creates value hierarchies</strong> (doctor ${multipliers.occupation.doctor}x, criminal ${multipliers.occupation.criminal}x, pregnancy ${multipliers.pregnancy}x) that may conflict with equal human dignity</li>
-        <li><strong>No clear threshold exists</strong> where increased connectedness consistently improves ethical outcomes—it both resolves ambiguity AND introduces controversial results</li>
-        <li><strong>The choice is not technical but political:</strong> Society must explicitly decide which factors AVs should consider</li>
+      // Findings - Enhanced sophisticated layout
+      const findingsContainer = document.getElementById('presentation-findings-container');
+      const findings = presentationContentData.findings.slice(0, 4); // First 4 findings
+      
+      const findingColors = [
+        { gradient: 'linear-gradient(135deg, #667eea, #764ba2)', border: '#667eea', bg: 'linear-gradient(135deg, #eef2ff, #e9d5ff)' },
+        { gradient: 'linear-gradient(135deg, #f093fb, #f5576c)', border: '#f5576c', bg: 'linear-gradient(135deg, #fdf2f8, #fce7f3)' },
+        { gradient: 'linear-gradient(135deg, #4facfe, #00f2fe)', border: '#4facfe', bg: 'linear-gradient(135deg, #eff6ff, #dbeafe)' },
+        { gradient: 'linear-gradient(135deg, #43e97b, #38f9d7)', border: '#43e97b', bg: 'linear-gradient(135deg, #f0fdf4, #ecfdf5)' }
+      ];
+      
+      findingsContainer.innerHTML = `
+        <div class="finding-grid">
+          ${findings.map((finding, index) => {
+            const color = findingColors[index];
+            const cleanTitle = finding.title.replace(/^Finding #\d+: |^Findings \w+: /, '').replace(/^[📊⚖️💼🔍]+\s*/, '');
+            let content = finding.description;
+            let statBadge = '';
+            let detailsSection = '';
+            
+            if (finding.statistic) {
+              statBadge = `<span class="finding-stat-badge" style="background: ${color.gradient}; color: white; border-color: ${color.border};">${finding.statistic.value}${finding.statistic.label ? ' ' + finding.statistic.label : ''}</span>`;
+            }
+            
+            if (finding.lowConnectedness && finding.highConnectedness) {
+              detailsSection = `
+                <div class="finding-details" style="background: ${color.bg}; border-left-color: ${color.border};">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 2px solid ${color.border};">
+                      <strong style="color: ${color.border};">Low Connectedness</strong>
+                      <p style="margin: 8px 0 0 0; font-size: 16px;">${finding.lowConnectedness.decision}</p>
+                      <p style="margin: 4px 0 0 0; font-size: 14px; color: #718096;">${finding.lowConnectedness.harm}</p>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 2px solid ${color.border};">
+                      <strong style="color: ${color.border};">High Connectedness</strong>
+                      <p style="margin: 8px 0 0 0; font-size: 16px;">${finding.highConnectedness.decision}</p>
+                      <p style="margin: 4px 0 0 0; font-size: 14px; color: #718096;">${finding.highConnectedness.harm}</p>
+                    </div>
+                  </div>
+                  <p style="margin: 0; font-size: 17px; line-height: 1.7;">${content}</p>
+                </div>
+              `;
+              content = '';
+            }
+            
+            return `
+              <div class="finding-card" style="border-top: 5px solid ${color.border};">
+                <div class="finding-card-header">
+                  <div style="display: flex; align-items: center; flex: 1;">
+                    <div class="finding-number" style="background: ${color.gradient};">${index + 1}</div>
+                    <h3 class="finding-title">
+                      <span class="finding-icon">${finding.icon || '📊'}</span>
+                      ${cleanTitle}
+                    </h3>
+                  </div>
+                </div>
+                ${statBadge ? `<div style="margin-bottom: 15px;">${statBadge}</div>` : ''}
+                ${content ? `<div class="finding-content">${content}</div>` : ''}
+                ${detailsSection}
+              </div>
+            `;
+          }).join('')}
+        </div>
       `;
 
-      // Next Steps
-      const nextStepsList = document.getElementById('final-next-steps-list');
-      nextStepsList.innerHTML = finalContentData.implications.remainingResearch.map(step => `<li>${step}</li>`).join('');
+      // Questions
+      const questionsList = document.getElementById('presentation-questions-list');
+      questionsList.innerHTML = presentationContentData.implications.analyticalQuestions.map(q => `<li>${q}</li>`).join('');
     }
 
     // Load content on page load
-    loadFinalContent();
+    loadPresentationContent();
   </script>
-
 </body>
-
 </html>
-

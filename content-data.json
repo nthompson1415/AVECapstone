@@ -56,19 +56,6 @@
       "description": "Connectedness = Amount of demographic/contextual information available to the ethical decision model"
     }
   },
-  "statistics": {
-    "scenariosChanged": {
-      "value": "67%",
-      "description": "of scenarios (4 of 6) changed recommendations based on connectedness level"
-    }
-  },
-  "multipliers": {
-    "occupation": {
-      "doctor": "1.5",
-      "criminal": "0.94"
-    },
-    "pregnancy": "1.8"
-  },
   "findings": [
     {
       "icon": "📊",
