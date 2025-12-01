@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Library, TrendingUp, Users, AlertCircle, BarChart3, FileText, Table } from 'lucide-react';
+import { Library, TrendingUp, Users, AlertCircle } from 'lucide-react';
 
 const FindingsPage = () => {
   const [contentData, setContentData] = useState(null);
@@ -14,7 +13,7 @@ const FindingsPage = () => {
 
   if (!contentData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+      <div className="py-8">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-lg shadow-md p-8 text-center">
             <p className="text-gray-600">Loading findings...</p>
@@ -25,7 +24,7 @@ const FindingsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
+    <div className="py-8">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="bg-white rounded-lg shadow-md p-8">
           <div className="flex items-center gap-3 mb-6">
@@ -75,70 +74,6 @@ const FindingsPage = () => {
               </div>
             </section>
           )}
-
-          {/* Data Analysis Section */}
-          <section className="mt-8">
-            <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-lg p-6 border-2 border-green-300 shadow-md">
-              <div className="flex items-center gap-3 mb-4">
-                <BarChart3 className="w-6 h-6 text-green-600" />
-                <h2 className="text-2xl font-bold text-gray-900">Extended Data Analysis</h2>
-              </div>
-              <p className="text-gray-700 mb-4">
-                Explore the complete analysis of 100 unique ethical scenarios across 5 connectedness levels. 
-                View the detailed report and interact with the full dataset.
-              </p>
-              <div className="flex flex-wrap gap-3 items-center">
-                <Link
-                  to="/data"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-semibold hover:bg-green-700 transition shadow-md"
-                >
-                  <BarChart3 className="w-5 h-5" />
-                  View Data Analysis
-                </Link>
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <FileText className="w-4 h-4" />
-                  <span>100 scenarios × 5 levels = 500 data points</span>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        {/* Additional Data Section - Outside main card */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border-2 border-blue-300">
-            <h2 className="text-2xl font-bold mb-4 text-indigo-900 flex items-center gap-2">
-              <BarChart3 className="w-6 h-6 text-indigo-600" />
-              Complete Dataset Analysis
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Access the full analysis of 100 unique ethical scenarios with interactive data exploration, 
-              detailed reports, and downloadable datasets.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/data"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition shadow-md"
-              >
-                <Table className="w-5 h-5" />
-                View Full Dataset
-              </Link>
-              <Link
-                to="/data"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-indigo-300 text-indigo-700 rounded-lg font-semibold hover:bg-indigo-50 transition"
-              >
-                <FileText className="w-5 h-5" />
-                Read Analysis Report
-              </Link>
-            </div>
-            <div className="mt-4 pt-4 border-t border-indigo-200">
-              <p className="text-sm text-gray-600">
-                <strong>Dataset includes:</strong> 100 unique scenarios analyzed across 5 connectedness levels 
-                (None, Low, Medium, High, Maximum) resulting in 500 total data points with harm calculations, 
-                recommendations, and decision stability analysis.
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>

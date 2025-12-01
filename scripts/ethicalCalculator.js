@@ -38,23 +38,23 @@ const networkMultipliers = {
 };
 
 export function calculateLifeYears(age, severity, job, health, criminal, legalFault, risk, pregnant, species, network, includeControversial, includeExtendedFactors, includeNetworkEffects) {
-  const averageLifeExpectancy = 78;
-  const remainingYears = Math.max(0, averageLifeExpectancy - age);
+  // Use reference age consistent with YPLL (Years of Potential Life Lost) methodology
+  // Common reference ages: 75 (some YPLL), 85 (many YPLL studies), 90 (WHO DALY standard)
+  // Using 85 as reference age ensures people at average life expectancy (78) still have 7 years
+  // and provides smooth discounting for older ages while maintaining minimum value
+  const referenceAge = 85; // Standard YPLL reference age, aligns with public health methodology
+  const averageLifeExpectancy = 78; // US average life expectancy (for documentation)
+  
+  // Calculate remaining years using reference age methodology
+  // This ensures no one is ever at zero harm due to age alone
+  // For ages over reference age, apply minimum floor value
+  const remainingYears = Math.max(1, referenceAge - age);
   
   const severityMultipliers = {
     none: 0, minor: 0.05, moderate: 0.2, serious: 0.5, critical: 0.8, fatal: 1.0
   };
   
   let lifeYearsLost = remainingYears * severityMultipliers[severity];
-  
-  const speciesMult = speciesMultipliers[species] || 1.0;
-  if (speciesMult !== 1.0) {
-    lifeYearsLost *= speciesMult;
-  }
-  
-  if (pregnant) {
-    lifeYearsLost *= pregnancyMultipliers.pregnant;
-  }
   
   if (includeControversial) {
     const healthMult = healthMultipliers[health] || 1.0;
@@ -74,6 +74,15 @@ export function calculateLifeYears(age, severity, job, health, criminal, legalFa
   }
   
   if (includeExtendedFactors) {
+    const speciesMult = speciesMultipliers[species] || 1.0;
+    if (speciesMult !== 1.0) {
+      lifeYearsLost *= speciesMult;
+    }
+    
+    if (pregnant) {
+      lifeYearsLost *= pregnancyMultipliers.pregnant;
+    }
+    
     const legalMult = legalFaultMultipliers[legalFault] || 1.0;
     if (legalMult !== 1.0) {
       lifeYearsLost *= legalMult;
