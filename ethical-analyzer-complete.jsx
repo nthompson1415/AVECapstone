@@ -323,8 +323,17 @@ const EthicalChoiceAnalyzer = () => {
 
   const calculateLifeYears = (age, severity, job, health, criminal, legalFault, risk, pregnant, species, network, trackSteps = false) => {
     const steps = [];
-    const averageLifeExpectancy = 78;
-    const remainingYears = Math.max(0, averageLifeExpectancy - age);
+    // Use reference age consistent with YPLL (Years of Potential Life Lost) methodology
+    // Common reference ages: 75 (some YPLL), 85 (many YPLL studies), 90 (WHO DALY standard)
+    // Using 85 as reference age ensures people at average life expectancy (78) still have 7 years
+    // and provides smooth discounting for older ages while maintaining minimum value
+    const referenceAge = 85; // Standard YPLL reference age, aligns with public health methodology
+    const averageLifeExpectancy = 78; // US average life expectancy (for documentation)
+    
+    // Calculate remaining years using reference age methodology
+    // This ensures no one is ever at zero harm due to age alone
+    // For ages over reference age, apply minimum floor value
+    let remainingYears = Math.max(1, referenceAge - age);
     
     const severityMultipliers = {
       none: 0, minor: 0.05, moderate: 0.2, serious: 0.5, critical: 0.8, fatal: 1.0
@@ -333,35 +342,15 @@ const EthicalChoiceAnalyzer = () => {
     let lifeYearsLost = remainingYears * severityMultipliers[severity];
     
     if (trackSteps) {
+      const ageFormula = age >= referenceAge 
+        ? `1 (minimum floor)`
+        : `${referenceAge} - ${age}`;
       steps.push({
         step: 'Base Calculation',
-        formula: `(${averageLifeExpectancy} - ${age}) × ${severityMultipliers[severity]}`,
-        calculation: `${remainingYears} years × ${severityMultipliers[severity]} = ${lifeYearsLost.toFixed(2)}`,
+        formula: `max(1, ${ageFormula}) × ${severityMultipliers[severity]}`,
+        calculation: `${remainingYears.toFixed(2)} years × ${severityMultipliers[severity]} = ${lifeYearsLost.toFixed(2)}`,
         value: lifeYearsLost
       });
-    }
-    
-    const speciesMult = speciesMultipliers[species] || 1.0;
-    if (speciesMult !== 1.0 && trackSteps) {
-      const oldValue = lifeYearsLost;
-      lifeYearsLost *= speciesMult;
-      steps.push({
-        step: 'Species', formula: `${oldValue.toFixed(2)} × ${speciesMult}`,
-        calculation: `${species} (${speciesMult}x)`, value: lifeYearsLost
-      });
-    } else if (speciesMult !== 1.0) {
-      lifeYearsLost *= speciesMult;
-    }
-    
-    if (pregnant) {
-      const oldValue = lifeYearsLost;
-      lifeYearsLost *= pregnancyMultipliers.pregnant;
-      if (trackSteps) {
-        steps.push({
-          step: 'Pregnancy', formula: `${oldValue.toFixed(2)} × ${pregnancyMultipliers.pregnant}`,
-          calculation: `Two lives (${pregnancyMultipliers.pregnant}x)`, value: lifeYearsLost
-        });
-      }
     }
     
     if (includeControversial) {
@@ -403,6 +392,29 @@ const EthicalChoiceAnalyzer = () => {
     }
     
     if (includeExtendedFactors) {
+      const speciesMult = speciesMultipliers[species] || 1.0;
+      if (speciesMult !== 1.0) {
+        const oldValue = lifeYearsLost;
+        lifeYearsLost *= speciesMult;
+        if (trackSteps) {
+          steps.push({
+            step: 'Species', formula: `${oldValue.toFixed(2)} × ${speciesMult}`,
+            calculation: `${species} (${speciesMult}x)`, value: lifeYearsLost
+          });
+        }
+      }
+      
+      if (pregnant) {
+        const oldValue = lifeYearsLost;
+        lifeYearsLost *= pregnancyMultipliers.pregnant;
+        if (trackSteps) {
+          steps.push({
+            step: 'Pregnancy', formula: `${oldValue.toFixed(2)} × ${pregnancyMultipliers.pregnant}`,
+            calculation: `Two lives (${pregnancyMultipliers.pregnant}x)`, value: lifeYearsLost
+          });
+        }
+      }
+      
       const legalMult = legalFaultMultipliers[legalFault] || 1.0;
       if (legalMult !== 1.0) {
         const oldValue = lifeYearsLost;
