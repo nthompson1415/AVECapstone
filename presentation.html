@@ -165,16 +165,144 @@
     }
     
     .finding-highlight {
-      background: #fffaf0;
+      background: linear-gradient(135deg, #fffaf0 0%, #ffeaa7 100%);
       border: 3px solid #ed8936;
-      border-radius: 12px;
-      padding: 25px;
+      border-radius: 16px;
+      padding: 30px;
       margin: 20px 0;
+      box-shadow: 0 8px 24px rgba(237, 137, 54, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .finding-highlight::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(180deg, #ed8936, #c05621);
     }
     
     .finding-highlight h4 {
       color: #c05621;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
+      font-size: 24px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .finding-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 35px;
+      margin: 25px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .finding-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    }
+    
+    .finding-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+      border-color: #667eea;
+    }
+    
+    .finding-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    
+    .finding-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      border-radius: 50%;
+      font-size: 24px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      margin-right: 20px;
+    }
+    
+    .finding-title {
+      flex: 1;
+      font-size: 26px;
+      font-weight: 700;
+      color: #2d3748;
+      margin: 0;
+    }
+    
+    .finding-icon {
+      font-size: 32px;
+      margin-right: 15px;
+    }
+    
+    .finding-stat-badge {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #fed7d7, #fc8181);
+      color: #742a2a;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 4px 12px rgba(252, 129, 129, 0.3);
+      margin: 10px 10px 10px 0;
+      border: 2px solid #fc8181;
+    }
+    
+    .finding-content {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #4a5568;
+      margin-top: 15px;
+    }
+    
+    .finding-details {
+      margin-top: 20px;
+      padding: 20px;
+      background: linear-gradient(135deg, #f7fafc, #edf2f7);
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .finding-details strong {
+      color: #2d3748;
+      font-weight: 700;
+    }
+    
+    .finding-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    @media (min-width: 1200px) {
+      .finding-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     
     .stat-big {
@@ -956,21 +1084,70 @@
       document.getElementById('presentation-stat-text').textContent = 
         `4 of 6 scenarios (67%) changed recommendations based on connectedness level`;
 
-      // Findings
+      // Findings - Enhanced sophisticated layout
       const findingsContainer = document.getElementById('presentation-findings-container');
       const findings = presentationContentData.findings.slice(0, 4); // First 4 findings
-      findingsContainer.innerHTML = findings.map((finding, index) => {
-        let content = finding.description;
-        if (finding.statistic) {
-          content = `${finding.statistic.value}${finding.statistic.label ? ' ' + finding.statistic.label : ''} ${content}`;
-        }
-        return `
-          <div style="margin-top: ${index === 0 ? '25px' : '25px'};">
-            <h4>${index + 1}. ${finding.title.replace(/^Finding #\d+: /, '')}</h4>
-            <p style="font-size: 19px;">${content}</p>
-          </div>
-        `;
-      }).join('');
+      
+      const findingColors = [
+        { gradient: 'linear-gradient(135deg, #667eea, #764ba2)', border: '#667eea', bg: 'linear-gradient(135deg, #eef2ff, #e9d5ff)' },
+        { gradient: 'linear-gradient(135deg, #f093fb, #f5576c)', border: '#f5576c', bg: 'linear-gradient(135deg, #fdf2f8, #fce7f3)' },
+        { gradient: 'linear-gradient(135deg, #4facfe, #00f2fe)', border: '#4facfe', bg: 'linear-gradient(135deg, #eff6ff, #dbeafe)' },
+        { gradient: 'linear-gradient(135deg, #43e97b, #38f9d7)', border: '#43e97b', bg: 'linear-gradient(135deg, #f0fdf4, #ecfdf5)' }
+      ];
+      
+      findingsContainer.innerHTML = `
+        <div class="finding-grid">
+          ${findings.map((finding, index) => {
+            const color = findingColors[index];
+            const cleanTitle = finding.title.replace(/^Finding #\d+: |^Findings \w+: /, '').replace(/^[📊⚖️💼🔍]+\s*/, '');
+            let content = finding.description;
+            let statBadge = '';
+            let detailsSection = '';
+            
+            if (finding.statistic) {
+              statBadge = `<span class="finding-stat-badge" style="background: ${color.gradient}; color: white; border-color: ${color.border};">${finding.statistic.value}${finding.statistic.label ? ' ' + finding.statistic.label : ''}</span>`;
+            }
+            
+            if (finding.lowConnectedness && finding.highConnectedness) {
+              detailsSection = `
+                <div class="finding-details" style="background: ${color.bg}; border-left-color: ${color.border};">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 2px solid ${color.border};">
+                      <strong style="color: ${color.border};">Low Connectedness</strong>
+                      <p style="margin: 8px 0 0 0; font-size: 16px;">${finding.lowConnectedness.decision}</p>
+                      <p style="margin: 4px 0 0 0; font-size: 14px; color: #718096;">${finding.lowConnectedness.harm}</p>
+                    </div>
+                    <div style="padding: 15px; background: white; border-radius: 8px; border: 2px solid ${color.border};">
+                      <strong style="color: ${color.border};">High Connectedness</strong>
+                      <p style="margin: 8px 0 0 0; font-size: 16px;">${finding.highConnectedness.decision}</p>
+                      <p style="margin: 4px 0 0 0; font-size: 14px; color: #718096;">${finding.highConnectedness.harm}</p>
+                    </div>
+                  </div>
+                  <p style="margin: 0; font-size: 17px; line-height: 1.7;">${content}</p>
+                </div>
+              `;
+              content = '';
+            }
+            
+            return `
+              <div class="finding-card" style="border-top: 5px solid ${color.border};">
+                <div class="finding-card-header">
+                  <div style="display: flex; align-items: center; flex: 1;">
+                    <div class="finding-number" style="background: ${color.gradient};">${index + 1}</div>
+                    <h3 class="finding-title">
+                      <span class="finding-icon">${finding.icon || '📊'}</span>
+                      ${cleanTitle}
+                    </h3>
+                  </div>
+                </div>
+                ${statBadge ? `<div style="margin-bottom: 15px;">${statBadge}</div>` : ''}
+                ${content ? `<div class="finding-content">${content}</div>` : ''}
+                ${detailsSection}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
 
       // Questions
       const questionsList = document.getElementById('presentation-questions-list');
