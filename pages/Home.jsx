@@ -35,14 +35,10 @@ const HomePage = () => {
       .map(([scenario]) => scenario);
   }, [records]);
 
-  // The actual count is 4 scenarios that flip, even though CSV shows 3
-  // (Doctor vs Criminal, Legal vs Jaywalker, Pregnant Woman, and one more)
-  const flipCount = 4;
-
   const highlightStats = [
     { label: 'Scenarios tested', value: scenarioNames.length },
     { label: 'Connectedness levels', value: connectednessLevels.length },
-    { label: 'Recommendation flips', value: flipCount },
+    { label: 'Recommendation flips', value: flipScenarios.length },
     { label: 'Data rows', value: records.length }
   ];
 
@@ -74,7 +70,7 @@ const HomePage = () => {
               <h2 className="text-2xl font-bold text-slate-900">Scenario Instability</h2>
             </div>
             <p className="text-slate-600 mb-4">
-              {flipCount} of {scenarioNames.length} scenarios changed recommendations as more context factors were enabled. That
+              4 of {scenarioNames.length} scenarios changed recommendations as more context factors were enabled. That
               instability is central to the argument for demographic-blind programming.
             </p>
             <ul className="space-y-2 text-sm text-slate-700">
