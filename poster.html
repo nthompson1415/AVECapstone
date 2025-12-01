@@ -510,9 +510,9 @@
   <div class="poster">
     <!-- Header -->
     <div class="header">
-      <h1>Should Autonomous Vehicles Use Context-Sensitive Ethics?</h1>
-      <h2>Examining Rigid Rules vs. Adaptive Algorithms Through Utilitarian Analysis</h2>
-      <div class="meta">
+      <h1 data-content="metadata.title">Should Autonomous Vehicles Use Context-Sensitive Ethics?</h1>
+      <h2 data-content="metadata.subtitle">Examining Rigid Rules vs. Adaptive Algorithms Through Utilitarian Analysis</h2>
+      <div class="meta" data-content="metadata.meta">
         <strong>IST 477 Capstone Project</strong> | Fall 2025 | Syracuse University iSchool<br>
         Innovation, Society & Technology
       </div>
@@ -522,14 +522,14 @@
     <div class="section">
       <div class="section-title">Research Questions</div>
       
-      <div class="rq-box">
-        <h3>🎯 Primary Research Question</h3>
-        <p>Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
+      <div class="rq-box" data-content="researchQuestions.primary">
+        <h3 data-content="researchQuestions.primary.title">🎯 Primary Research Question</h3>
+        <p data-content="researchQuestions.primary.question">Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
       </div>
       
-      <div class="rq-box">
-        <h3>🔍 Secondary Research Question</h3>
-        <p>At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
+      <div class="rq-box" data-content="researchQuestions.secondary">
+        <h3 data-content="researchQuestions.secondary.title">🔍 Secondary Research Question</h3>
+        <p data-content="researchQuestions.secondary.question">At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
       </div>
     </div>
 
@@ -538,26 +538,15 @@
       <div class="section-title">Methodology</div>
       
       <div class="two-col">
-        <div class="card">
-          <h4>📊 Research Approach</h4>
-          <ul>
-            <li>Interactive Ethical Decision Analyzer tool</li>
-            <li>Three frameworks: Utilitarian, Deontological, Virtue Ethics</li>
-            <li>Evidence-based weights (VSL, QALY, recidivism data)</li>
-            <li>6 classic trolley problem scenarios</li>
-            <li>Systematic testing at 5 connectedness levels</li>
-          </ul>
+        <div class="card" data-content="methodology.researchApproach">
+          <h4 data-content="methodology.researchApproach.title">📊 Research Approach</h4>
+          <ul data-content="methodology.researchApproach.items"></ul>
         </div>
         
-        <div class="card">
-          <h4>🔗 Connectedness Spectrum</h4>
-          <ul>
-            <li><strong>None:</strong> Demographic-blind (age only)</li>
-            <li><strong>Medium:</strong> + Occupation, health, criminal history</li>
-            <li><strong>High:</strong> + Legal fault, pregnancy, species</li>
-            <li><strong>Maximum:</strong> + Network effects (dependents)</li>
-          </ul>
-          <p style="margin-top: 20px; font-size: 15px; color: #718096; font-style: italic;">
+        <div class="card" data-content="methodology.connectednessSpectrum">
+          <h4 data-content="methodology.connectednessSpectrum.title">🔗 Connectedness Spectrum</h4>
+          <ul data-content="methodology.connectednessSpectrum.levels"></ul>
+          <p style="margin-top: 20px; font-size: 15px; color: #718096; font-style: italic;" data-content="methodology.connectednessSpectrum.description">
             Connectedness = Amount of demographic/contextual information available to the ethical decision model
           </p>
         </div>
@@ -567,102 +556,20 @@
     <!-- Key Findings -->
     <div class="section">
       <div class="section-title">Key Findings</div>
-      
-      <div class="finding-box">
-        <h4>📊 Finding #1: Decision Sensitivity to Connectedness</h4>
-        <p>
-          <span class="stat-badge" style="background: #fed7d7; color: #742a2a; border-color: #fc8181;">50% of scenarios (3/6)</span> 
-          produced different recommendations at different connectedness levels, <strong>highlighting that informational connectedness is not ethically neutral</strong>—it fundamentally determines which lives AVs prioritize. This underscores the need for explicit societal deliberation about which factors should inform AV decisions.
-        </p>
-      </div>
-      
-      <div class="finding-box">
-        <h4>⚖️ Finding #2: Pregnancy Weighting Trade-offs</h4>
-        <p>
-          <strong>Low connectedness:</strong> Kill pregnant woman, save 2 people (50 vs 76 harm)<br>
-          <strong>High connectedness:</strong> Save pregnant woman, kill 2 people (90 vs 76 harm with 1.8x multiplier)<br><br>
-          The pregnancy scenario reveals a fundamental tension in utilitarian logic: granular weighting (pregnancy = 1.8 lives) produces mathematically consistent but socially controversial outcomes. This illustrates the challenge of translating moral intuitions into algorithmic rules.
-        </p>
-      </div>
-      
-      <div class="finding-box">
-        <h4>⚖️ Finding #3: Legal Responsibility vs. Equal Protection</h4>
-        <p>
-          The jaywalker scenario creates tension between <strong>two valid principles:</strong> (1) Equal protection—all lives have equal worth regardless of minor infractions, versus (2) Responsibility—those who follow rules have stronger moral claims. 
-          Legal fault weighting reduces a jaywalker's priority by <span class="stat-badge" style="background: #fed7d7; color: #742a2a; border-color: #fc8181;">37%</span> (0.9 × 0.7 = 0.63x), forcing society to choose which principle dominates.
-        </p>
-      </div>
-
-      <div class="finding-box">
-        <h4>💼 Finding #4: Occupation-Based Value Hierarchies</h4>
-        <p>
-          Occupation and criminal history weighting transforms a neutral 1v1 scenario into a decisive recommendation (save doctor: 64.5 vs 40.42 harm), resolving ethical ambiguity through <strong>utilitarian calculus of secondary effects</strong> (doctor's future life-saving work vs. criminal's recidivism risk). This raises the analytical question: <strong>Should AVs consider individuals' social contributions and past actions when determining whom to save?</strong> The answer requires weighing utilitarian logic (maximize total welfare including future effects) against egalitarian principles (all human lives have equal intrinsic worth regardless of occupation or history).
-        </p>
-      </div>
+      <div id="findings-container"></div>
     </div>
 
     <!-- Data Visualization -->
     <div class="section">
       <div class="section-title">Decision Stability Analysis</div>
       
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Scenario</th>
-            <th>None (Demographic-Blind)</th>
-            <th>Medium Connectedness</th>
-            <th>High Connectedness</th>
-            <th>Maximum Connectedness</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="scenario-name">Classic Trolley<br><span style="font-size: 13px; color: #718096;">(5 people vs 1 person)</span></td>
-            <td>Save 5 people</td>
-            <td>Save 5 people</td>
-            <td>Save 5 people</td>
-            <td>Save 5 people</td>
-          </tr>
-          <tr>
-            <td class="scenario-name">Young vs Elderly<br><span style="font-size: 13px; color: #718096;">(5 elderly vs 1 child)</span></td>
-            <td>Save 1 child</td>
-            <td>Save 1 child</td>
-            <td>Save 1 child</td>
-            <td>Save 1 child</td>
-          </tr>
-          <tr>
-            <td class="scenario-name">Doctor vs Criminal<br><span style="font-size: 13px; color: #718096;">(1 doctor vs 1 criminal)</span></td>
-            <td>Neutral</td>
-            <td class="changed">Save Doctor</td>
-            <td class="changed">Save Doctor</td>
-            <td class="changed">Save Doctor</td>
-          </tr>
-          <tr>
-            <td class="scenario-name">Legal vs Jaywalker<br><span style="font-size: 13px; color: #718096;">(both 1 person)</span></td>
-            <td>Neutral</td>
-            <td>Neutral</td>
-            <td class="changed">Save Legal Pedestrian</td>
-            <td class="changed">Save Legal Pedestrian</td>
-          </tr>
-          <tr>
-            <td class="scenario-name">Pregnant Woman<br><span style="font-size: 13px; color: #718096;">(1 pregnant vs 2 people)</span></td>
-            <td>Save 2 People</td>
-            <td>Save 2 People</td>
-            <td class="changed">Save Pregnant Woman</td>
-            <td class="changed">Save Pregnant Woman</td>
-          </tr>
-          <tr>
-            <td class="scenario-name">Pet vs Person<br><span style="font-size: 13px; color: #718096;">(1 dog vs 1 human)</span></td>
-            <td>Save Person</td>
-            <td>Save Person</td>
-            <td>Save Person</td>
-            <td>Save Person</td>
-          </tr>
-        </tbody>
+      <table class="data-table" id="scenario-table">
+        <thead id="scenario-table-head"></thead>
+        <tbody id="scenario-table-body"></tbody>
       </table>
       
       <p style="margin-top: 20px; font-size: 15px; color: #718096; text-align: center;">
-        <span style="background: #fff5f5; padding: 6px 14px; border-radius: 6px; border: 2px solid #fc8181; font-weight: 600;">
+        <span style="background: #fff5f5; padding: 6px 14px; border-radius: 6px; border: 2px solid #fc8181; font-weight: 600;" data-content="scenarioData.note">
           Red cells indicate decision changed at this connectedness level
         </span>
       </p>
@@ -671,101 +578,13 @@
     <!-- Pregnant Woman Visualization -->
     <div class="section">
       <div class="section-title">Example: Pregnancy Weighting Effect</div>
-      
-      <div class="chart-container">
-        <h3 style="font-size: 20px; margin-bottom: 25px; color: #2d3748; text-align: center;">
-          📉 Low Connectedness (No Pregnancy Multiplier)
-        </h3>
-        
-        <div class="bar-chart">
-          <div class="bar-label">
-            <span>2 People (age 40)</span>
-            <span>76.0 harm</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill option1" style="width: 100%;">WORSE (100%)</div>
-          </div>
-        </div>
-        
-        <div class="bar-chart">
-          <div class="bar-label">
-            <span>1 Pregnant Woman (age 28)</span>
-            <span>50.0 harm</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill option2" style="width: 65.8%;">BETTER (65.8%)</div>
-          </div>
-        </div>
-        
-        <div class="result-badge bad" style="display: block; text-align: center;">
-          ✗ Decision: Kill pregnant woman, save 2 people
-        </div>
-      </div>
-
-      <div class="divider">
-        <div class="divider-line"></div>
-        <span style="margin: 0 20px; color: #a0aec0; font-weight: 700; font-size: 18px;">CONNECTEDNESS INCREASES ↓</span>
-        <div class="divider-line"></div>
-      </div>
-
-      <div class="chart-container">
-        <h3 style="font-size: 20px; margin-bottom: 25px; color: #2d3748; text-align: center;">
-          📈 High Connectedness (Pregnancy Multiplier 1.8x)
-        </h3>
-        
-        <div class="bar-chart">
-          <div class="bar-label">
-            <span>2 People (age 40)</span>
-            <span>76.0 harm</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill option1" style="width: 84.4%;">BETTER (84.4%)</div>
-          </div>
-        </div>
-        
-        <div class="bar-chart">
-          <div class="bar-label">
-            <span>1 Pregnant Woman (age 28, weighted 1.8x)</span>
-            <span>90.0 harm</span>
-          </div>
-          <div class="bar-track">
-            <div class="bar-fill option2" style="width: 100%;">WORSE (100%)</div>
-          </div>
-        </div>
-        
-        <div class="result-badge good" style="display: block; text-align: center;">
-          ✓ Decision: Save pregnant woman, kill 2 people
-        </div>
-      </div>
-      
-      <p style="margin-top: 25px; text-align: center; font-size: 17px; color: #4a5568; font-style: italic;">
-        <strong>Key Insight:</strong> Pregnancy multiplier (1.8x) reverses the decision—from saving more people to protecting the pregnant individual
-      </p>
+      <div id="pregnancy-visualization"></div>
     </div>
 
     <!-- Ethical Frameworks -->
     <div class="section">
       <div class="section-title">Ethical Framework Analysis</div>
-      
-      <div class="framework-grid">
-        <div class="framework-card">
-          <div class="icon">⚖️</div>
-          <h4>Utilitarian</h4>
-          <p><strong>Minimize total harm</strong> through life-years calculation. Sensitive to connectedness—different factors produce different hierarchies.</p>
-        </div>
-        
-        <div class="framework-card">
-          <div class="icon">📜</div>
-          <h4>Deontological</h4>
-          <p><strong>Rights and duties</strong> based. Rejects demographic weighting as violating equal moral worth regardless of connectedness level.</p>
-        </div>
-        
-        <div class="framework-card">
-          <div class="icon">❤️</div>
-          <h4>Virtue Ethics</h4>
-          <p><strong>Character and wisdom</strong> focused. Emphasizes human dignity and contextual judgment that cannot be fully programmed.</p>
-        </div>
-      </div>
+      <div class="framework-grid" id="frameworks-container"></div>
     </div>
 
     <!-- Implications -->
@@ -773,48 +592,278 @@
       <div class="section-title">Implications & Next Steps</div>
       
       <div class="two-col">
-        <div class="card">
+        <div class="card" id="analytical-questions-card">
           <h4>🔬 Analytical Questions Raised</h4>
-          <ul>
-            <li>At what connectedness threshold do benefits outweigh discrimination risks?</li>
-            <li>Should pregnancy, legal fault, or occupation ever inform AV decisions?</li>
-            <li>Can utilitarian precision handle moral edge cases?</li>
-            <li>How does model accuracy affect the ethics of deployment?</li>
-          </ul>
+          <ul id="analytical-questions-list"></ul>
         </div>
         
-        <div class="card">
+        <div class="card" id="remaining-research-card">
           <h4>📖 Remaining Research</h4>
-          <ul>
-            <li>Compare to MIT Moral Machine public opinion data</li>
-            <li>Expert ethicist validation of controversial scenarios</li>
-            <li>Sensitivity analysis on multiplier values</li>
-            <li>Model accuracy threshold analysis</li>
-            <li>Policy framework recommendations</li>
-          </ul>
+          <ul id="remaining-research-list"></ul>
         </div>
       </div>
     </div>
 
     <!-- Preliminary Insights -->
-    <div class="conclusion-box">
+    <div class="conclusion-box" id="conclusions-container">
       <h3>📌 Preliminary Insights</h3>
-      <p>
-        Decision stability analysis reveals that <span class="stat-badge">3 of 6 scenarios</span> change recommendations based on connectedness level, demonstrating that <strong>the choice of which factors to include is a critical policy decision</strong> with direct consequences for whom AVs prioritize in unavoidable accidents.
-      </p>
-      <p style="margin-top: 20px;">
-        Scenarios involving pregnancy, legal responsibility, and occupation show that increased informational connectedness can both <strong>resolve ethical ambiguity</strong> (doctor vs criminal) and <strong>introduce controversial outcomes</strong> (pregnancy weighting reversal). This dual nature suggests the connectedness question cannot be answered through technical optimization alone—it requires explicit societal value judgments.
-      </p>
-      <p style="margin-top: 20px;">
-        <strong>Central Tension:</strong> Utilitarian frameworks require quantifying factors (occupation = 1.5x, criminal = 0.94x, pregnancy = 1.8x), but quantification itself creates hierarchies that may conflict with principles of equal human dignity. The research will examine whether any level of accuracy and connectedness can ethically justify these trade-offs.
-      </p>
+      <div id="conclusions-content"></div>
     </div>
 
     <!-- Footer -->
     <div style="margin-top: 55px; padding-top: 35px; border-top: 4px solid #e2e8f0; text-align: center; color: #718096; font-size: 15px;">
-      <p style="font-weight: 600; color: #4a5568;"><strong>Interactive Tools:</strong> React-based Ethical Decision Analyzer | Evidence-based multipliers from government VSL estimates, QALY medical frameworks, and criminal justice recidivism research</p>
-      <p style="margin-top: 12px;"><strong>Timeline:</strong> Literature Review (Nov) | Final Paper (20-40 pages, Dec 12) | Poster Day (Dec 5)</p>
+      <p style="font-weight: 600; color: #4a5568;" data-content="footer.tools"><strong>Interactive Tools:</strong> React-based Ethical Decision Analyzer | Evidence-based multipliers from government VSL estimates, QALY medical frameworks, and criminal justice recidivism research</p>
+      <p style="margin-top: 12px;" data-content="footer.timeline"><strong>Timeline:</strong> Literature Review (Nov) | Final Paper (20-40 pages, Dec 12) | Poster Day (Dec 5)</p>
     </div>
   </div>
+
+  <script>
+    let contentData = null;
+
+    // Load content data
+    async function loadContent() {
+      try {
+        const response = await fetch('content-data.json');
+        contentData = await response.json();
+        populateContent();
+      } catch (error) {
+        console.error('Error loading content-data.json:', error);
+        // Fallback to static content if JSON fails to load
+      }
+    }
+
+    // Populate all content from JSON
+    function populateContent() {
+      if (!contentData) return;
+
+      // Metadata
+      populateMetadata();
+      
+      // Research Questions
+      populateResearchQuestions();
+      
+      // Methodology
+      populateMethodology();
+      
+      // Findings
+      populateFindings();
+      
+      // Scenario Table
+      populateScenarioTable();
+      
+      // Pregnancy Visualization
+      populatePregnancyVisualization();
+      
+      // Frameworks
+      populateFrameworks();
+      
+      // Implications
+      populateImplications();
+      
+      // Conclusions
+      populateConclusions();
+      
+      // Footer
+      populateFooter();
+    }
+
+    function populateMetadata() {
+      const meta = contentData.metadata;
+      const metaText = `<strong>${meta.project}</strong> | ${meta.semester} | ${meta.institution}<br>${meta.program}`;
+      document.querySelector('[data-content="metadata.meta"]').innerHTML = metaText;
+    }
+
+    function populateResearchQuestions() {
+      const primary = contentData.researchQuestions.primary;
+      const secondary = contentData.researchQuestions.secondary;
+      
+      const primaryBox = document.querySelector('[data-content="researchQuestions.primary"]');
+      primaryBox.querySelector('[data-content="researchQuestions.primary.title"]').textContent = `${primary.icon} ${primary.title}`;
+      primaryBox.querySelector('[data-content="researchQuestions.primary.question"]').textContent = primary.question;
+      
+      const secondaryBox = document.querySelector('[data-content="researchQuestions.secondary"]');
+      secondaryBox.querySelector('[data-content="researchQuestions.secondary.title"]').textContent = `${secondary.icon} ${secondary.title}`;
+      secondaryBox.querySelector('[data-content="researchQuestions.secondary.question"]').textContent = secondary.question;
+    }
+
+    function populateMethodology() {
+      const approach = contentData.methodology.researchApproach;
+      const approachCard = document.querySelector('[data-content="methodology.researchApproach"]');
+      approachCard.querySelector('[data-content="methodology.researchApproach.title"]').textContent = approach.title;
+      const approachList = approachCard.querySelector('[data-content="methodology.researchApproach.items"]');
+      approachList.innerHTML = approach.items.map(item => `<li>${item}</li>`).join('');
+      
+      const spectrum = contentData.methodology.connectednessSpectrum;
+      const spectrumCard = document.querySelector('[data-content="methodology.connectednessSpectrum"]');
+      spectrumCard.querySelector('[data-content="methodology.connectednessSpectrum.title"]').textContent = spectrum.title;
+      const spectrumList = spectrumCard.querySelector('[data-content="methodology.connectednessSpectrum.levels"]');
+      spectrumList.innerHTML = spectrum.levels.map(level => 
+        `<li><strong>${level.name}:</strong> ${level.description}</li>`
+      ).join('');
+      spectrumCard.querySelector('[data-content="methodology.connectednessSpectrum.description"]').textContent = spectrum.description;
+    }
+
+    function populateFindings() {
+      const container = document.getElementById('findings-container');
+      container.innerHTML = contentData.findings.map(finding => {
+        let statBadge = '';
+        if (finding.statistic) {
+          statBadge = `<span class="stat-badge" style="background: #fed7d7; color: #742a2a; border-color: #fc8181;">${finding.statistic.value} ${finding.statistic.label || ''}</span>`;
+        }
+        
+        let content = finding.description;
+        if (finding.lowConnectedness && finding.highConnectedness) {
+          content = `<strong>Low connectedness:</strong> ${finding.lowConnectedness.decision} (${finding.lowConnectedness.harm})<br>
+                     <strong>High connectedness:</strong> ${finding.highConnectedness.decision} (${finding.highConnectedness.harm})<br><br>
+                     ${finding.description}`;
+        }
+        
+        return `
+          <div class="finding-box">
+            <h4>${finding.icon} ${finding.title}</h4>
+            <p>
+              ${statBadge ? statBadge + ' ' : ''}${content}
+            </p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function populateScenarioTable() {
+      const headers = contentData.scenarioData.tableHeaders;
+      const thead = document.getElementById('scenario-table-head');
+      thead.innerHTML = `<tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>`;
+      
+      const tbody = document.getElementById('scenario-table-body');
+      tbody.innerHTML = contentData.scenarioData.scenarios.map(scenario => {
+        const cells = [
+          `<td class="scenario-name">${scenario.name}<br><span style="font-size: 13px; color: #718096;">${scenario.description}</span></td>`,
+          `<td${scenario.changed && scenario.changedAt.includes('none') ? ' class="changed"' : ''}>${scenario.none}</td>`,
+          `<td${scenario.changed && scenario.changedAt.includes('medium') ? ' class="changed"' : ''}>${scenario.medium}</td>`,
+          `<td${scenario.changed && scenario.changedAt.includes('high') ? ' class="changed"' : ''}>${scenario.high}</td>`,
+          `<td${scenario.changed && scenario.changedAt.includes('maximum') ? ' class="changed"' : ''}>${scenario.maximum}</td>`
+        ];
+        return `<tr>${cells.join('')}</tr>`;
+      }).join('');
+    }
+
+    function populatePregnancyVisualization() {
+      const container = document.getElementById('pregnancy-visualization');
+      const low = contentData.pregnancyExample.lowConnectedness;
+      const high = contentData.pregnancyExample.highConnectedness;
+      
+      container.innerHTML = `
+        <div class="chart-container">
+          <h3 style="font-size: 20px; margin-bottom: 25px; color: #2d3748; text-align: center;">
+            ${low.title}
+          </h3>
+          
+          <div class="bar-chart">
+            <div class="bar-label">
+              <span>${low.option1.label}</span>
+              <span>${low.option1.harm} harm</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill option1" style="width: ${low.option1.percentage}%;">${low.option1.result} (${low.option1.percentage}%)</div>
+            </div>
+          </div>
+          
+          <div class="bar-chart">
+            <div class="bar-label">
+              <span>${low.option2.label}</span>
+              <span>${low.option2.harm} harm</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill option2" style="width: ${low.option2.percentage}%;">${low.option2.result} (${low.option2.percentage}%)</div>
+            </div>
+          </div>
+          
+          <div class="result-badge ${low.decisionType}" style="display: block; text-align: center;">
+            ${low.decision}
+          </div>
+        </div>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <span style="margin: 0 20px; color: #a0aec0; font-weight: 700; font-size: 18px;">CONNECTEDNESS INCREASES ↓</span>
+          <div class="divider-line"></div>
+        </div>
+
+        <div class="chart-container">
+          <h3 style="font-size: 20px; margin-bottom: 25px; color: #2d3748; text-align: center;">
+            ${high.title}
+          </h3>
+          
+          <div class="bar-chart">
+            <div class="bar-label">
+              <span>${high.option1.label}</span>
+              <span>${high.option1.harm} harm</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill option1" style="width: ${high.option1.percentage}%;">${high.option1.result} (${high.option1.percentage}%)</div>
+            </div>
+          </div>
+          
+          <div class="bar-chart">
+            <div class="bar-label">
+              <span>${high.option2.label}</span>
+              <span>${high.option2.harm} harm</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill option2" style="width: ${high.option2.percentage}%;">${high.option2.result} (${high.option2.percentage}%)</div>
+            </div>
+          </div>
+          
+          <div class="result-badge ${high.decisionType}" style="display: block; text-align: center;">
+            ${high.decision}
+          </div>
+        </div>
+        
+        <p style="margin-top: 25px; text-align: center; font-size: 17px; color: #4a5568; font-style: italic;">
+          <strong>Key Insight:</strong> ${contentData.pregnancyExample.insight}
+        </p>
+      `;
+    }
+
+    function populateFrameworks() {
+      const container = document.getElementById('frameworks-container');
+      container.innerHTML = contentData.frameworks.map(framework => `
+        <div class="framework-card">
+          <div class="icon">${framework.icon}</div>
+          <h4>${framework.name}</h4>
+          <p>${framework.description}</p>
+        </div>
+      `).join('');
+    }
+
+    function populateImplications() {
+      const questionsList = document.getElementById('analytical-questions-list');
+      questionsList.innerHTML = contentData.implications.analyticalQuestions.map(q => `<li>${q}</li>`).join('');
+      
+      const researchList = document.getElementById('remaining-research-list');
+      researchList.innerHTML = contentData.implications.remainingResearch.map(r => `<li>${r}</li>`).join('');
+    }
+
+    function populateConclusions() {
+      const container = document.getElementById('conclusions-content');
+      container.innerHTML = contentData.conclusions.preliminaryInsights.map((insight, index) => {
+        let text = insight.text;
+        if (insight.statistic) {
+          text = text.replace(insight.statistic, `<span class="stat-badge">${insight.statistic}</span>`);
+        }
+        return `<p${index > 0 ? ' style="margin-top: 20px;"' : ''}>${text}</p>`;
+      }).join('');
+    }
+
+    function populateFooter() {
+      document.querySelector('[data-content="footer.tools"]').innerHTML = 
+        `<strong>Interactive Tools:</strong> ${contentData.footer.tools}`;
+      document.querySelector('[data-content="footer.timeline"]').innerHTML = 
+        `<strong>Timeline:</strong> ${contentData.footer.timeline}`;
+    }
+
+    // Initialize on page load
+    loadContent();
+  </script>
 </body>
 </html>

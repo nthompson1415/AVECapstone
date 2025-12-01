@@ -563,14 +563,14 @@
   <div class="slide">
     <h2>Research Questions & Variables</h2>
     
-    <div class="rq-box">
-      <h4 style="font-size: 22px; margin-bottom: 12px;">🎯 Primary RQ</h4>
-      <p>Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
+    <div class="rq-box" id="primary-rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;" id="primary-rq-title">🎯 Primary RQ</h4>
+      <p id="primary-rq-text">Should autonomous vehicles be programmed with rigid ethical rules that treat all demographics equally (as mandated by the German Ethics Commission), or should they adapt in real-time using context-sensitive factors in unavoidable accident scenarios?</p>
     </div>
     
-    <div class="rq-box">
-      <h4 style="font-size: 22px; margin-bottom: 12px;">🔍 Secondary RQ</h4>
-      <p>At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
+    <div class="rq-box" id="secondary-rq-box">
+      <h4 style="font-size: 22px; margin-bottom: 12px;" id="secondary-rq-title">🔍 Secondary RQ</h4>
+      <p id="secondary-rq-text">At what levels of model accuracy and informational connectedness, if any, does context-sensitive AV decision-making become more ethically defensible than rigid demographic-blind foresight rules?</p>
     </div>
     
     <div class="variables-box">
@@ -627,8 +627,8 @@
   <div class="slide">
     <h2>Preliminary Findings I: Decision Stability</h2>
     
-    <table class="table">
-      <thead>
+    <table class="table" id="presentation-scenario-table">
+      <thead id="presentation-table-head">
         <tr>
           <th>Scenario</th>
           <th>None</th>
@@ -637,53 +637,10 @@
           <th>Maximum</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td><strong>Classic Trolley</strong><br><span style="font-size: 14px; color: #718096;">(5 people vs 1)</span></td>
-          <td>Save 5</td>
-          <td>Save 5</td>
-          <td>Save 5</td>
-          <td>Save 5</td>
-        </tr>
-        <tr>
-          <td><strong>Young vs Elderly</strong><br><span style="font-size: 14px; color: #718096;">(5 elderly vs 1 child)</span></td>
-          <td>Save Child</td>
-          <td>Save Child</td>
-          <td>Save Child</td>
-          <td>Save Child</td>
-        </tr>
-        <tr>
-          <td><strong>Doctor vs Criminal</strong><br><span style="font-size: 14px; color: #718096;">(1 vs 1, age 35)</span></td>
-          <td>Neutral</td>
-          <td class="changed">Save Doctor</td>
-          <td class="changed">Save Doctor</td>
-          <td class="changed">Save Doctor</td>
-        </tr>
-        <tr>
-          <td><strong>Legal vs Jaywalker</strong><br><span style="font-size: 14px; color: #718096;">(1 vs 1, age 40)</span></td>
-          <td>Neutral</td>
-          <td>Neutral</td>
-          <td class="changed">Save Legal</td>
-          <td class="changed">Save Legal</td>
-        </tr>
-        <tr>
-          <td><strong>Pregnant Woman</strong><br><span style="font-size: 14px; color: #718096;">(1 pregnant vs 2 people)</span></td>
-          <td>Save 2</td>
-          <td>Save 2</td>
-          <td class="changed">Save Pregnant</td>
-          <td class="changed">Save Pregnant</td>
-        </tr>
-        <tr>
-          <td><strong>Pet vs Person</strong><br><span style="font-size: 14px; color: #718096;">(1 dog vs 1 human)</span></td>
-          <td>Save Person</td>
-          <td>Save Person</td>
-          <td>Save Person</td>
-          <td>Save Person</td>
-        </tr>
-      </tbody>
+      <tbody id="presentation-table-body"></tbody>
     </table>
     
-    <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;">
+    <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;" id="presentation-stat-text">
       3 of 6 scenarios (50%) changed recommendations based on connectedness level
     </p>
   </div>
@@ -735,26 +692,7 @@
   <!-- Slide 7: Key Findings -->
   <div class="slide">
     <h2>Four Critical Findings</h2>
-    
-    <div style="margin-top: 25px;">
-      <h4>1. Decision Sensitivity to Connectedness</h4>
-      <p style="font-size: 19px;">50% of scenarios produced different recommendations at different connectedness levels, <span class="emphasis">highlighting that informational connectedness is not ethically neutral</span>—it fundamentally determines which lives AVs prioritize.</p>
-    </div>
-    
-    <div style="margin-top: 25px;">
-      <h4>2. Pregnancy Weighting Tension</h4>
-      <p style="font-size: 19px;">Pregnancy weighting reveals a fundamental tension in utilitarian logic: granular weighting produces mathematically consistent but socially controversial outcomes, illustrating the challenge of translating moral intuitions into algorithmic rules.</p>
-    </div>
-    
-    <div style="margin-top: 25px;">
-      <h4>3. Legal Responsibility vs Equal Protection</h4>
-      <p style="font-size: 19px;">Creates tension between <span class="emphasis">two valid principles</span>: equal protection (all lives equal worth) versus responsibility (rule-followers have stronger claims). 37% jaywalker reduction forces choice of which principle dominates.</p>
-    </div>
-    
-    <div style="margin-top: 25px;">
-      <h4>4. Occupation-Based Hierarchies</h4>
-      <p style="font-size: 19px;">Should AVs consider individuals' social contributions and past actions? Utilitarian logic says yes (maximize total welfare), but egalitarian principles say no (equal intrinsic worth).</p>
-    </div>
+    <div id="presentation-findings-container"></div>
   </div>
 
   <!-- Slide 8: Conclusions & Implications -->
@@ -768,7 +706,7 @@
     </p>
     
     <h3 style="margin-top: 40px;">Key Questions Raised:</h3>
-    <ul>
+    <ul id="presentation-questions-list">
       <li>At what connectedness threshold do benefits outweigh discrimination risks?</li>
       <li>Can model accuracy ever be high enough to justify demographic-sensitive decisions?</li>
       <li>Should pregnancy, legal fault, or occupation inform AV algorithms?</li>
@@ -999,6 +937,74 @@
         prevSlide();
       }
     });
+
+    // Load and populate content from content-data.json
+    let presentationContentData = null;
+
+    async function loadPresentationContent() {
+      try {
+        const response = await fetch('content-data.json');
+        presentationContentData = await response.json();
+        populatePresentationContent();
+      } catch (error) {
+        console.error('Error loading content-data.json:', error);
+      }
+    }
+
+    function populatePresentationContent() {
+      if (!presentationContentData) return;
+
+      // Research Questions
+      const primary = presentationContentData.researchQuestions.primary;
+      document.getElementById('primary-rq-title').textContent = `${primary.icon} Primary RQ`;
+      document.getElementById('primary-rq-text').textContent = primary.question;
+
+      const secondary = presentationContentData.researchQuestions.secondary;
+      document.getElementById('secondary-rq-title').textContent = `${secondary.icon} Secondary RQ`;
+      document.getElementById('secondary-rq-text').textContent = secondary.question;
+
+      // Scenario Table
+      const scenarios = presentationContentData.scenarioData.scenarios;
+      const tbody = document.getElementById('presentation-table-body');
+      tbody.innerHTML = scenarios.map(scenario => {
+        const cells = [
+          `<td><strong>${scenario.name}</strong><br><span style="font-size: 14px; color: #718096;">${scenario.description}</span></td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('none') ? ' class="changed"' : ''}>${scenario.none}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('medium') ? ' class="changed"' : ''}>${scenario.medium}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('high') ? ' class="changed"' : ''}>${scenario.high}</td>`,
+          `<td${scenario.changed && scenario.changedAt && scenario.changedAt.includes('maximum') ? ' class="changed"' : ''}>${scenario.maximum}</td>`
+        ];
+        return `<tr>${cells.join('')}</tr>`;
+      }).join('');
+
+      // Statistics
+      const stat = presentationContentData.statistics.scenariosChanged;
+      document.getElementById('presentation-stat-text').textContent = 
+        `${stat.count} scenarios (${stat.value}) changed recommendations based on connectedness level`;
+
+      // Findings
+      const findingsContainer = document.getElementById('presentation-findings-container');
+      const findings = presentationContentData.findings.slice(0, 4); // First 4 findings
+      findingsContainer.innerHTML = findings.map((finding, index) => {
+        let content = finding.description;
+        if (finding.statistic) {
+          content = `${finding.statistic.value}${finding.statistic.label ? ' ' + finding.statistic.label : ''} ${content}`;
+        }
+        return `
+          <div style="margin-top: ${index === 0 ? '25px' : '25px'};">
+            <h4>${index + 1}. ${finding.title.replace(/^Finding #\d+: /, '')}</h4>
+            <p style="font-size: 19px;">${content}</p>
+          </div>
+        `;
+      }).join('');
+
+      // Questions
+      const questionsList = document.getElementById('presentation-questions-list');
+      questionsList.innerHTML = presentationContentData.implications.analyticalQuestions.map(q => `<li>${q}</li>`).join('');
+    }
+
+    // Load content on page load
+    loadPresentationContent();
   </script>
 </body>
 </html>
