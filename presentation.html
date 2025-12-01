@@ -14,7 +14,8 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica', 'Arial', sans-serif;
       background: #1a202c;
-      overflow: hidden;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     
     .slide {
@@ -27,7 +28,8 @@
     .slide.active {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
+      overflow-y: auto;
     }
     
     .slide h1 {
