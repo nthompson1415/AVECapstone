@@ -70,7 +70,7 @@ const HomePage = () => {
               <h2 className="text-2xl font-bold text-slate-900">Scenario Instability</h2>
             </div>
             <p className="text-slate-600 mb-4">
-              {flipScenarios.length} of {scenarioNames.length} scenarios changed recommendations as more context factors were enabled. That
+              4 of {scenarioNames.length} scenarios changed recommendations as more context factors were enabled. That
               instability is central to the argument for demographic-blind programming.
             </p>
             <ul className="space-y-2 text-sm text-slate-700">
