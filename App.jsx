@@ -6,6 +6,7 @@ import CalibratorPage from './pages/Calibrator';
 import FindingsPage from './pages/Findings';
 import PosterPage from './pages/Poster';
 import PresentationPage from './pages/Presentation';
+import DataViewerPage from './pages/DataViewer';
 import NotFoundPage from './pages/NotFound';
 
 const navLinks = [
@@ -93,6 +94,7 @@ function App() {
             <Route path="/analyzer" element={<AnalyzerPage />} />
             <Route path="/calibrator" element={<CalibratorPage />} />
             <Route path="/findings" element={<FindingsPage />} />
+            <Route path="/data" element={<DataViewerPage />} />
             <Route path="/poster" element={<PosterPage />} />
             <Route path="/presentation" element={<PresentationPage />} />
             <Route path="*" element={<NotFoundPage />} />
