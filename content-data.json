@@ -59,39 +59,39 @@
   "findings": [
     {
       "icon": "📊",
-      "title": "Decision Instability",
+      "title": "Decision Sensitivity to Connectedness",
       "statistic": {
-        "value": "50%",
-        "label": "of scenarios changed recommendations"
+        "value": "67%",
+        "label": "of scenarios (4 of 6) changed recommendations"
       },
-      "description": "All 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
+      "description": "67% of scenarios (4 of 6) changed recommendations based on connectedness level, demonstrating that informational connectedness is a critical policy variable that fundamentally determines which lives AVs prioritize. This sensitivity reveals that society must explicitly choose which level of connectedness to implement, as each level produces systematically different outcomes."
     },
     {
       "icon": "⚖️",
-      "title": "The Pregnant Woman Paradox",
+      "title": "Pregnancy Information Reverses Intuitive Logic",
       "lowConnectedness": {
-        "decision": "Hit 2 people (save pregnant woman)",
-        "harm": "76 harm vs 50 harm"
+        "decision": "Hit Pregnant (save 2 people)",
+        "harm": "50 harm vs 76 harm"
       },
       "highConnectedness": {
-        "decision": "Hit Pregnant (save 2 people)",
-        "harm": "90 harm (with 1.8x multiplier) vs 76 harm"
+        "decision": "Hit 2 people (save pregnant woman)",
+        "harm": "76 harm vs 90 harm (with 1.8x multiplier)"
       },
-      "description": "MOST SIGNIFICANT FINDING: At high connectedness, the pregnancy multiplier (1.8x) makes hitting the pregnant woman cause MORE harm (90 vs 76), creating a controversial outcome that flips the intuitive decision."
+      "description": "Low connectedness (pregnancy unknown): Hit pregnant woman, save 2 people (50 vs 76 harm) - standard \"save more people\" logic. High connectedness (pregnancy known): Save pregnant woman, hit 2 people (90 vs 76 harm with 1.8x multiplier) - pregnancy information flips decision. The paradox: Learning she is pregnant causes the system to save FEWER people (1 instead of 2), prioritizing the weighted value of pregnancy over raw numbers. Reveals tension between \"maximize people saved\" vs \"maximize weighted life-years.\" Any multiplier >1.52 produces this reversal."
     },
     {
       "icon": "⚖️",
-      "title": "Legal Responsibility Creates \"Death Sentences\"",
+      "title": "Legal Responsibility vs Equal Protection",
       "statistic": {
         "value": "37%",
         "label": "priority reduction for jaywalkers"
       },
-      "description": "The system effectively \"punishes\" the jaywalker with death for a minor traffic violation. The 37% reduction in their life's value (23.94 vs 38) means jaywalking makes you expendable. Creates tension between equal protection (all lives equal worth) versus responsibility (rule-followers have stronger moral claims)."
+      "description": "Legal fault weighting reduces jaywalker priority by 37% (0.9 jaywalking × 0.7 risky behavior = 0.63x total). Creates tension between two valid principles: (1) equal protection - all lives have equal worth regardless of minor infractions, versus (2) responsibility - those who follow rules have stronger moral claims. Extended connectedness systematically favors rule-followers."
     },
     {
       "icon": "💼",
-      "title": "Doctor vs Criminal - Occupation Dominates",
-      "description": "Doctor valued at 1.5x vs criminal at 0.94x (total 1.6x difference). Resolves ambiguity through secondary effects logic but requires accepting profession-based value differentiation. Question: Should AVs consider social contributions when determining whom to save?"
+      "title": "Occupation-Based Social Hierarchies",
+      "description": "Occupation and criminal history weighting transforms neutral 1v1 scenario into decisive recommendation (save doctor: 64.5 vs 40.42 harm), resolving ethical ambiguity through utilitarian calculus of secondary effects (doctor's future life-saving work vs criminal's recidivism risk). Raises analytical question: Should AVs consider individuals' social contributions and past actions when determining whom to save? Requires weighing utilitarian logic (maximize total welfare) against egalitarian principles (equal intrinsic worth regardless of occupation or history)."
     }
   ],
   "scenarioData": {
@@ -105,8 +105,8 @@
         "medium": "Hit 1",
         "high": "Hit 1",
         "maximum": "Hit 1",
-        "changed": true,
-        "changedAt": ["minimum", "medium", "high", "maximum"]
+        "changed": false,
+        "changedAt": []
       },
       {
         "name": "Young vs Elderly (5 elderly vs 1 child)",
@@ -145,10 +145,10 @@
         "name": "Pregnant Woman (1 vs 2)",
         "description": "Pregnancy multiplier effect",
         "none": "NEUTRAL",
-        "minimum": "Hit 2 people",
-        "medium": "Hit 2 people",
-        "high": "Hit Pregnant",
-        "maximum": "Hit Pregnant",
+        "minimum": "Hit Pregnant",
+        "medium": "Hit Pregnant",
+        "high": "Hit 2 people",
+        "maximum": "Hit 2 people",
         "changed": true,
         "changedAt": ["minimum", "medium", "high", "maximum"]
       },
@@ -160,48 +160,48 @@
         "medium": "Hit Pet",
         "high": "Hit Pet",
         "maximum": "Hit Pet",
-        "changed": true,
-        "changedAt": ["minimum", "medium", "high", "maximum"]
+        "changed": false,
+        "changedAt": []
       }
     ],
     "note": "Red cells indicate decision changed at this connectedness level"
   },
   "pregnancyExample": {
     "lowConnectedness": {
-      "title": "Minimum/Medium Connectedness",
+      "title": "Low Connectedness (Pregnancy Unknown)",
       "option1": {
         "label": "Hit 2 people",
         "harm": "76 harm",
-        "result": "HIT",
+        "result": "SAVE",
         "percentage": 60
       },
       "option2": {
         "label": "Hit Pregnant",
         "harm": "50 harm",
-        "result": "SAVE",
+        "result": "HIT",
         "percentage": 40
       },
-      "decision": "✓ Hit 2 people (save pregnant) - lower harm: 50 vs 76",
+      "decision": "✓ Hit Pregnant (save 2 people) - lower harm: 50 vs 76",
       "decisionType": "good"
     },
     "highConnectedness": {
-      "title": "High/Maximum Connectedness",
+      "title": "High Connectedness (Pregnancy Known)",
       "option1": {
         "label": "Hit 2 people",
         "harm": "76 harm",
-        "result": "SAVE",
+        "result": "HIT",
         "percentage": 46
       },
       "option2": {
         "label": "Hit Pregnant (1.8x multiplier)",
         "harm": "90 harm",
-        "result": "HIT",
+        "result": "SAVE",
         "percentage": 54
       },
-      "decision": "✗ Hit Pregnant (save 2 people) - lower harm: 76 vs 90",
+      "decision": "✗ Hit 2 people (save pregnant) - lower harm: 76 vs 90",
       "decisionType": "bad"
     },
-    "insight": "Granular weighting produces mathematically consistent but socially controversial outcomes, illustrating the challenge of translating moral intuitions into algorithmic rules."
+    "insight": "Learning she is pregnant causes the system to save FEWER people (1 instead of 2), prioritizing weighted value (1.8 lives) over raw numbers. This demonstrates how connectedness can reverse 'save more people' intuitions."
   },
   "frameworks": [
     {

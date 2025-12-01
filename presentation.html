@@ -520,7 +520,6 @@
       <p><strong>IST 477: Capstone in Innovation, Society & Technology</strong></p>
       <p style="margin-top: 30px;">Student: Noah Thompson</p>
       <p>Instructor: Lee W. McKnight</p>
-      <p>Date: October 29, 2025</p>
     </div>
   </div>
 
@@ -644,7 +643,7 @@
     </table>
     
     <p style="margin-top: 25px; text-align: center; font-size: 24px; font-weight: 700; color: #c53030;" id="presentation-stat-text">
-      6 of 6 scenarios changed recommendations based on connectedness level
+      4 of 6 scenarios (67%) changed recommendations based on connectedness level
     </p>
   </div>
 
@@ -665,25 +664,26 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>Minimum/Medium</strong></td>
+          <td><strong>Low Connectedness<br>(Pregnancy Unknown)</strong></td>
           <td>76.0 harm</td>
           <td>50.0 harm</td>
-          <td class="changed">Hit 2 People (save pregnant)</td>
+          <td class="changed">Hit Pregnant (save 2 people)</td>
         </tr>
         <tr>
-          <td><strong>High/Maximum</strong></td>
+          <td><strong>High Connectedness<br>(Pregnancy Known)</strong></td>
           <td>76.0 harm</td>
           <td>90.0 harm (50 × 1.8)</td>
-          <td class="changed">Hit Pregnant (save 2 people)</td>
+          <td class="changed">Hit 2 People (save pregnant)</td>
         </tr>
       </tbody>
     </table>
     
     <div class="finding-highlight" style="margin-top: 35px;">
-      <h4>Pregnancy Multiplier Explanation:</h4>
-      <p style="font-size: 18px; margin-bottom: 15px;">Pregnancy multiplier set at 1.8x as a modeling assumption representing approximately two lives (mother + viable fetus). The health economics literature systematically avoids assigning consistent fetal QALY values due to the politically contentious nature of fetal personhood. Sensitivity analysis shows the finding is robust: any value >1.52 produces the same decision reversal, indicating this result reflects a structural tension in utilitarian logic rather than dependence on a specific multiplier choice.</p>
-      <h4 style="margin-top: 20px;">Key Insight:</h4>
-      <p>Pregnancy multiplier (1.8x) reverses the utilitarian recommendation. At minimum/medium connectedness, standard "save more people" logic dominates. At high/maximum connectedness, pregnancy weighting (treating her as 1.8 lives) makes hitting her "more harmful" than hitting 2 regular people, flipping the decision.</p>
+      <h4>Pregnancy Information Reverses Intuitive Logic:</h4>
+      <p style="font-size: 18px; margin-bottom: 15px;">At low connectedness (system doesn't know she's pregnant), the model treats her as 1 person: hitting her causes 50 harm vs hitting 2 people causes 76 harm. Standard utilitarian logic says hit the pregnant woman, save 2 people.</p>
+      <p style="font-size: 18px; margin-bottom: 15px;">At high connectedness (system knows she's pregnant), the pregnancy multiplier (1.8x) increases her value: hitting her now causes 90 harm (50 × 1.8) vs hitting 2 people still causes 76 harm. Since 90 > 76, the model reverses the decision: hit the 2 people, save the pregnant woman.</p>
+      <p style="font-size: 18px; margin-bottom: 15px;"><strong>The key insight:</strong> Learning she is pregnant (increased connectedness) causes the system to save FEWER people (1 pregnant woman instead of 2 regular people), prioritizing her weighted value (1.8 lives) over raw numbers. This demonstrates how connectedness can reverse "save more people" intuitions.</p>
+      <p style="font-size: 16px; margin-top: 15px; font-style: italic;">Note on robustness: Any pregnancy value >1.52 produces this reversal. At maximum connectedness, certainty about fetal health/viability could further refine this weight.</p>
     </div>
     
     <h3 style="margin-top: 30px;">Additional Findings:</h3>
@@ -952,9 +952,9 @@
         return `<tr>${cells.join('')}</tr>`;
       }).join('');
 
-      // Statistics - update to show all scenarios changed
+      // Statistics - update to show 4 of 6 scenarios changed
       document.getElementById('presentation-stat-text').textContent = 
-        `6 of 6 scenarios changed recommendations based on connectedness level`;
+        `4 of 6 scenarios (67%) changed recommendations based on connectedness level`;
 
       // Findings
       const findingsContainer = document.getElementById('presentation-findings-container');
