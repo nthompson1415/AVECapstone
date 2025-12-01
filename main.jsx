@@ -10,7 +10,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<EthicalChoiceAnalyzer />} />
         <Route path="/analyzer" element={<EthicalChoiceAnalyzer />} />
-        <Route path="*" element={<EthicalChoiceAnalyzer />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
