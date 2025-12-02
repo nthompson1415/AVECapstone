@@ -61,10 +61,10 @@
       "icon": "📊",
       "title": "Decision Instability",
       "statistic": {
-        "value": "50%",
-        "label": "of scenarios changed recommendations"
+        "value": "67%",
+        "label": "of scenarios (4 of 6) changed recommendations"
       },
-      "description": "3 out of 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
+      "description": "4 out of 6 scenarios changed recommendations based on connectedness level. Increased connectedness resolved some neutral cases but created NEW ethical problems (pregnant woman flip)."
     },
     {
       "icon": "⚖️",
@@ -211,7 +211,7 @@
   "conclusions": {
     "preliminaryInsights": [
       {
-        "text": "Informational connectedness is a critical policy variable that fundamentally shapes AV ethical behavior (50% of scenarios changed)."
+        "text": "Informational connectedness is a critical policy variable that fundamentally shapes AV ethical behavior (67% of scenarios, 4 of 6, changed)."
       },
       {
         "text": "Utilitarian quantification creates value hierarchies (doctor 1.5x, criminal 0.94x, pregnancy 1.8x) that may conflict with equal human dignity."
