@@ -789,7 +789,6 @@
         const cells = [
           `<td class="scenario-name">${scenario.name}<br><span style="font-size: 13px; color: #718096;">${scenario.description}</span></td>`,
           `<td${scenario.changed && scenario.changedAt.includes('none') ? ' class="changed"' : ''}>${scenario.none}</td>`,
-          `<td${scenario.changed && scenario.changedAt.includes('minimum') ? ' class="changed"' : ''}>${scenario.minimum}</td>`,
           `<td${scenario.changed && scenario.changedAt.includes('medium') ? ' class="changed"' : ''}>${scenario.medium}</td>`,
           `<td${scenario.changed && scenario.changedAt.includes('high') ? ' class="changed"' : ''}>${scenario.high}</td>`,
           `<td${scenario.changed && scenario.changedAt.includes('maximum') ? ' class="changed"' : ''}>${scenario.maximum}</td>`
