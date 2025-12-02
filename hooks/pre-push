@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Pre-push hook to prevent pushing stale commits when working with parallel agents
+# This hook checks repository status before allowing a push
+
+set -e
+
+# Colors for error messages
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo "Running pre-push checks..."
+
+# Fetch latest changes from remote (without merging)
+echo "Fetching latest changes from remote..."
+git fetch origin
+
+# Check if working directory has uncommitted changes
+if ! git diff-index --quiet HEAD --; then
+    echo -e "${RED}ERROR: Uncommitted changes detected.${NC}"
+    echo "Please commit or stash your changes before pushing."
+    echo ""
+    echo "Uncommitted changes:"
+    git status --short
+    exit 1
+fi
+
+# Get current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if branch has upstream tracking
+if ! git rev-parse --abbrev-ref @{u} >/dev/null 2>&1; then
+    echo -e "${YELLOW}WARNING: Branch '$current_branch' has no upstream tracking.${NC}"
+    echo "This is OK for first push, but consider setting upstream with:"
+    echo "  git push --set-upstream origin $current_branch"
+    exit 0
+fi
+
+# Get commit hashes
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse @{u})
+BASE=$(git merge-base @ @{u})
+
+# Check branch status
+if [ "$LOCAL" = "$REMOTE" ]; then
+    # Up to date with remote
+    echo "✓ Branch is up to date with remote"
+elif [ "$LOCAL" = "$BASE" ]; then
+    # Local is behind remote
+    echo -e "${RED}ERROR: Local branch is behind remote.${NC}"
+    echo "Your local branch '$current_branch' is behind 'origin/$current_branch'."
+    echo "Please run 'git pull' first to merge remote changes."
+    exit 1
+elif [ "$REMOTE" = "$BASE" ]; then
+    # Local is ahead of remote (OK to push)
+    echo "✓ Local branch is ahead of remote (OK to push)"
+else
+    # Branches have diverged
+    echo -e "${RED}ERROR: Branches have diverged.${NC}"
+    echo "Your local branch '$current_branch' and 'origin/$current_branch' have diverged."
+    echo "Please sync with remote first:"
+    echo "  git pull --rebase origin $current_branch"
+    echo "  (or use 'git pull' to merge)"
+    exit 1
+fi
+
+echo "✓ All pre-push checks passed"
+exit 0
+
