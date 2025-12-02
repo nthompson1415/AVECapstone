@@ -1,3 +1,4 @@
+// Calibrator page wrapper component
 import PersonalEthicsCalibrator from '../personal-ethics-calibrator.jsx';
 
 const CalibratorPage = () => {

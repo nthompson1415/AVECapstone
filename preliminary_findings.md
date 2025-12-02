@@ -1,4 +1,5 @@
 # PRELIMINARY RESEARCH FINDINGS
+<!-- Preliminary research findings document -->
 ## IST 477 Capstone: Autonomous Vehicle Ethics
 
 ### Research Questions

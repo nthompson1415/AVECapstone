@@ -1,3 +1,4 @@
+// 404 Not Found page component
 import { Link } from 'react-router-dom';
 import { AlertCircle } from 'lucide-react';
 

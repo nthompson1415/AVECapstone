@@ -1,3 +1,4 @@
+// Home page component - overview/landing page
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Brain, BarChart3, Users, Layers, Presentation, FileText } from 'lucide-react';

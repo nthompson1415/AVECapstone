@@ -1,5 +1,5 @@
 # GitHub Pages Site Language Review
-
+<!-- Language review documentation -->
 This document contains all user-facing text content from the GitHub Pages site, organized by source file and component.
 
 ---

@@ -1,3 +1,4 @@
+// Findings page component
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Library, TrendingUp, Users, AlertCircle, BarChart3, FileText, Table } from 'lucide-react';

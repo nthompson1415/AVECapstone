@@ -1,4 +1,5 @@
 # Ethical Scenario Analysis Report
+<!-- Analysis report for AV Ethics Capstone -->
 ## 100 Unique Scenarios Across 5 Connectedness Levels
 
 **Generated:** $(date)  
