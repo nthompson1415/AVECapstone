@@ -1,3 +1,4 @@
+// Data viewer page component
 import { useState, useEffect } from 'react';
 import { FileText, Table, Download, BarChart3 } from 'lucide-react';
 

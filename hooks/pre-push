@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Pre-push hook to prevent pushing stale commits when working with parallel agents
+# This hook runs automatically before every git push
 # This hook checks repository status before allowing a push
 
 set -e

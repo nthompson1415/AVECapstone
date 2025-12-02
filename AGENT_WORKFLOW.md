@@ -43,4 +43,3 @@ If the hook detects issues, it will abort the push with one of these messages:
 5. If hook fails: Follow the error message instructions, then retry
 
 This ensures that conflicts are detected before they overwrite other agents' work.
-

@@ -1,3 +1,4 @@
+// Main ethical decision analyzer component
 import React, { useState, useEffect, useCallback, useMemo, memo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { AlertCircle, TrendingUp, Users, Brain, ChevronRight, RotateCcw, BookOpen, Download, Upload, Scale, Heart, Shield, Zap, BarChart3, Library, Plus, Minus } from 'lucide-react';

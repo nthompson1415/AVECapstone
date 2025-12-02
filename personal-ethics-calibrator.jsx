@@ -1,3 +1,4 @@
+// Personal ethics calibrator component
 import React, { useState } from 'react';
 import { Brain, Sliders, Play, RotateCcw, Download, Upload, TrendingUp, Users } from 'lucide-react';
 

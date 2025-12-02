@@ -1,3 +1,4 @@
+// Findings page component
 import { useState, useEffect } from 'react';
 import { Library, TrendingUp, Users, AlertCircle } from 'lucide-react';
 

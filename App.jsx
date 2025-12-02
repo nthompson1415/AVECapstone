@@ -1,3 +1,4 @@
+// Main application component with routing
 import { NavLink, Route, Routes, Link } from 'react-router-dom';
 import { Brain, Sliders, Layers, Presentation, FileText } from 'lucide-react';
 import HomePage from './pages/Home';
