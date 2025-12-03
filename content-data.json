@@ -133,24 +133,24 @@
       {
         "name": "Pregnant Woman (1 vs 2)",
         "description": "Pregnancy multiplier effect",
-        "none": "Save Pregnant",
-        "minimum": "Save Pregnant",
-        "medium": "Save Pregnant",
-        "high": "Hit Pregnant",
-        "maximum": "Hit Pregnant",
+        "none": "NEUTRAL",
+        "minimum": "Hit Pregnant",
+        "medium": "Hit Pregnant",
+        "high": "Hit 2 People",
+        "maximum": "Hit 2 People",
         "changed": true,
-        "changedAt": ["high", "maximum"]
+        "changedAt": ["minimum", "medium", "high", "maximum"]
       },
       {
         "name": "Young vs Elderly (5 elderly vs 1 child)",
         "description": "Age weighting effect",
-        "none": "Save Child",
-        "minimum": "Save Child",
+        "none": "Save 5 Elderly",
+        "minimum": "Save 5 Elderly",
         "medium": "Save Child",
         "high": "Save Child",
         "maximum": "Save Child",
-        "changed": false,
-        "changedAt": []
+        "changed": true,
+        "changedAt": ["medium", "high", "maximum"]
       },
       {
         "name": "Pet vs Person",
