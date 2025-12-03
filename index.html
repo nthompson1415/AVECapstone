@@ -6,8 +6,42 @@
     <link rel="icon" type="image/svg+xml" href="/AVECapstone/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>av-ethics-site</title>
-    <script type="module" crossorigin src="/AVECapstone/assets/index-e738d8a2.js"></script>
-    <link rel="stylesheet" href="/AVECapstone/assets/index-5b7a470b.css">
+    <script type="module" crossorigin src="/AVECapstone/assets/index-e738d8a2.js" onerror="handleLoadError()"></script>
+    <link rel="stylesheet" href="/AVECapstone/assets/index-5b7a470b.css" onerror="handleLoadError()">
+    <script>
+      // Catch-all error handler for 404s and load errors
+      function handleLoadError() {
+        console.error('Resource load error detected, redirecting to homepage...');
+        window.location.href = '/AVECapstone/';
+      }
+
+      // Global error handler for unhandled errors
+      window.addEventListener('error', function(event) {
+        // Check if it's a resource loading error (404, etc.)
+        if (event.target && (event.target.tagName === 'SCRIPT' || event.target.tagName === 'LINK')) {
+          console.error('Resource failed to load:', event.target.src || event.target.href);
+          handleLoadError();
+          return true; // Prevent default error handling
+        }
+      }, true);
+
+      // Handle unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled promise rejection:', event.reason);
+        // Only redirect on critical errors, not all promise rejections
+        if (event.reason && event.reason.message && event.reason.message.includes('404')) {
+          handleLoadError();
+        }
+      });
+
+      // Fallback: If React app doesn't load within 5 seconds, redirect
+      setTimeout(function() {
+        if (!window.React || !document.getElementById('root').hasChildNodes()) {
+          console.warn('React app did not load, redirecting to homepage...');
+          handleLoadError();
+        }
+      }, 5000);
+    </script>
   </head>
   <body>
     <div id="root"></div>

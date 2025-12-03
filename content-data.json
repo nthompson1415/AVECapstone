@@ -253,5 +253,21 @@
   "footer": {
     "tools": "React-based Ethical Decision Analyzer | Evidence-based multipliers from government VSL estimates, QALY medical frameworks, and criminal justice recidivism research",
     "timeline": "Literature Review (Nov) | Final Paper (20-40 pages, Dec 12) | Poster Day (Dec 5)"
+  },
+  "statistics": {
+    "scenariosChanged": 4,
+    "totalScenarios": 6,
+    "percentageChanged": 67
+  },
+  "multipliers": {
+    "occupation": {
+      "doctor": 1.5,
+      "criminal": 0.94,
+      "average": 1.0
+    },
+    "pregnancy": 1.8,
+    "legalFault": {
+      "jaywalker": 0.9
+    }
   }
 }

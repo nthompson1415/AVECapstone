@@ -238,7 +238,7 @@ const EthicalChoiceAnalyzer = () => {
   useEffect(() => {
     const loadContentData = async () => {
       try {
-        const response = await fetch('/content-data.json');
+        const response = await fetch('/AVECapstone/content-data.json');
         const data = await response.json();
         setContentData(data);
       } catch (error) {
@@ -1264,6 +1264,7 @@ const EthicalChoiceAnalyzer = () => {
                         <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                           <td className="border border-indigo-300 px-4 py-2 font-semibold">{scenario.name}</td>
                           <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('none') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.none}</td>
+                          <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('minimum') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.minimum}</td>
                           <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('medium') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.medium}</td>
                           <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('high') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.high}</td>
                           <td className={`border border-indigo-300 px-4 py-2 ${scenario.changed && scenario.changedAt.includes('maximum') ? 'bg-red-100 font-bold text-red-700' : ''}`}>{scenario.maximum}</td>
