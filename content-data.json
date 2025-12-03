@@ -140,6 +140,28 @@
         "maximum": "Hit Pregnant",
         "changed": true,
         "changedAt": ["high", "maximum"]
+      },
+      {
+        "name": "Young vs Elderly (5 elderly vs 1 child)",
+        "description": "Age weighting effect",
+        "none": "Save Child",
+        "minimum": "Save Child",
+        "medium": "Save Child",
+        "high": "Save Child",
+        "maximum": "Save Child",
+        "changed": false,
+        "changedAt": []
+      },
+      {
+        "name": "Pet vs Person",
+        "description": "Species weighting",
+        "none": "Save Person",
+        "minimum": "Save Person",
+        "medium": "Save Person",
+        "high": "Save Person",
+        "maximum": "Save Person",
+        "changed": false,
+        "changedAt": []
       }
     ],
     "note": "Red cells indicate decision changed at this connectedness level"
