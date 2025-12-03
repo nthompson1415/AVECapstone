@@ -95,12 +95,13 @@
     }
   ],
   "scenarioData": {
-    "tableHeaders": ["Scenario", "None", "Medium", "High", "Maximum"],
+    "tableHeaders": ["Scenario", "None", "Minimum", "Medium", "High", "Maximum"],
     "scenarios": [
       {
         "name": "Classic Trolley (5 vs 1)",
         "description": "All else equal",
         "none": "Save 5",
+        "minimum": "Save 5",
         "medium": "Save 5",
         "high": "Save 5",
         "maximum": "Save 5",
@@ -111,6 +112,7 @@
         "name": "Doctor vs Criminal",
         "description": "Neutral case becomes clear",
         "none": "NEUTRAL",
+        "minimum": "NEUTRAL",
         "medium": "Save Doctor",
         "high": "Save Doctor",
         "maximum": "Save Doctor",
@@ -121,6 +123,7 @@
         "name": "Legal vs Jaywalker",
         "description": "Responsibility weighting",
         "none": "NEUTRAL",
+        "minimum": "NEUTRAL",
         "medium": "NEUTRAL",
         "high": "Hit Jaywalker",
         "maximum": "Hit Jaywalker",
@@ -131,6 +134,7 @@
         "name": "Pregnant Woman (1 vs 2)",
         "description": "Pregnancy multiplier effect",
         "none": "Save Pregnant",
+        "minimum": "Save Pregnant",
         "medium": "Save Pregnant",
         "high": "Hit Pregnant",
         "maximum": "Hit Pregnant",
