@@ -136,26 +136,6 @@
         "maximum": "Hit Pregnant",
         "changed": true,
         "changedAt": ["high", "maximum"]
-      },
-      {
-        "name": "Young vs Elderly (5 vs 1)",
-        "description": "Age-based prioritization",
-        "none": "Save Child",
-        "medium": "Save Child",
-        "high": "Save Child",
-        "maximum": "Save Child",
-        "changed": false,
-        "changedAt": []
-      },
-      {
-        "name": "Pet vs Person (1 dog vs 1 human)",
-        "description": "Species weighting",
-        "none": "Save Person",
-        "medium": "Save Person",
-        "high": "Save Person",
-        "maximum": "Save Person",
-        "changed": false,
-        "changedAt": []
       }
     ],
     "note": "Red cells indicate decision changed at this connectedness level"
