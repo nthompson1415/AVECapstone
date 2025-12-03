@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 
-// Error boundary for catching React errors
+// Error boundary for catching React rendering errors (non-aggressive)
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -18,20 +18,17 @@ class ErrorBoundary extends React.Component {
 
   componentDidCatch(error, errorInfo) {
     console.error('React error caught:', error, errorInfo);
-    // Redirect to homepage on critical errors
-    if (error.message && (error.message.includes('404') || error.message.includes('Failed to fetch'))) {
-      window.location.href = '/AVECapstone/';
-    }
+    // Don't auto-redirect - let user see the error or navigate manually
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', fontFamily: 'system-ui, sans-serif' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', fontFamily: 'system-ui, sans-serif', padding: '2rem' }}>
           <div style={{ textAlign: 'center' }}>
             <h1>Something went wrong</h1>
-            <p>Redirecting to homepage...</p>
-            <a href="/AVECapstone/">Go to Home</a>
+            <p>An error occurred while rendering the application.</p>
+            <a href="/AVECapstone/" style={{ color: '#4F46E5', textDecoration: 'underline' }}>Go to Home</a>
           </div>
         </div>
       );
