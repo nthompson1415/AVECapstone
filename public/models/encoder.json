@@ -1,0 +1,222 @@
+{
+  "input_dim": 100,
+  "numeric": {
+    "features": [
+      "include_controversial",
+      "include_extended",
+      "include_network",
+      "occupants",
+      "occupant_age",
+      "occupant_pregnant",
+      "pedestrians",
+      "pedestrian_age",
+      "pedestrian_pregnant",
+      "certainty",
+      "total_people",
+      "life_years_lost"
+    ],
+    "mean": [
+      0.6,
+      0.4,
+      0.2,
+      2.040714285714286,
+      35.02357142857143,
+      0.06,
+      2.5314285714285716,
+      38.121428571428574,
+      0.056428571428571425,
+      84.77714285714286,
+      4.5721428571428575,
+      58.1536651
+    ],
+    "scale": [
+      0.48989794855663565,
+      0.4898979485566357,
+      0.4000000000000001,
+      1.4239480542577703,
+      23.286173428865116,
+      0.23748684174075835,
+      1.6772888717163998,
+      26.721732155452706,
+      0.23074745449322306,
+      8.875909151478856,
+      2.208217375982681,
+      86.04514653333808
+    ]
+  },
+  "categorical": [
+    {
+      "feature": "option",
+      "categories": [
+        "option1",
+        "option2"
+      ]
+    },
+    {
+      "feature": "connectedness",
+      "categories": [
+        "High (+ Legal/Pregnancy/Species)",
+        "Low (Age Only)",
+        "Maximum (+ Network Effects)",
+        "Medium (+ Occupation/Health/Criminal)",
+        "None (Demographic-Blind)"
+      ]
+    },
+    {
+      "feature": "occupant_job",
+      "categories": [
+        "average",
+        "caregiver",
+        "lifesaving",
+        "primaryResearcher",
+        "professional",
+        "skilled",
+        "unemployed",
+        "uniqueExpert"
+      ]
+    },
+    {
+      "feature": "occupant_health",
+      "categories": [
+        "chronic",
+        "healthy",
+        "terminal"
+      ]
+    },
+    {
+      "feature": "occupant_criminal",
+      "categories": [
+        "activeCrime",
+        "homicide",
+        "minor",
+        "none",
+        "property",
+        "violent"
+      ]
+    },
+    {
+      "feature": "occupant_legal_fault",
+      "categories": [
+        "dui",
+        "fleeing",
+        "jaywalking",
+        "legal",
+        "minorViolation",
+        "reckless"
+      ]
+    },
+    {
+      "feature": "occupant_risk",
+      "categories": [
+        "consented",
+        "extreme",
+        "innocent",
+        "normal",
+        "risky"
+      ]
+    },
+    {
+      "feature": "occupant_species",
+      "categories": [
+        "human",
+        "livestock",
+        "petCat",
+        "petDog"
+      ]
+    },
+    {
+      "feature": "occupant_network",
+      "categories": [
+        "none",
+        "parent",
+        "partner",
+        "primaryCaregiver",
+        "soleParent",
+        "soleProvider"
+      ]
+    },
+    {
+      "feature": "pedestrian_job",
+      "categories": [
+        "average",
+        "caregiver",
+        "lifesaving",
+        "primaryResearcher",
+        "professional",
+        "skilled",
+        "unemployed",
+        "uniqueExpert"
+      ]
+    },
+    {
+      "feature": "pedestrian_health",
+      "categories": [
+        "chronic",
+        "healthy",
+        "terminal"
+      ]
+    },
+    {
+      "feature": "pedestrian_criminal",
+      "categories": [
+        "activeCrime",
+        "homicide",
+        "minor",
+        "none",
+        "property",
+        "violent"
+      ]
+    },
+    {
+      "feature": "pedestrian_legal_fault",
+      "categories": [
+        "dui",
+        "fleeing",
+        "jaywalking",
+        "legal",
+        "minorViolation",
+        "reckless"
+      ]
+    },
+    {
+      "feature": "pedestrian_risk",
+      "categories": [
+        "consented",
+        "extreme",
+        "innocent",
+        "normal",
+        "risky"
+      ]
+    },
+    {
+      "feature": "pedestrian_species",
+      "categories": [
+        "human",
+        "livestock",
+        "petCat",
+        "petDog"
+      ]
+    },
+    {
+      "feature": "pedestrian_network",
+      "categories": [
+        "none",
+        "parent",
+        "partner",
+        "primaryCaregiver",
+        "soleParent",
+        "soleProvider"
+      ]
+    },
+    {
+      "feature": "severity",
+      "categories": [
+        "critical",
+        "fatal",
+        "minor",
+        "moderate",
+        "serious"
+      ]
+    }
+  ]
+}

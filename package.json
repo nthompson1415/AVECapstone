@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/nthompson1415/AVECapstone/issues"
   },
-  "homepage": "https://github.com/nthompson1415/AVECapstone#readme"
+  "homepage": "https://github.com/nthompson1415/AVECapstone#readme",
+  "dependencies": {
+    "onnxruntime-web": "^1.23.2"
+  }
 }
