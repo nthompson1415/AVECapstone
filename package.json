@@ -1,0 +1,24 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nthompson1415/AVECapstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nthompson1415/AVECapstone/issues"
+  },
+  "homepage": "https://github.com/nthompson1415/AVECapstone#readme",
+  "dependencies": {
+    "onnxruntime-web": "^1.23.2"
+  }
+}
